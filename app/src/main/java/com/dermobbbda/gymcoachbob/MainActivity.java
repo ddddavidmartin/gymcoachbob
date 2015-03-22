@@ -33,8 +33,6 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_search:
-                return true;
             case R.id.action_settings:
                 return true;
             case R.id.action_quit:
