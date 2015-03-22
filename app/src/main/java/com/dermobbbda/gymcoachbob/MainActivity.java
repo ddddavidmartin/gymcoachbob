@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.action_settings:
                 return true;
+            case R.id.action_quit:
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }
