@@ -39,6 +39,8 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.action_quit:
                 finish();
+            case R.id.action_new_workout:
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

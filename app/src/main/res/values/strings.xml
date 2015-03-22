@@ -6,4 +6,5 @@
     <string name="title_activity_display_message">The Message</string>
     <string name="action_search">Search</string>
     <string name="action_quit">Exit</string>
+    <string name="action_new_workout">New workout</string>
 </resources>
