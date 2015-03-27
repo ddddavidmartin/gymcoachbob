@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             case R.id.action_quit:
                 finish();
             case R.id.action_new_workout:
-                return true;
+                newWorkout(getCurrentFocus());
         }
         return super.onOptionsItemSelected(item);
     }
@@ -51,6 +51,12 @@ public class MainActivity extends Activity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
 
+        startActivity(intent);
+    }
+
+    public void newWorkout(View view) {
+        // Add a new workout.
+        Intent intent = new Intent(this, NewWorkoutActivity.class);
         startActivity(intent);
     }
 }
