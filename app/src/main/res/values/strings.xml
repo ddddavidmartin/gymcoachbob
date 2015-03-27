@@ -7,4 +7,7 @@
     <string name="action_quit">Exit</string>
     <string name="action_new_workout">New workout</string>
     <string name="title_activity_new_workout">Add new workout</string>
+    <string name="hint_workout_name">Enter name of workout</string>
+    <string name="button_add_workout">Add workout</string>
+    <string name="button_discard_workout">Discard workout</string>
 </resources>
