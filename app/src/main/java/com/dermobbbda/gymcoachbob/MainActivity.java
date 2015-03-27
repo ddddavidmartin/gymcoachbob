@@ -36,7 +36,8 @@ public class MainActivity extends Activity {
             case R.id.action_settings:
                 return true;
             case R.id.action_quit:
-                finish();
+                // TODO: Find good way of exiting the app.
+                return true;
             case R.id.action_new_workout:
                 newWorkout(getCurrentFocus());
         }
