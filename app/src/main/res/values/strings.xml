@@ -11,4 +11,5 @@
     <string name="button_add_workout">Add workout</string>
     <string name="button_discard_workout">Discard workout</string>
     <string name="EXTRA_WORKOUT_NAME">com.dermobbda.gymcoachbob.extra.workoutName</string>
+    <string name="action_discard_new_workout">Discard changes</string>
 </resources>

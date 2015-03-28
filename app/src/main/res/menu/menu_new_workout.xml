@@ -5,4 +5,7 @@
           android:title="@string/action_settings"
           android:orderInCategory="100"
           android:showAsAction="never"/>
+    <item android:id="@+id/action_discard_new_workout"
+          android:title="@string/action_discard_new_workout"
+          android:showAsAction="always" />
 </menu>

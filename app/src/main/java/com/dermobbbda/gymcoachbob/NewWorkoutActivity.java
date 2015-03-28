@@ -36,6 +36,8 @@ public class NewWorkoutActivity extends Activity {
         switch (id) {
             case R.id.action_settings:
                 return true;
+            case R.id.action_discard_new_workout:
+                discardWorkout();
         }
 
         return super.onOptionsItemSelected(item);
@@ -53,4 +55,12 @@ public class NewWorkoutActivity extends Activity {
         setResult(RESULT_OK, returnIntent);
         finish();
      }
+
+    /**
+     * Discard the workout that is currently being edited.
+     */
+    public void discardWorkout() {
+        setResult(RESULT_CANCELED);
+        finish();
+    }
 }
