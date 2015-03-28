@@ -4,3 +4,4 @@ Backlog of tasks left to do:
 * implement functionality to exit the app
 * add functionality to display that user has to enter text before adding a workout
 * use official Android icon set for ActionBar items (for example to add a new workout)
+* add 'About' screen with contact and version information
