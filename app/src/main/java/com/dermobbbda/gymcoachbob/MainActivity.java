@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 
 public class MainActivity extends Activity {
-    public final static String EXTRA_MESSAGE = "com.dermobbbda.gymcoachbob.MESSAGE";
     public static final int NEW_WORKOUT_REQUEST = 1;
 
     @Override
@@ -55,17 +53,6 @@ public class MainActivity extends Activity {
                 System.out.println("New workout creation was cancelled.");
             }
         }
-    }
-
-    public void sendMessage(View view) {
-        // Handle the sending of a message.
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-
-        startActivity(intent);
     }
 
     public void newWorkout(View view) {

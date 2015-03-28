@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">Gym Coach Bob</string>
 
-    <string name="hint_edit_message">Enter a message</string>
     <string name="hint_workout_name">Enter name of workout</string>
 
-    <string name="title_activity_display_message">The Message</string>
     <string name="title_activity_new_workout">Add new workout</string>
 
     <string name="action_discard_new_workout">Discard changes</string>
@@ -14,7 +12,6 @@
 
     <string name="button_add_workout">Add workout</string>
     <string name="button_discard_workout">Discard workout</string>
-    <string name="button_send">Send</string>
 
     <string name="EXTRA_WORKOUT_NAME">com.dermobbda.gymcoachbob.extra.workoutName</string>
 </resources>
