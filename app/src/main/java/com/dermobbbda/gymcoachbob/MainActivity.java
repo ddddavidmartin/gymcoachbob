@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
     public final static String EXTRA_MESSAGE = "com.dermobbbda.gymcoachbob.MESSAGE";
+    public static final int NEW_WORKOUT_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,18 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == NEW_WORKOUT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                String res = data.getStringExtra(getString(R.string.EXTRA_WORKOUT_NAME));
+                System.out.println("Received workoutName: " + res);
+            } else if (resultCode == RESULT_CANCELED) {
+                System.out.println("New workout creation was cancelled.");
+            }
+        }
+    }
+
     public void sendMessage(View view) {
         // Handle the sending of a message.
         Intent intent = new Intent(this, DisplayMessageActivity.class);
@@ -58,6 +71,6 @@ public class MainActivity extends Activity {
     public void newWorkout(View view) {
         // Add a new workout.
         Intent intent = new Intent(this, NewWorkoutActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, NEW_WORKOUT_REQUEST);
     }
 }

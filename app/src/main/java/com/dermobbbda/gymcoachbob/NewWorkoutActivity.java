@@ -1,9 +1,12 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class NewWorkoutActivity extends Activity {
@@ -36,4 +39,17 @@ public class NewWorkoutActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void addWorkout(View view) {
+        /* Get text of textfield. If no text entered, change it on the button.
+         * Prepare return intent with name, set it as result and finish. */
+        EditText editText = (EditText) findViewById(R.id.workout_name);
+        String workoutName = editText.getText().toString();
+        System.out.println("workoutName: " + workoutName);
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(getString(R.string.EXTRA_WORKOUT_NAME), workoutName);
+        setResult(RESULT_OK, returnIntent);
+        finish();
+     }
 }
