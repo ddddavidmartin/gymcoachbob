@@ -5,3 +5,10 @@ Backlog of tasks left to do:
 * add functionality to display that user has to enter text before adding a workout
 * use official Android icon set for ActionBar items (for example to add a new workout)
 * add 'About' screen with contact and version information
+* use ContentResolver to save currently edited fields
+* add popup after logging an exercise: "good work boy / girl" and variations on it
+* start with exercises rather than workouts (and just have a list of exercises)
+ * maybe add another activity that works on exercises, and later on the workout one can be extended
+* consider showing the number of days since the last time an exercise was done
+* consider grouping exercises. Have the user select what it is good for (legs, arms, shoulders, cardio, core, etc.) and make it possible to select more than one
+* start with simple way of saving everything, then find something better like json for example
