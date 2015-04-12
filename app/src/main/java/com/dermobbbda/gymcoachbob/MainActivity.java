@@ -39,6 +39,8 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.action_new_workout:
                 newWorkout(getCurrentFocus());
+            case R.id.action_new_exercise:
+                newExercise(getCurrentFocus());
         }
         return super.onOptionsItemSelected(item);
     }
@@ -59,5 +61,11 @@ public class MainActivity extends Activity {
         // Add a new workout.
         Intent intent = new Intent(this, NewWorkoutActivity.class);
         startActivityForResult(intent, NEW_WORKOUT_REQUEST);
+    }
+
+    /* Start the respective Activity to add a new exercise. */
+    public void newExercise(View view) {
+        Intent intent = new Intent(this, NewExerciseActivity.class);
+        startActivity(intent);
     }
 }
