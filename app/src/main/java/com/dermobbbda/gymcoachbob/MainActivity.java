@@ -48,20 +48,19 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == NEW_WORKOUT_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                String res = data.getStringExtra(getString(R.string.EXTRA_WORKOUT_NAME));
-                System.out.println("Received workoutName: " + res);
-            } else if (resultCode == RESULT_CANCELED) {
-                System.out.println("New workout creation was cancelled.");
-            }
+        if (resultCode == RESULT_CANCELED) {
+            System.out.println("Received cancellation of request with code %d " + requestCode + ".");
+            return;
         }
 
-        else if (requestCode == NEW_EXERCISE_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
-                System.out.println("Received Exercise: " + exercise);
-            }
+        if (requestCode == NEW_WORKOUT_REQUEST && resultCode == RESULT_OK) {
+            String res = data.getStringExtra(getString(R.string.EXTRA_WORKOUT_NAME));
+            System.out.println("Received workoutName: " + res);
+        }
+
+        else if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
+            Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
+            System.out.println("Received Exercise: " + exercise);
         }
     }
 
