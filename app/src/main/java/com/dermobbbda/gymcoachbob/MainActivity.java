@@ -10,6 +10,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
     public static final int NEW_WORKOUT_REQUEST = 1;
+    public static final int NEW_EXERCISE_REQUEST = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,13 @@ public class MainActivity extends Activity {
                 System.out.println("New workout creation was cancelled.");
             }
         }
+
+        else if (requestCode == NEW_EXERCISE_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
+                System.out.println("Received Exercise: " + exercise);
+            }
+        }
     }
 
     public void newWorkout(View view) {
@@ -66,6 +74,6 @@ public class MainActivity extends Activity {
     /* Start the respective Activity to add a new exercise. */
     public void newExercise(View view) {
         Intent intent = new Intent(this, NewExerciseActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, NEW_EXERCISE_REQUEST);
     }
 }
