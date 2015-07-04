@@ -45,8 +45,10 @@ public class NewExerciseActivity extends Activity {
         String exerciseName = editText.getText().toString();
         System.out.println("exerciseName: " + exerciseName);
 
+        Exercise exercise = new Exercise(exerciseName);
+
         Intent returnIntent = new Intent();
-        returnIntent.putExtra(getString(R.string.EXTRA_EXERCISE_NAME), exerciseName);
+        returnIntent.putExtra(getString(R.string.EXTRA_EXERCISE), exercise);
         setResult(RESULT_OK, returnIntent);
         finish();
     }
