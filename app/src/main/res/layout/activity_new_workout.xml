@@ -7,7 +7,8 @@
     <EditText android:id="@+id/workout_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_workout_name" />
+        android:hint="@string/hint_workout_name"
+        android:inputType="textCapWords" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
