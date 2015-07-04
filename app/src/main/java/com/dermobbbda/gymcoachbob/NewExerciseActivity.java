@@ -1,9 +1,12 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class NewExerciseActivity extends Activity {
@@ -35,5 +38,16 @@ public class NewExerciseActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addExercise(View view) {
+        EditText editText = (EditText) findViewById(R.id.exercise_name);
+        String exerciseName = editText.getText().toString();
+        System.out.println("exerciseName: " + exerciseName);
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(getString(R.string.EXTRA_EXERCISE_NAME), exerciseName);
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 }
