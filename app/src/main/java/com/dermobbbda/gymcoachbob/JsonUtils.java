@@ -39,9 +39,10 @@ public class JsonUtils {
     }
 
     /* Return an exercise read from the given file. */
-    public static Exercise fromFile(Context context, String fileName) {
+    public static Exercise readExerciseFromFile(Context context) {
         StringBuffer fileContent = new StringBuffer("");
         FileInputStream inputStream;
+        String fileName = context.getString(R.string.file_exercises);
         byte[] buffer = new byte[BUFSIZE];
         String exerciseName;
 

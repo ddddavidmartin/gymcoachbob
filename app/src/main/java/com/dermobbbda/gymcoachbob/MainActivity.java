@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Exercise exercise = JsonUtils.fromFile(this, getString(R.string.file_exercises));
+        Exercise exercise = JsonUtils.readExerciseFromFile(this);
         if (exercise != null) {
             TextView text = (TextView) findViewById(R.id.main_exercise_name);
             text.setText(exercise.getName());
