@@ -8,8 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dermobbbda.gymcoachbob.JsonUtils;
-
 
 public class MainActivity extends Activity {
     public static final int NEW_WORKOUT_REQUEST = 1;
