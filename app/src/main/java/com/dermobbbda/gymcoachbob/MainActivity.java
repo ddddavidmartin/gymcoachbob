@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.dermobbbda.gymcoachbob.JsonUtils;
 
@@ -18,6 +19,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Exercise exercise = JsonUtils.fromFile(this, getString(R.string.file_exercises));
+        if (exercise != null) {
+            TextView text = (TextView) findViewById(R.id.main_exercise_name);
+            text.setText(exercise.getName());
+        }
     }
 
     @Override
