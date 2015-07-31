@@ -19,4 +19,8 @@
 
     <string name="EXTRA_WORKOUT_NAME">com.dermobbda.gymcoachbob.extra.workoutName</string>
     <string name="EXTRA_EXERCISE">com.dermobbda.gymcoachbob.extra.exercise</string>
+
+    <string name="json_exercise_name">name</string>
+
+    <string name="file_exercises">exercises</string>
 </resources>

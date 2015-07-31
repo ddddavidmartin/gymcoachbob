@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.dermobbbda.gymcoachbob.JsonUtils;
+
 
 public class MainActivity extends Activity {
     public static final int NEW_WORKOUT_REQUEST = 1;
@@ -61,6 +63,8 @@ public class MainActivity extends Activity {
         else if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
+            System.out.println("Writing Exercise to file...");
+            JsonUtils.toFile(this, exercise);
         }
     }
 
