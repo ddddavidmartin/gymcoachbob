@@ -25,6 +25,7 @@ public class JsonUtils {
         return null;
     }
 
+    /** Write a single Exercise to file. */
     public static void toFile(Context context, Exercise exercise) {
         FileOutputStream outputStream;
         String fileName = context.getString(R.string.file_exercises);
