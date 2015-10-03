@@ -3,6 +3,8 @@ package com.dermobbbda.gymcoachbob;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,12 +20,22 @@ public class MainActivity extends Activity {
 
     /** All Exercises the app knows about. */
     private List<Exercise> main_exercises;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recyclerView = (RecyclerView) findViewById(R.id.main_recyclerview);
 
+        /* Improves performance. Only set to true if changes in content do not change the
+         * layout size of the RecyclerView. */
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         main_exercises = new ArrayList<Exercise>();
 
         List<Exercise> exercises = JsonUtils.readExercisesFromFile(this);
@@ -40,6 +52,9 @@ public class MainActivity extends Activity {
             }
             text.setText(exercise_names);
         }
+
+        adapter = new ExerciseAdapter(main_exercises);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
