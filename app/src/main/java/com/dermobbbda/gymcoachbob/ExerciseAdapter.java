@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
-        public ViewHolder(TextView v) {
-            super(v);
-            textView = v;
+        public ViewHolder(FrameLayout f) {
+            super(f);
+            textView = (TextView) f.findViewById(R.id.exercise_row_item_text_view);
         }
     }
 
@@ -28,7 +29,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public ExerciseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                                .inflate(R.layout.exercise_row_item, parent, false);
-        ViewHolder vh = new ViewHolder((TextView) v);
+        ViewHolder vh = new ViewHolder((FrameLayout) v);
         return vh;
     }
 
