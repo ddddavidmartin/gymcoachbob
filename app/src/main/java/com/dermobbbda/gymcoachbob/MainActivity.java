@@ -8,20 +8,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends Activity {
     public static final int NEW_WORKOUT_REQUEST = 1;
     public static final int NEW_EXERCISE_REQUEST = 2;
+
+    /** All Exercises the app knows about. */
+    private List<Exercise> main_exercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Exercise exercise = JsonUtils.readExerciseFromFile(this);
-        if (exercise != null) {
+        main_exercises = new ArrayList<Exercise>();
+
+        List<Exercise> exercises = JsonUtils.readExercisesFromFile(this);
+        if (exercises == null) {
+            System.out.println("Parsing failed and exercises are left empty.");
+        } else {
+            main_exercises = exercises;
+        }
+        if (main_exercises != null) {
             TextView text = (TextView) findViewById(R.id.main_exercise_name);
-            text.setText(exercise.getName());
+            String exercise_names = "Exercises: ";
+            for (Exercise e : main_exercises) {
+                exercise_names += " " + e.getName();
+            }
+            text.setText(exercise_names);
         }
     }
 
@@ -68,8 +85,8 @@ public class MainActivity extends Activity {
         else if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
-            System.out.println("Writing Exercise to file...");
-            JsonUtils.toFile(this, exercise);
+            main_exercises.add(exercise);
+            JsonUtils.toFile(this, main_exercises);
         }
     }
 
