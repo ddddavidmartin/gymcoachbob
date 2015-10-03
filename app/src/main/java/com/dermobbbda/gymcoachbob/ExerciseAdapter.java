@@ -14,9 +14,9 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
-        public ViewHolder(FrameLayout f) {
-            super(f);
-            textView = (TextView) f.findViewById(R.id.exercise_row_item_text_view);
+        public ViewHolder(View v) {
+            super(v);
+            textView = (TextView) v.findViewById(R.id.exercise_row_item_text_view);
         }
     }
 
@@ -28,8 +28,8 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     @Override
     public ExerciseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                               .inflate(R.layout.exercise_row_item, parent, false);
-        ViewHolder vh = new ViewHolder((FrameLayout) v);
+                               .inflate(R.layout.exercise_card_layout, parent, false);
+        ViewHolder vh = new ViewHolder((View) v);
         return vh;
     }
 
