@@ -44,14 +44,6 @@ public class MainActivity extends Activity {
         } else {
             main_exercises = exercises;
         }
-        if (main_exercises != null) {
-            TextView text = (TextView) findViewById(R.id.main_exercise_name);
-            String exercise_names = "Exercises: ";
-            for (Exercise e : main_exercises) {
-                exercise_names += " " + e.getName();
-            }
-            text.setText(exercise_names);
-        }
 
         adapter = new ExerciseAdapter(main_exercises);
         recyclerView.setAdapter(adapter);
