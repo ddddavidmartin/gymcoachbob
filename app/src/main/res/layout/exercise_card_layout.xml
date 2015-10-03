@@ -5,7 +5,8 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           card_view:cardCornerRadius="@dimen/exercise_card_corner_radius"
-          android:layout_margin="@dimen/exercise_card_layout_margin">
+          android:layout_margin="@dimen/exercise_card_layout_margin"
+          android:foreground="?android:attr/selectableItemBackground">
 
 <TextView
     android:id="@+id/exercise_row_item_text_view"
