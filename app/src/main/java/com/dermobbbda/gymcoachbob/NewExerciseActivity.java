@@ -3,6 +3,7 @@ package com.dermobbbda.gymcoachbob;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 
 
 public class NewExerciseActivity extends Activity {
+    public static final String TAG = "GCB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,13 @@ public class NewExerciseActivity extends Activity {
     public void addExercise(View view) {
         EditText editText = (EditText) findViewById(R.id.exercise_name);
         String exerciseName = editText.getText().toString();
-        System.out.println("exerciseName: " + exerciseName);
+
+        if (exerciseName.isEmpty()) {
+            Log.d(TAG, "Ignoring button press for empty exercise name.");
+            return;
+        }
+
+        Log.d(TAG, "new exerciseName: " + exerciseName);
 
         Exercise exercise = new Exercise(exerciseName);
 
