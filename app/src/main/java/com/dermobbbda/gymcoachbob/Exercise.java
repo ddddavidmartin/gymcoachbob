@@ -4,18 +4,18 @@ import java.io.Serializable;
 
 public class Exercise implements Serializable {
     /* Name of the exercise */
-    private String name;
+    private String mName;
 
     Exercise(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public String getName() {
-        return this.name;
+        return this.mName;
     }
 
     @Override
     public String toString() {
-        return "Exercise: " + this.name;
+        return "Exercise: " + this.mName;
     }
 }

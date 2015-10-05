@@ -18,34 +18,34 @@ public class MainActivity extends Activity {
     public static final int NEW_EXERCISE_REQUEST = 2;
 
     /** All Exercises the app knows about. */
-    private List<Exercise> main_exercises;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private List<Exercise> mMainExercises;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.main_recyclerview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.main_recyclerview);
 
         /* Improves performance. Only set to true if changes in content do not change the
          * layout size of the RecyclerView. */
-        recyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        main_exercises = new ArrayList<Exercise>();
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mMainExercises = new ArrayList<Exercise>();
 
         List<Exercise> exercises = JsonUtils.readExercisesFromFile(this);
         if (exercises == null) {
             System.out.println("Parsing failed and exercises are left empty.");
         } else {
-            main_exercises = exercises;
+            mMainExercises = exercises;
         }
 
-        adapter = new ExerciseAdapter(main_exercises);
-        recyclerView.setAdapter(adapter);
+        mAdapter = new ExerciseAdapter(mMainExercises);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -91,8 +91,8 @@ public class MainActivity extends Activity {
         else if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
-            main_exercises.add(exercise);
-            JsonUtils.toFile(this, main_exercises);
+            mMainExercises.add(exercise);
+            JsonUtils.toFile(this, mMainExercises);
         }
     }
 
