@@ -1,7 +1,13 @@
 package com.dermobbbda.gymcoachbob;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -9,18 +15,35 @@ import android.widget.TextView;
 import java.util.List;
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHolder> {
+    public static final String TAG = "GCB";
+    private static ActionMode mActionMode;
+    private static Activity mActivity;
     private List<Exercise> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
         public ViewHolder(View v) {
             super(v);
+            v.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (mActionMode != null) {
+                        return false;
+                    }
+                    Log.d("ExerciseAdapter", "Element " + getPosition() + " long clicked.");
+
+                    mActionMode = mActivity.startActionMode(mActionModeCallback);
+                    v.setSelected(true);
+                    return true;
+                }
+            });
             mTextView = (TextView) v.findViewById(R.id.exercise_row_item_text_view);
         }
     }
 
-    public ExerciseAdapter(List<Exercise> exercises) {
+    public ExerciseAdapter(Activity activity, List<Exercise> exercises) {
         mDataSet = exercises;
+        mActivity = activity;
     }
 
     /** Create new Views (called by the layout manager) */
@@ -46,4 +69,41 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public int getItemCount() {
         return mDataSet.size();
     }
+
+    private static ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+        /* Called when the action mode is created; startActionMode() was called */
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            /* Inflate a menu resource providing context menu items */
+            MenuInflater inflater = mode.getMenuInflater();
+            inflater.inflate(R.menu.main_exercise_context_menu, menu);
+            return true;
+        }
+
+        /* Called each time the action mode is shown. Always called after onCreateActionMode, but
+         * may be called multiple times if the mode is invalidated. */
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false; /* Return false if nothing is done */
+        }
+
+        /* Called when the user selects a contextual menu item */
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.menu_context_delete_exercise:
+                    Log.d(TAG, "Selected to delete the exercise.");
+                    mode.finish(); /* Action picked, so close the CAB */
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        /* Called when the user exits the action mode */
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            mActionMode = null;
+        }
+    };
 }
