@@ -17,7 +17,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     public static final String TAG = "GCB";
     private static ActionMode mActionMode;
     private static Activity mActivity;
-    private static ExerciseWrapper mExercises;
+    private static ExerciseWrapper mDataSet;
     private static ExerciseViewAdapter mAdapter;
     /** The currently selected position / Exercise. */
     private static final int NO_POSITION_SELECTED = -1;
@@ -50,7 +50,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     }
 
     public ExerciseViewAdapter(Activity activity, ExerciseWrapper exercises) {
-        mExercises = exercises;
+        mDataSet = exercises;
         mActivity = activity;
         mAdapter = this;
     }
@@ -69,14 +69,14 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        String name = mExercises.get(position).getName();
+        String name = mDataSet.get(position).getName();
         holder.mTextView.setText(name);
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */
     @Override
     public int getItemCount() {
-        return mExercises.size();
+        return mDataSet.size();
     }
 
     private static ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
@@ -102,7 +102,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
             switch (item.getItemId()) {
                 case R.id.menu_context_delete_exercise:
                     Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
-                    mExercises.remove(mSelectedPosition);
+                    mDataSet.remove(mSelectedPosition);
                     mAdapter.notifyItemRemoved(mSelectedPosition);
                     mSelectedPosition = NO_POSITION_SELECTED;
                     mode.finish(); /* Action picked, so close the CAB */
