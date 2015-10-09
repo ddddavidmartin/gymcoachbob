@@ -35,9 +35,11 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         return false;
                     }
                     int pos = getPosition();
-                    if (pos > -1) {
-                        mSelectedPosition = pos;
+                    if (pos == -1) {
+                        return false;
                     }
+
+                    mSelectedPosition = pos;
                     Log.d(TAG, "Element " + mSelectedPosition + " long clicked.");
 
                     v.setSelected(true);
