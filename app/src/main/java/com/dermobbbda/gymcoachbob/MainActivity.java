@@ -9,16 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class MainActivity extends Activity {
     public static final int NEW_WORKOUT_REQUEST = 1;
     public static final int NEW_EXERCISE_REQUEST = 2;
 
     /** All Exercises the app knows about. */
-    private List<Exercise> mMainExercises;
+    private ExerciseWrapper mExercises;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -35,16 +32,9 @@ public class MainActivity extends Activity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mMainExercises = new ArrayList<Exercise>();
+        mExercises = new ExerciseWrapper(this);
 
-        List<Exercise> exercises = JsonUtils.readExercisesFromFile(this);
-        if (exercises == null) {
-            System.out.println("Parsing failed and exercises are left empty.");
-        } else {
-            mMainExercises = exercises;
-        }
-
-        mAdapter = new ExerciseViewAdapter(this, mMainExercises);
+        mAdapter = new ExerciseViewAdapter(this, mExercises);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -91,8 +81,9 @@ public class MainActivity extends Activity {
         else if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
-            mMainExercises.add(exercise);
-            JsonUtils.toFile(this, mMainExercises);
+            mExercises.add(exercise);
+            /* TODO: Find better way of writing exercises to file. */
+            /* JsonUtils.toFile(this, mMainExercises); */
         }
     }
 

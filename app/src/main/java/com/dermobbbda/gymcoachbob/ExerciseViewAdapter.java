@@ -18,6 +18,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     public static final String TAG = "GCB";
     private static ActionMode mActionMode;
     private static Activity mActivity;
+    private static ExerciseWrapper mExercises;
     private static List<Exercise> mDataSet;
     private static ExerciseViewAdapter mAdapter;
     /** The currently selected position / Exercise. */
@@ -48,6 +49,12 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
             });
             mTextView = (TextView) v.findViewById(R.id.exercise_row_item_text_view);
         }
+    }
+
+    public ExerciseViewAdapter(Activity activity, ExerciseWrapper exercises) {
+        mExercises = exercises;
+        mActivity = activity;
+        mAdapter = this;
     }
 
     public ExerciseViewAdapter(Activity activity, List<Exercise> exercises) {
