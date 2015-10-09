@@ -31,7 +31,7 @@ public class ExerciseWrapper {
     /** Add an Exercise to the list of existing ones. */
     public void add(Exercise exercise) {
         mMainExercises.add(exercise);
-        /* TODO: Update exercises on file after adding one. */
+        JsonUtils.toFile(mContext, mMainExercises);
     }
 
     /** Return the Exercise at the given position. */
@@ -47,6 +47,6 @@ public class ExerciseWrapper {
     /** Remove the Exercise at the given position. */
     public void remove(int position) {
         mMainExercises.remove(position);
-        /* TODO: Update exercises on file after removing. */
+        JsonUtils.toFile(mContext, mMainExercises);
     }
 }
