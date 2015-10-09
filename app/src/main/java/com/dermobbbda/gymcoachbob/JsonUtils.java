@@ -60,9 +60,10 @@ public class JsonUtils {
             return null;
         }
 
-        List<Exercise> result = new ArrayList<Exercise>();
+        List<Exercise> result;
         try {
             JSONArray exercise_list = new JSONArray(fileContent.toString());
+            result = new ArrayList<Exercise>(exercise_list.length());
             for (int i = 0; i < exercise_list.length(); i++){
                 JSONObject tmp = exercise_list.getJSONObject(i);
                 String exercise_name = tmp.getString(context.getString(R.string.json_exercise_name));
