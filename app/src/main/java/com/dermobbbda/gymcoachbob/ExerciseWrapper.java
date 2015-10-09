@@ -30,5 +30,23 @@ public class ExerciseWrapper {
 
     /** Add an Exercise to the list of existing ones. */
     public void add(Exercise exercise) {
+        mMainExercises.add(exercise);
+        /* TODO: Update exercises on file after adding one. */
+    }
+
+    /** Return the Exercise at the given position. */
+    public Exercise get(int position) {
+        return mMainExercises.get(position);
+    }
+
+    /** Return the overall number of existing Exercises. */
+    public int size() {
+        return mMainExercises.size();
+    }
+
+    /** Remove the Exercise at the given position. */
+    public void remove(int position) {
+        mMainExercises.remove(position);
+        /* TODO: Update exercises on file after removing. */
     }
 }

@@ -82,8 +82,6 @@ public class MainActivity extends Activity {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
             mExercises.add(exercise);
-            /* TODO: Find better way of writing exercises to file. */
-            /* JsonUtils.toFile(this, mMainExercises); */
         }
     }
 
