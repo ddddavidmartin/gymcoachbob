@@ -18,7 +18,12 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public static final String TAG = "GCB";
     private static ActionMode mActionMode;
     private static Activity mActivity;
-    private List<Exercise> mDataSet;
+    private static List<Exercise> mDataSet;
+    private static ExerciseAdapter mAdapter;
+    /** The currently selected position / Exercise. */
+    private static final int NO_POSITION_SELECTED = -1;
+    /** Value to mark that no position is currently selected. */
+    private static int mSelectedPosition = NO_POSITION_SELECTED;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
@@ -30,7 +35,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
                     if (mActionMode != null) {
                         return false;
                     }
-                    Log.d("ExerciseAdapter", "Element " + getPosition() + " long clicked.");
+                    int pos = getPosition();
+                    if (pos > -1) {
+                        mSelectedPosition = pos;
+                    }
+                    Log.d("ExerciseAdapter", "Element " + mSelectedPosition + " long clicked.");
 
                     v.setSelected(true);
                     mActionMode = mActivity.startActionMode(mActionModeCallback);
@@ -44,6 +53,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public ExerciseAdapter(Activity activity, List<Exercise> exercises) {
         mDataSet = exercises;
         mActivity = activity;
+        mAdapter = this;
     }
 
     /** Create new Views (called by the layout manager) */
@@ -92,7 +102,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_context_delete_exercise:
-                    Log.d(TAG, "Selected to delete the exercise.");
+                    Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
+                    mDataSet.remove(mSelectedPosition);
+                    mAdapter.notifyItemRemoved(mSelectedPosition);
+                    mSelectedPosition = NO_POSITION_SELECTED;
+                    JsonUtils.toFile(mActivity.getApplicationContext(), mDataSet);
                     mode.finish(); /* Action picked, so close the CAB */
                     return true;
                 default:
