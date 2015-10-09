@@ -11,17 +11,17 @@ public class Exercise implements Serializable {
     private List<Session> mSessions;
 
     Exercise(String name) {
-        this.mName = name;
+        mName = name;
         mSessions = new ArrayList<Session>();
     }
 
     public String getName() {
-        return this.mName;
+        return mName;
     }
 
     @Override
     public String toString() {
-        return "Exercise: " + this.mName;
+        return "Exercise: " + mName;
     }
 }
 
