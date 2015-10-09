@@ -39,7 +39,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
                     if (pos > -1) {
                         mSelectedPosition = pos;
                     }
-                    Log.d("ExerciseAdapter", "Element " + mSelectedPosition + " long clicked.");
+                    Log.d(TAG, "Element " + mSelectedPosition + " long clicked.");
 
                     v.setSelected(true);
                     mActionMode = mActivity.startActionMode(mActionModeCallback);
