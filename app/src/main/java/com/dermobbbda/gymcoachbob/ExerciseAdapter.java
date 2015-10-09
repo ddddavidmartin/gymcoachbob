@@ -32,8 +32,8 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
                     }
                     Log.d("ExerciseAdapter", "Element " + getPosition() + " long clicked.");
 
-                    mActionMode = mActivity.startActionMode(mActionModeCallback);
                     v.setSelected(true);
+                    mActionMode = mActivity.startActionMode(mActionModeCallback);
                     return true;
                 }
             });
