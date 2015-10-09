@@ -11,8 +11,7 @@ import android.view.View;
 
 
 public class MainActivity extends Activity {
-    public static final int NEW_WORKOUT_REQUEST = 1;
-    public static final int NEW_EXERCISE_REQUEST = 2;
+    public static final int NEW_EXERCISE_REQUEST = 1;
 
     /** All Exercises the app knows about. */
     private static ExerciseWrapper mExercises;
@@ -58,8 +57,6 @@ public class MainActivity extends Activity {
             case R.id.action_quit:
                 // TODO: Find good way of exiting the app.
                 return true;
-            case R.id.action_new_workout:
-                newWorkout(getCurrentFocus());
             case R.id.action_new_exercise:
                 newExercise(getCurrentFocus());
         }
@@ -73,22 +70,11 @@ public class MainActivity extends Activity {
             return;
         }
 
-        if (requestCode == NEW_WORKOUT_REQUEST && resultCode == RESULT_OK) {
-            String res = data.getStringExtra(getString(R.string.EXTRA_WORKOUT_NAME));
-            System.out.println("Received workoutName: " + res);
-        }
-
-        else if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
+        if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
             mExercises.add(exercise);
         }
-    }
-
-    public void newWorkout(View view) {
-        // Add a new workout.
-        Intent intent = new Intent(this, NewWorkoutActivity.class);
-        startActivityForResult(intent, NEW_WORKOUT_REQUEST);
     }
 
     /* Start the respective Activity to add a new exercise. */

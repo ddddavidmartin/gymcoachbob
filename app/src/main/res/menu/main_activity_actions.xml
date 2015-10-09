@@ -4,10 +4,6 @@
           android:icon="@mipmap/ic_action_new_workout"
           android:title="@string/action_new_exercise"
           android:showAsAction="always" />
-    <item android:id="@+id/action_new_workout"
-          android:icon="@mipmap/ic_action_new_workout"
-          android:title="@string/action_new_workout"
-          android:showAsAction="never" />
     <!-- Settings are always in overflow -->
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
