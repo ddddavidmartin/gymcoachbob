@@ -14,12 +14,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHolder> {
+public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
     public static final String TAG = "GCB";
     private static ActionMode mActionMode;
     private static Activity mActivity;
     private static List<Exercise> mDataSet;
-    private static ExerciseAdapter mAdapter;
+    private static ExerciseViewAdapter mAdapter;
     /** The currently selected position / Exercise. */
     private static final int NO_POSITION_SELECTED = -1;
     /** Value to mark that no position is currently selected. */
@@ -50,7 +50,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         }
     }
 
-    public ExerciseAdapter(Activity activity, List<Exercise> exercises) {
+    public ExerciseViewAdapter(Activity activity, List<Exercise> exercises) {
         mDataSet = exercises;
         mActivity = activity;
         mAdapter = this;
@@ -58,7 +58,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
     /** Create new Views (called by the layout manager) */
     @Override
-    public ExerciseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ExerciseViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                                .inflate(R.layout.exercise_card_layout, parent, false);
         ViewHolder vh = new ViewHolder(v);

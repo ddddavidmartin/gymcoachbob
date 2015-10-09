@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
             mMainExercises = exercises;
         }
 
-        mAdapter = new ExerciseAdapter(this, mMainExercises);
+        mAdapter = new ExerciseViewAdapter(this, mMainExercises);
         mRecyclerView.setAdapter(mAdapter);
     }
 
