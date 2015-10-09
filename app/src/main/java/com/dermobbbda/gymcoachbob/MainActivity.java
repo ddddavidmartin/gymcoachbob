@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
     public static final int NEW_EXERCISE_REQUEST = 2;
 
     /** All Exercises the app knows about. */
-    private ExerciseWrapper mExercises;
+    private static ExerciseWrapper mExercises;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
