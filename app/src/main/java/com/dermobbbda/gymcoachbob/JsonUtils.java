@@ -1,6 +1,7 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,10 +16,11 @@ import org.json.JSONObject;
 
 public class JsonUtils {
     public static final int BUFSIZE = 1024;
+    public static final String TAG = "GCB";
 
     /** Write a list of Exercises to file. */
     public static void toFile(Context context, List<Exercise> exercises) {
-        FileOutputStream outputStream;
+        FileOutputStream outputStream = null;
         String fileName = context.getString(R.string.file_exercises);
 
         try {
@@ -30,20 +32,27 @@ public class JsonUtils {
                 results_list.put(tmp);
             }
             outputStream.write(results_list.toString().getBytes());
-            outputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    Log.d(TAG, "Failed to close stream: " + e);
+                }
+            }
         }
     }
 
     /* Return exercises read from the given file. */
     public static List<Exercise> readExercisesFromFile(Context context) {
         StringBuffer fileContent = new StringBuffer("");
-        FileInputStream inputStream;
+        FileInputStream inputStream = null;
         String fileName = context.getString(R.string.file_exercises);
         byte[] buffer = new byte[BUFSIZE];
 
@@ -58,6 +67,14 @@ public class JsonUtils {
         } catch (IOException e) {
             System.out.println("IOException during reading: " + e);
             return null;
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    Log.d(TAG, "Failed to close stream: " + e);
+                }
+            }
         }
 
         List<Exercise> result;
