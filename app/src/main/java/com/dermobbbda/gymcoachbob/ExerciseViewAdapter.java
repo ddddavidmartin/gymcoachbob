@@ -39,6 +39,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                     }
 
                     Intent intent = new Intent(mActivity, ViewExerciseActivity.class);
+                    intent.putExtra(mActivity.getString(R.string.EXTRA_EXERCISE_POSITION), pos);
                     mActivity.startActivity(intent);
                 }
             });

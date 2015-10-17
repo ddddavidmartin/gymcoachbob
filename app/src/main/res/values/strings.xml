@@ -13,6 +13,7 @@
     <string name="button_add_exercise">Add exercise</string>
 
     <string name="EXTRA_EXERCISE">com.dermobbda.gymcoachbob.extra.exercise</string>
+    <string name="EXTRA_EXERCISE_POSITION">com.dermobbbda.gymcoachbob.extra.exercise_position</string>
 
     <string name="json_exercise_name">name</string>
 
