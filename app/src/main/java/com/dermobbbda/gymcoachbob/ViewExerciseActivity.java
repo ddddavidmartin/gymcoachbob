@@ -3,11 +3,8 @@ package com.dermobbbda.gymcoachbob;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
 
 public class ViewExerciseActivity extends Activity {
-    public static final String TAG = "GCB";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +17,8 @@ public class ViewExerciseActivity extends Activity {
         if (position == -1) {
             finish();
         }
-        Log.d(TAG, "Viewing Exercise on Position " + position);
-    }
 
+        Exercise exercise = ExerciseWrapper.getInstance(this).get(position);
+        setTitle(exercise.getName());
+    }
 }

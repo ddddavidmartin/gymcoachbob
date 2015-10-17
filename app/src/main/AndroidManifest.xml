@@ -26,7 +26,6 @@
         </activity>
         <activity
             android:name=".ViewExerciseActivity"
-            android:label="@string/title_activity_view_exercise"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
