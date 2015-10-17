@@ -1,6 +1,7 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ActionMode;
@@ -28,6 +29,20 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         public TextView mTextView;
         public ViewHolder(View v) {
             super(v);
+            /* Short clicking one of the listed Exercises opens the respective Exercise in detail. */
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getPosition();
+                    if (pos == -1) {
+                        return;
+                    }
+
+                    Intent intent = new Intent(mActivity, ViewExerciseActivity.class);
+                    mActivity.startActivity(intent);
+                }
+            });
+
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {

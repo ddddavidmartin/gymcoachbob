@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dermobbbda.gymcoachbob.MainActivity" />
         </activity>
+        <activity
+            android:name=".ViewExerciseActivity"
+            android:label="@string/title_activity_view_exercise"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dermobbbda.gymcoachbob.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
