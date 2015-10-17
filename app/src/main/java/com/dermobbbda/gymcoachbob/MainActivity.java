@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mExercises = new ExerciseWrapper(this);
+        mExercises = ExerciseWrapper.getInstance(this);
 
         mAdapter = new ExerciseViewAdapter(this, mExercises);
         mRecyclerView.setAdapter(mAdapter);

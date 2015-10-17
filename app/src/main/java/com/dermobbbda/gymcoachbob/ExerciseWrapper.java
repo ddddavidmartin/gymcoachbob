@@ -12,8 +12,9 @@ public class ExerciseWrapper {
     private static final String TAG = "GCB";
     private static List<Exercise> mMainExercises;
     private static Context mContext;
+    private static ExerciseWrapper mExerciseWrapper = null;
 
-    ExerciseWrapper(Context context) {
+    private ExerciseWrapper(Context context) {
         if (mMainExercises != null) {
             return;
         }
@@ -26,6 +27,14 @@ public class ExerciseWrapper {
         } else {
             mMainExercises = exercises;
         }
+    }
+
+    /** Return the existing instance of ExerciseWrapper or, if it does not exist, a new one. */
+    public static ExerciseWrapper getInstance(Context context) {
+        if (mExerciseWrapper == null) {
+            mExerciseWrapper = new ExerciseWrapper(context);
+        }
+        return mExerciseWrapper;
     }
 
     /** Add an Exercise to the list of existing ones. */
