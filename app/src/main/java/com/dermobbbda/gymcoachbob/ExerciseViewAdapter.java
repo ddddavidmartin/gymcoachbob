@@ -20,9 +20,9 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     private static Activity mActivity;
     private static ExerciseWrapper mDataSet;
     private static ExerciseViewAdapter mAdapter;
-    /** The currently selected position / Exercise. */
-    private static final int NO_POSITION_SELECTED = -1;
     /** Value to mark that no position is currently selected. */
+    private static final int NO_POSITION_SELECTED = -1;
+    /** The currently selected position / Exercise. */
     private static int mSelectedPosition = NO_POSITION_SELECTED;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
