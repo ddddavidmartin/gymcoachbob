@@ -36,6 +36,8 @@ class Session implements Serializable {
 
     Session() {
         mDate = new Date();
+        mRepetitions = new ArrayList<Integer>();
+        mWeights = new ArrayList<Integer>();
     }
 
     /** Add a set to the workout session. */
