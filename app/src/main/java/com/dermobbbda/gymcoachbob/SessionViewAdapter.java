@@ -9,9 +9,9 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public class WorkoutViewAdapter extends RecyclerView.Adapter<WorkoutViewAdapter.ViewHolder> {
+public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.ViewHolder> {
     private static List<Session> mDataSet;
-    private static WorkoutViewAdapter mAdapter;
+    private static SessionViewAdapter mAdapter;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
@@ -21,14 +21,14 @@ public class WorkoutViewAdapter extends RecyclerView.Adapter<WorkoutViewAdapter.
         }
     }
 
-    public WorkoutViewAdapter(List<Session> sessions) {
+    public SessionViewAdapter(List<Session> sessions) {
         mDataSet = sessions;
         mAdapter = this;
     }
 
     /** Create new Views (called by the layout manager) */
     @Override
-    public WorkoutViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SessionViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.exercise_card_layout, parent, false);
         return new ViewHolder(v);
