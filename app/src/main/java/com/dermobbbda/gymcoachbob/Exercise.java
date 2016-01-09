@@ -19,6 +19,10 @@ public class Exercise implements Serializable {
         return mName;
     }
 
+    public List<Session> getSessions() {
+        return mSessions;
+    }
+
     @Override
     public String toString() {
         return "Exercise: " + mName;

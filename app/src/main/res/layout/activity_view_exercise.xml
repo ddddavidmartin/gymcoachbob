@@ -10,4 +10,10 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.dermobbbda.gymcoachbob.ViewExerciseActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/view_exercise_recyclerview"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>
