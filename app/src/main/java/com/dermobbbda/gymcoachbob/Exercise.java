@@ -49,4 +49,9 @@ class Session implements Serializable {
         mRepetitions.add(repetitions);
         mWeights.add(weight);
     }
+
+    /** Return the time at which the Session took place. */
+    public Date date() {
+        return mDate;
+    }
 }
