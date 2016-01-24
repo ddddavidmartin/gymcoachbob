@@ -39,6 +39,16 @@ public class ViewExerciseActivity extends Activity {
         setTitle(exercise.getName());
 
         mSessions = exercise.getSessions();
+
+        /* Fill sessions with some bogus data until we have support for real Sessions in place.
+         * This way we can at least work on getting it to look and work right and see the changes
+         * in the app. */
+        for (int i = 0; i < 5; i++) {
+            Session session = new Session();
+            session.add(i, i);
+            mSessions.add(session);
+        }
+
         mAdapter = new SessionViewAdapter(mSessions);
         mRecyclerView.setAdapter(mAdapter);
     }
