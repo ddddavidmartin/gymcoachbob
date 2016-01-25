@@ -19,4 +19,8 @@
     <string name="file_exercises">exercises</string>
 
     <string name="menu_context_delete_exercise">Delete</string>
+
+    <string name="activity_view_exercise_textview_date">Date</string>
+    <string name="activity_view_exercise_textview_weight">Weight</string>
+    <string name="activity_view_exercise_textview_repetitions">Repetition(s)</string>
 </resources>
