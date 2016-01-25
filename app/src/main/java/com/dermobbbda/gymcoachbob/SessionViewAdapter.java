@@ -49,10 +49,8 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
         DateFormat df = new DateFormat();
         String date = df.format("dd/MM/yyyy", session.date()).toString();
         holder.mDateTextView.setText(date);
-        /* Access to the respective Session members does not quite work yet, we have to improve
-         * and reorganise the Session class for this. For now simply put in hardcoded values. */
-        holder.mRepetionsTextView.setText("15");
-        holder.mWeightTextView.setText("20");
+        holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
+        holder.mWeightTextView.setText(String.valueOf(session.weight()));
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */

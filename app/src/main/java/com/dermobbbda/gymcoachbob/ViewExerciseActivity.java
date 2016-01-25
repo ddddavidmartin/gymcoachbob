@@ -44,8 +44,7 @@ public class ViewExerciseActivity extends Activity {
          * This way we can at least work on getting it to look and work right and see the changes
          * in the app. */
         for (int i = 0; i < 5; i++) {
-            Session session = new Session();
-            session.add(i, i);
+            Session session = new Session(i, i + 10);
             mSessions.add(session);
         }
 

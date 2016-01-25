@@ -33,25 +33,29 @@ public class Exercise implements Serializable {
 class Session implements Serializable {
     /** The time when the Session was done. */
     private Date mDate;
-    /** Number of repetitions per set. */
-    private List<Integer> mRepetitions;
-    /** Weight used per set. */
-    private List<Integer> mWeights;
+    /** Number of repetitions of the set. */
+    private int mRepetitions;
+    /** Weight used for the set. */
+    private int mWeight;
 
-    Session() {
+    Session(int weight, int repetitions) {
         mDate = new Date();
-        mRepetitions = new ArrayList<Integer>();
-        mWeights = new ArrayList<Integer>();
-    }
-
-    /** Add a set to the workout session. */
-    public void add(int repetitions, int weight) {
-        mRepetitions.add(repetitions);
-        mWeights.add(weight);
+        mWeight = weight;
+        mRepetitions = repetitions;
     }
 
     /** Return the time at which the Session took place. */
     public Date date() {
         return mDate;
+    }
+
+    /** Return the weight used for this Session. */
+    public int weight() {
+        return mWeight;
+    }
+
+    /** Return the number of repetitions of this Session. */
+    public int repetitions() {
+        return mRepetitions;
     }
 }
