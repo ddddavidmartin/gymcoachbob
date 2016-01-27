@@ -18,6 +18,7 @@
         </activity>
         <activity
             android:name=".NewExerciseActivity"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
             android:label="@string/title_activity_add_exercise"
             android:parentActivityName=".MainActivity" >
             <meta-data
