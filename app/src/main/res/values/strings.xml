@@ -6,6 +6,7 @@
     <string name="title_activity_add_exercise">Add exercise</string>
 
     <string name="action_new_exercise">New exercise</string>
+    <string name="action_new_session">New set</string>
     <string name="action_settings">Settings</string>
     <string name="action_quit">Exit</string>
 
