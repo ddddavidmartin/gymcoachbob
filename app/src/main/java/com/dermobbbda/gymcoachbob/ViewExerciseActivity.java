@@ -34,9 +34,13 @@ public class ViewExerciseActivity extends Activity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(getString(R.string.EXTRA_EXERCISE_POSITION), -1);
-        /* This should never happen. */
+        /* This should never happen. It can happen though if a 'up button' press instantiates a new
+         * ViewExerciseActivity instance, and the Exercise position is not provided. We avoid it by
+         * setting the launchMode of this Activity to 'singleTop'. */
         if (position == -1) {
+            Log.e(TAG, "Not starting activity as exercise position is missing.");
             finish();
+            return;
         }
 
         Exercise exercise = ExerciseWrapper.getInstance(this).get(position);
