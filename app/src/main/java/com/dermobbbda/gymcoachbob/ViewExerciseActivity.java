@@ -72,7 +72,9 @@ public class ViewExerciseActivity extends Activity {
 
         switch (id) {
             case R.id.action_new_session:
-                Log.d(TAG, "New Session button pressed");
+                Intent intent = new Intent(this, NewSessionActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
