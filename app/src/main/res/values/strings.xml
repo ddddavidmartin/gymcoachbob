@@ -11,6 +11,7 @@
     <string name="action_quit">Exit</string>
 
     <string name="button_add_exercise">Add exercise</string>
+    <string name="button_pick_date">Pick date</string>
 
     <string name="EXTRA_EXERCISE">com.dermobbda.gymcoachbob.extra.exercise</string>
     <string name="EXTRA_EXERCISE_POSITION">com.dermobbbda.gymcoachbob.extra.exercise_position</string>
