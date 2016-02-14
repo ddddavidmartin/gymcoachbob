@@ -55,7 +55,7 @@ public class JsonUtils {
         FileInputStream inputStream = null;
         String fileName = context.getString(R.string.file_exercises);
         byte[] buffer = new byte[BUFSIZE];
-        List<Exercise> result = new ArrayList<Exercise>();
+        ArrayList<Exercise> result = new ArrayList<Exercise>();
 
         try {
             inputStream = context.openFileInput(fileName);
@@ -80,6 +80,9 @@ public class JsonUtils {
 
         try {
             JSONArray exercise_list = new JSONArray(fileContent.toString());
+            /* Avoid reallocations of the array by setting the size once in advance. */
+            result.ensureCapacity(exercise_list.length());
+
             for (int i = 0; i < exercise_list.length(); i++){
                 JSONObject tmp = exercise_list.getJSONObject(i);
                 String exercise_name = tmp.getString(context.getString(R.string.json_exercise_name));
