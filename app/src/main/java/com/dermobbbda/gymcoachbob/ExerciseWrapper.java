@@ -1,7 +1,6 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 
@@ -22,11 +21,7 @@ public class ExerciseWrapper {
         mContext = context;
 
         List<Exercise> exercises = JsonUtils.readExercisesFromFile(mContext);
-        if (exercises == null) {
-            Log.d(TAG, "Parsing failed and exercises are left empty.");
-        } else {
-            mMainExercises = exercises;
-        }
+        mMainExercises = exercises;
     }
 
     /** Return the existing instance of ExerciseWrapper or, if it does not exist, a new one. */

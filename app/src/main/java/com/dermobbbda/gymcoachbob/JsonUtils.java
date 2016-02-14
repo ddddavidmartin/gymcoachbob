@@ -55,6 +55,7 @@ public class JsonUtils {
         FileInputStream inputStream = null;
         String fileName = context.getString(R.string.file_exercises);
         byte[] buffer = new byte[BUFSIZE];
+        List<Exercise> result = new ArrayList<Exercise>();
 
         try {
             inputStream = context.openFileInput(fileName);
@@ -63,10 +64,10 @@ public class JsonUtils {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Exercises file not found: " + e);
-            return null;
+            return result;
         } catch (IOException e) {
             System.out.println("IOException during reading: " + e);
-            return null;
+            return result;
         } finally {
             if (inputStream != null) {
                 try {
@@ -77,10 +78,8 @@ public class JsonUtils {
             }
         }
 
-        List<Exercise> result;
         try {
             JSONArray exercise_list = new JSONArray(fileContent.toString());
-            result = new ArrayList<Exercise>(exercise_list.length());
             for (int i = 0; i < exercise_list.length(); i++){
                 JSONObject tmp = exercise_list.getJSONObject(i);
                 String exercise_name = tmp.getString(context.getString(R.string.json_exercise_name));
@@ -88,7 +87,7 @@ public class JsonUtils {
             }
         } catch (JSONException e) {
             System.out.println("JSONException during parsing: " + e);
-            return null;
+            return result;
         }
 
         return result;
