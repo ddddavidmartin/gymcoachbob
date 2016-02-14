@@ -63,10 +63,10 @@ public class JsonUtils {
                 fileContent.append(new String(buffer));
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Exercises file not found: " + e);
+            Log.e(TAG, "Exercises file not found: " + e);
             return result;
         } catch (IOException e) {
-            System.out.println("IOException during reading: " + e);
+            Log.e(TAG, "IOException during reading: " + e);
             return result;
         } finally {
             if (inputStream != null) {
@@ -86,7 +86,7 @@ public class JsonUtils {
                 result.add(new Exercise(exercise_name));
             }
         } catch (JSONException e) {
-            System.out.println("JSONException during parsing: " + e);
+            Log.e(TAG, "JSONException during parsing: " + e);
             return result;
         }
 
