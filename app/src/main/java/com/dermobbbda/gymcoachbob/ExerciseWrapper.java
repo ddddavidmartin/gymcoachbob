@@ -32,10 +32,12 @@ public class ExerciseWrapper {
         return mExerciseWrapper;
     }
 
-    /** Add an Exercise to the list of existing ones. */
-    public void add(Exercise exercise) {
+    /** Add an Exercise to the list of existing ones.
+     *  Returns the position at which the Exercise was inserted. */
+    public int add(Exercise exercise) {
         mMainExercises.add(exercise);
         JsonUtils.toFile(mContext, mMainExercises);
+        return mMainExercises.size() - 1;
     }
 
     /** Return the Exercise at the given position. */
