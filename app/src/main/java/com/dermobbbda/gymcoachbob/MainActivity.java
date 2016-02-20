@@ -73,8 +73,8 @@ public class MainActivity extends Activity {
         if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             System.out.println("Received Exercise: " + exercise);
-            mExercises.add(exercise);
-            mAdapter.notifyDataSetChanged();
+            int position = mExercises.add(exercise);
+            mAdapter.notifyItemInserted(position);
         }
     }
 
