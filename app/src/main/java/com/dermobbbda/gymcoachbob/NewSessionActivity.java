@@ -30,7 +30,7 @@ public class NewSessionActivity extends Activity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            Log.d(TAG, "Picked date: " + year + "/" + month + "/" + day);
+            Log.d(TAG, "Picked date: " + day + "/" + month + "/" + year);
         }
     }
 
