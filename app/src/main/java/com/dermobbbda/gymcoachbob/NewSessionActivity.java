@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.NumberPicker;
 
 import java.util.Calendar;
 
 public class NewSessionActivity extends Activity {
     private static final String TAG = "GCB";
+    private int mRepetitions;
+    private int mWeight;
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
@@ -38,6 +41,28 @@ public class NewSessionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_session);
+
+        NumberPicker weightPicker = (NumberPicker) findViewById(R.id.new_session_weight_picker);
+        weightPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_weight));
+        weightPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_weight));
+        weightPicker.setWrapSelectorWheel(false);
+        weightPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
+                mWeight = newValue;
+            }
+        });
+
+        NumberPicker repetitionsPicker = (NumberPicker) findViewById(R.id.new_session_repetitions_picker);
+        repetitionsPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_repetitions));
+        repetitionsPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_repetitions));
+        repetitionsPicker.setWrapSelectorWheel(false);
+        repetitionsPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
+                mRepetitions = newValue;
+            }
+        });
     }
 
     public void showDatePickerDialog(View v) {

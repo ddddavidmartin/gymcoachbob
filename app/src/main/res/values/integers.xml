@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="new_session_min_weight">0</integer>
+    <integer name="new_session_max_weight">999</integer>
+    <integer name="new_session_min_repetitions">0</integer>
+    <integer name="new_session_max_repetitions">999</integer>
+</resources>
