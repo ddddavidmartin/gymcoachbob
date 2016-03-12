@@ -24,14 +24,17 @@ public class JsonUtils {
         String fileName = context.getString(R.string.file_exercises);
 
         try {
+            JSONObject result = new JSONObject();
             JSONArray exerciseList = new JSONArray();
             for (Exercise e : exercises) {
                 JSONObject tmp = new JSONObject();
                 tmp.put(context.getString(R.string.json_exercise_name), e.getName());
                 exerciseList.put(tmp);
             }
+            result.put(context.getString(R.string.json_exercise_list), exerciseList);
+
             outputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
-            outputStream.write(exerciseList.toString().getBytes());
+            outputStream.write(result.toString().getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -79,7 +82,8 @@ public class JsonUtils {
         }
 
         try {
-            JSONArray exerciseList = new JSONArray(fileContent.toString());
+            JSONObject jsonObj = new JSONObject(fileContent.toString());
+            JSONArray exerciseList = jsonObj.getJSONArray(context.getString(R.string.json_exercise_list));
             /* Avoid reallocations of the array by setting the size once in advance. */
             result.ensureCapacity(exerciseList.length());
 

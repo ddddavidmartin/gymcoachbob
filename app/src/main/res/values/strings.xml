@@ -19,6 +19,7 @@
     <string name="EXTRA_SESSION">com.dermobbbda.gymcoachbob.extra.session</string>
 
     <string name="json_exercise_name">name</string>
+    <string name="json_exercise_list">exercises</string>
 
     <string name="file_exercises">exercises</string>
 
