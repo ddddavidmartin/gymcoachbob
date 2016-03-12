@@ -24,14 +24,14 @@ public class JsonUtils {
         String fileName = context.getString(R.string.file_exercises);
 
         try {
-            JSONArray resultsList = new JSONArray();
+            JSONArray exerciseList = new JSONArray();
             for (Exercise e : exercises) {
                 JSONObject tmp = new JSONObject();
                 tmp.put(context.getString(R.string.json_exercise_name), e.getName());
-                resultsList.put(tmp);
+                exerciseList.put(tmp);
             }
             outputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
-            outputStream.write(resultsList.toString().getBytes());
+            outputStream.write(exerciseList.toString().getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
