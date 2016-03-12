@@ -23,6 +23,11 @@ public class Exercise implements Serializable {
         return mSessions;
     }
 
+    /** Add the given Session to the Exercise. */
+    public void add(Session session) {
+        mSessions.add(session);
+    }
+
     @Override
     public String toString() {
         return "Exercise: " + mName;
