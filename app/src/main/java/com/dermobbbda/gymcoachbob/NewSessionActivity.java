@@ -69,4 +69,9 @@ public class NewSessionActivity extends Activity {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }
+
+    public void addSession(View view) {
+        Session session = new Session(mWeight, mRepetitions);
+        Log.d(TAG, "Created new session: " + session);
+    }
 }
