@@ -44,7 +44,11 @@ class Session implements Serializable {
     private int mWeight;
 
     Session(int weight, int repetitions) {
-        mDate = new Date();
+        this(new Date(), weight, repetitions);
+    }
+
+    Session(Date date, int weight, int repetitions) {
+        mDate = date;
         mWeight = weight;
         mRepetitions = repetitions;
     }
