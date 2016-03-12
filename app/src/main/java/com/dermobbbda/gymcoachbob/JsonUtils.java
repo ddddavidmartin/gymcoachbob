@@ -24,14 +24,14 @@ public class JsonUtils {
         String fileName = context.getString(R.string.file_exercises);
 
         try {
-            JSONArray results_list = new JSONArray();
+            JSONArray resultsList = new JSONArray();
             for (Exercise e : exercises) {
                 JSONObject tmp = new JSONObject();
                 tmp.put(context.getString(R.string.json_exercise_name), e.getName());
-                results_list.put(tmp);
+                resultsList.put(tmp);
             }
             outputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
-            outputStream.write(results_list.toString().getBytes());
+            outputStream.write(resultsList.toString().getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -79,14 +79,14 @@ public class JsonUtils {
         }
 
         try {
-            JSONArray exercise_list = new JSONArray(fileContent.toString());
+            JSONArray exerciseList = new JSONArray(fileContent.toString());
             /* Avoid reallocations of the array by setting the size once in advance. */
-            result.ensureCapacity(exercise_list.length());
+            result.ensureCapacity(exerciseList.length());
 
-            for (int i = 0; i < exercise_list.length(); i++){
-                JSONObject tmp = exercise_list.getJSONObject(i);
-                String exercise_name = tmp.getString(context.getString(R.string.json_exercise_name));
-                result.add(new Exercise(exercise_name));
+            for (int i = 0; i < exerciseList.length(); i++){
+                JSONObject tmp = exerciseList.getJSONObject(i);
+                String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
+                result.add(new Exercise(exerciseName));
             }
         } catch (JSONException e) {
             Log.e(TAG, "JSONException during parsing: " + e);
