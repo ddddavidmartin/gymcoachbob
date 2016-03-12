@@ -105,10 +105,10 @@ public class JsonUtils {
             for (int i = 0; i < exerciseList.length(); i++){
                 JSONObject tmp = exerciseList.getJSONObject(i);
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
-
-                Exercise exercise = new Exercise(exerciseName);
-
                 JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
+
+                Exercise exercise = new Exercise(exerciseName, sessionList.length());
+
                 for (int j = 0; j < sessionList.length(); j++) {
                     JSONObject tmpSession = sessionList.getJSONObject(j);
                     String dateString = tmpSession.getString(context.getString(R.string.json_session_date));

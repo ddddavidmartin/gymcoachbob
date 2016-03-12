@@ -9,10 +9,22 @@ public class Exercise implements Serializable {
     /* Name of the exercise */
     private String mName;
     private List<Session> mSessions;
+    /* The default number of Sessions to allocate for an Exercise. */
+    private static final int DEFAULT_CAPACITY = 0;
 
     Exercise(String name) {
+        this(name, DEFAULT_CAPACITY);
+    }
+
+    /** Create an Exercise with the given name and enough space allocated to save capacity Sessions. */
+    Exercise(String name, int capacity) {
         mName = name;
-        mSessions = new ArrayList<Session>();
+        ArrayList<Session> sessions = new ArrayList<Session>();
+        if (capacity > DEFAULT_CAPACITY) {
+            /* Setting the size up front avoids reallocations when Sessions are added. */
+            sessions.ensureCapacity(capacity);
+        }
+        mSessions = sessions;
     }
 
     public String getName() {
