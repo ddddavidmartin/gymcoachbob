@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -29,6 +30,20 @@ public class JsonUtils {
             for (Exercise e : exercises) {
                 JSONObject tmp = new JSONObject();
                 tmp.put(context.getString(R.string.json_exercise_name), e.getName());
+
+                JSONArray sessions = new JSONArray();
+                for (Session s : e.getSessions()) {
+                    JSONObject tmpSession = new JSONObject();
+                    /* We store the date as a long as it is the easiest to parse again.
+                     * We may consider using an actual String date as that would make the Json
+                     * file itself more humanly readable. */
+                    tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
+                    tmpSession.put(context.getString(R.string.json_session_weight), s.weight());
+                    tmpSession.put(context.getString(R.string.json_session_repetitions), s.repetitions());
+                    sessions.put(tmpSession);
+                }
+                tmp.put(context.getString(R.string.json_exercise_session_list), sessions);
+
                 exerciseList.put(tmp);
             }
             result.put(context.getString(R.string.json_exercise_list), exerciseList);
@@ -90,7 +105,21 @@ public class JsonUtils {
             for (int i = 0; i < exerciseList.length(); i++){
                 JSONObject tmp = exerciseList.getJSONObject(i);
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
-                result.add(new Exercise(exerciseName));
+
+                Exercise exercise = new Exercise(exerciseName);
+
+                JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
+                for (int j = 0; j < sessionList.length(); j++) {
+                    JSONObject tmpSession = sessionList.getJSONObject(j);
+                    String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
+                    Date date = new Date(Long.parseLong(dateString));
+                    int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
+                    int weight = tmpSession.getInt(context.getString(R.string.json_session_weight));
+
+                    exercise.add(new Session(date, weight, repetitions));
+                }
+
+                result.add(exercise);
             }
         } catch (JSONException e) {
             Log.e(TAG, "JSONException during parsing: " + e);

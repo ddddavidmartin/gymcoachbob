@@ -20,6 +20,10 @@
 
     <string name="json_exercise_name">name</string>
     <string name="json_exercise_list">exercises</string>
+    <string name="json_exercise_session_list">sessions</string>
+    <string name="json_session_date">date</string>
+    <string name="json_session_repetitions">repetitions</string>
+    <string name="json_session_weight">weight</string>
 
     <string name="file_exercises">exercises</string>
 
