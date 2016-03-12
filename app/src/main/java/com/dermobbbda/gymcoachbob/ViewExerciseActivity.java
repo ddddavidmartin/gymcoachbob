@@ -13,6 +13,7 @@ import java.util.List;
 
 public class ViewExerciseActivity extends Activity {
     private static final String TAG = "GCB";
+    private static final int NEW_SESSION_REQUEST = 1;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -77,9 +78,24 @@ public class ViewExerciseActivity extends Activity {
         switch (id) {
             case R.id.action_new_session:
                 Intent intent = new Intent(this, NewSessionActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, NEW_SESSION_REQUEST);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_CANCELED) {
+            Log.d(TAG, "Received cancellation of request with code %d " + requestCode + ".");
+            return;
+        }
+
+        if (requestCode == NEW_SESSION_REQUEST && resultCode == RESULT_OK) {
+            Session session = (Session) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
+            Log.d(TAG, "Received Session: " + session);
+            mSessions.add(session);
+            mAdapter.notifyItemInserted(mSessions.size() - 1);
+        }
     }
 }

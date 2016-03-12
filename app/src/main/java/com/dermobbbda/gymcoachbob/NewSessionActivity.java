@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -73,5 +74,10 @@ public class NewSessionActivity extends Activity {
     public void addSession(View view) {
         Session session = new Session(mWeight, mRepetitions);
         Log.d(TAG, "Created new session: " + session);
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(getString(R.string.EXTRA_SESSION), session);
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 }
