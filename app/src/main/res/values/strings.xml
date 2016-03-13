@@ -25,6 +25,9 @@
     <string name="json_session_repetitions">repetitions</string>
     <string name="json_session_weight">weight</string>
 
+    <string name="text_new_session_weight">Weight</string>
+    <string name="text_new_session_repetitions">Repetitions</string>
+
     <string name="file_exercises">exercises</string>
 
     <string name="menu_context_delete_exercise">Delete</string>
