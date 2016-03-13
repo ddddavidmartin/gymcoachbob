@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/new_session_weight_text"
         android:text="@string/text_new_session_weight"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_medium"
         android:layout_below="@id/new_session_date_picker_button" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/new_session_repetitions_text"
         android:text="@string/text_new_session_repetitions"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_medium"
         android:layout_marginLeft="@dimen/margin_huge"
         android:layout_toRightOf="@id/new_session_weight_text"
         android:layout_below="@id/new_session_date_picker_button" />

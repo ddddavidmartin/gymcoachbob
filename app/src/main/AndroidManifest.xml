@@ -35,7 +35,8 @@
                 android:value="com.dermobbbda.gymcoachbob.MainActivity" />
         </activity>
         <activity android:name=".NewSessionActivity"
-                  android:parentActivityName=".ViewExerciseActivity" >
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
+            android:parentActivityName=".ViewExerciseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dermobbbda.gymcoachbob.ViewExerciseActivity" />
