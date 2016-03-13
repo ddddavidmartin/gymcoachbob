@@ -57,4 +57,16 @@ public class ExerciseWrapper {
         mMainExercises.remove(position);
         JsonUtils.toFile(mContext, mMainExercises);
     }
+
+    /** Notify the ExerciseWrapper that the existing Exercises have changed.
+     *  Use this method to notify the ExerciseWrapper about changes on the Exercises that
+     *  were applied without using the ExerciseWrapper methods (eg. without using ExerciseWrapper's
+     *  add or remove).
+     *  Updates the persistent Exercises on file. */
+    public static void notifyExercisesChanged() {
+        if (mMainExercises == null || mContext == null) {
+            return;
+        }
+        JsonUtils.toFile(mContext, mMainExercises);
+    }
 }

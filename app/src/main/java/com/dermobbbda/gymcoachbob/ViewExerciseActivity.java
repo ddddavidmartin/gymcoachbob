@@ -86,6 +86,9 @@ public class ViewExerciseActivity extends Activity {
             Session session = (Session) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
             Log.d(TAG, "Received Session: " + session);
             mSessions.add(session);
+            /* As we are modifying the Sessions directly, we have to notify the Exercise backend
+             * about the change. */
+            ExerciseWrapper.notifyExercisesChanged();
             mAdapter.notifyItemInserted(mSessions.size() - 1);
         }
     }
