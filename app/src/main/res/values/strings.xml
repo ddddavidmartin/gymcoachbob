@@ -4,6 +4,7 @@
     <string name="hint_exercise_name">Enter name of exercise</string>
 
     <string name="title_activity_add_exercise">Add exercise</string>
+    <string name="title_activity_new_session">Add exercise set</string>
 
     <string name="action_new_exercise">New exercise</string>
     <string name="action_new_session">New set</string>
