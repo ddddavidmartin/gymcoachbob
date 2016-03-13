@@ -11,6 +11,10 @@ public class Exercise implements Serializable {
     private List<Session> mSessions;
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
+    /* The weight used for the last Session that was added. */
+    private int mLastWeight = 0;
+    /* The number of repetitions used for the last Session that was added. */
+    private int mLastRepetitions = 0;
 
     Exercise(String name) {
         this(name, DEFAULT_CAPACITY);
@@ -38,11 +42,23 @@ public class Exercise implements Serializable {
     /** Add the given Session to the Exercise. */
     public void add(Session session) {
         mSessions.add(session);
+        mLastWeight = session.weight();
+        mLastRepetitions = session.repetitions();
     }
 
     @Override
     public String toString() {
         return "Exercise: " + mName;
+    }
+
+    /* Return the weight that was used for the last Session. */
+    public int lastWeight() {
+        return mLastWeight;
+    }
+
+    /** Return the number of repetitions that were used for the last Session. */
+    public int lastRepetitions() {
+        return mLastRepetitions;
     }
 }
 

@@ -17,6 +17,8 @@
     <string name="EXTRA_EXERCISE">com.dermobbbda.gymcoachbob.extra.exercise</string>
     <string name="EXTRA_EXERCISE_POSITION">com.dermobbbda.gymcoachbob.extra.exercise_position</string>
     <string name="EXTRA_SESSION">com.dermobbbda.gymcoachbob.extra.session</string>
+    <string name="EXTRA_LAST_WEIGHT">com.dermobbbda.gymcoachbob.extra.last_weight</string>
+    <string name="EXTRA_LAST_REPETITIONS">com.dermobbbda.gymcoachbob.extra.last_repetitions</string>
 
     <string name="json_exercise_name">name</string>
     <string name="json_exercise_list">exercises</string>

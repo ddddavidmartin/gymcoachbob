@@ -19,6 +19,8 @@ public class ViewExerciseActivity extends Activity {
     private RecyclerView.LayoutManager mLayoutManager;
     /** The Sessions of the current Exercise. */
     private List<Session> mSessions;
+    /** The current Exercise that is visible. */
+    private Exercise mExercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class ViewExerciseActivity extends Activity {
         Exercise exercise = ExerciseWrapper.getInstance(this).get(position);
         setTitle(exercise.getName());
 
+        mExercise = exercise;
         mSessions = exercise.getSessions();
         mAdapter = new SessionViewAdapter(mSessions);
         mRecyclerView.setAdapter(mAdapter);
@@ -69,6 +72,10 @@ public class ViewExerciseActivity extends Activity {
         switch (id) {
             case R.id.action_new_session:
                 Intent intent = new Intent(this, NewSessionActivity.class);
+                /* Provide the last added Session details so that the Activity can be initialised
+                 * with good default values. */
+                intent.putExtra(getString(R.string.EXTRA_LAST_WEIGHT), mExercise.lastWeight());
+                intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS), mExercise.lastRepetitions());
                 startActivityForResult(intent, NEW_SESSION_REQUEST);
                 break;
         }

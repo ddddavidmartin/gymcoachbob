@@ -43,9 +43,17 @@ public class NewSessionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_session);
 
+        Intent intent = getIntent();
+        /* We initialise the weight and repetitions with the previously used values, as the new
+         * values are most likely close to those and easier to select this way. For example it is
+         * quite common to have three Sessions with the same weight, and close repetitions. */
+        mWeight = intent.getIntExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
+        mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
+
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.new_session_weight_picker);
         weightPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_weight));
         weightPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_weight));
+        weightPicker.setValue(mWeight);
         weightPicker.setWrapSelectorWheel(false);
         weightPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -57,6 +65,7 @@ public class NewSessionActivity extends Activity {
         NumberPicker repetitionsPicker = (NumberPicker) findViewById(R.id.new_session_repetitions_picker);
         repetitionsPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_repetitions));
         repetitionsPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_repetitions));
+        repetitionsPicker.setValue(mRepetitions);
         repetitionsPicker.setWrapSelectorWheel(false);
         repetitionsPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
