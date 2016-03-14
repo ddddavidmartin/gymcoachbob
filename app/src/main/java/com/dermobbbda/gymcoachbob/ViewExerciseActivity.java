@@ -17,8 +17,6 @@ public class ViewExerciseActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    /** The Sessions of the current Exercise. */
-    private List<Session> mSessions;
     /** The current Exercise that is visible. */
     private Exercise mExercise;
 
@@ -50,8 +48,7 @@ public class ViewExerciseActivity extends Activity {
         setTitle(exercise.getName());
 
         mExercise = exercise;
-        mSessions = exercise.getSessions();
-        mAdapter = new SessionViewAdapter(mSessions);
+        mAdapter = new SessionViewAdapter(mExercise.getSessions());
         mRecyclerView.setAdapter(mAdapter);
     }
 
