@@ -39,11 +39,16 @@ public class Exercise implements Serializable {
         return mSessions;
     }
 
-    /** Add the given Session to the Exercise. */
-    public void add(Session session) {
+    /** Add the given Session to the Exercise.
+     *  Returns the position at which the Session was inserted. */
+    public int add(Session session) {
         mSessions.add(session);
         mLastWeight = session.weight();
         mLastRepetitions = session.repetitions();
+
+        /* At this point we are just appending Sessions to the list, so we simply return the last
+         * index in the list. */
+        return mSessions.size() - 1;
     }
 
     @Override
