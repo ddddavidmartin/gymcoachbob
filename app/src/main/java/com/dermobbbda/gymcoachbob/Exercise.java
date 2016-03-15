@@ -46,6 +46,10 @@ public class Exercise implements Serializable {
         mLastWeight = session.weight();
         mLastRepetitions = session.repetitions();
 
+        /* As we are modifying the Sessions directly, we have to notify the Exercise backend
+         * about the change. */
+        ExerciseWrapper.notifyExercisesChanged();
+
         /* At this point we are just appending Sessions to the list, so we simply return the last
          * index in the list. */
         return mSessions.size() - 1;
