@@ -40,15 +40,18 @@ public class Exercise implements Serializable {
     }
 
     /** Add the given Session to the Exercise.
+     *  Use syncExercisesOnFile=true to update the Exercises on file after adding the Session.
      *  Returns the position at which the Session was inserted. */
-    public int add(Session session) {
+    public int add(Session session, boolean syncExercisesOnFile) {
         mSessions.add(session);
         mLastWeight = session.weight();
         mLastRepetitions = session.repetitions();
 
         /* As we are modifying the Sessions directly, we have to notify the Exercise backend
          * about the change. */
-        ExerciseWrapper.notifyExercisesChanged();
+        if (syncExercisesOnFile) {
+            ExerciseWrapper.notifyExercisesChanged();
+        }
 
         /* At this point we are just appending Sessions to the list, so we simply return the last
          * index in the list. */

@@ -89,7 +89,7 @@ public class ViewExerciseActivity extends Activity {
         if (requestCode == NEW_SESSION_REQUEST && resultCode == RESULT_OK) {
             Session session = (Session) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
             Log.d(TAG, "Received Session: " + session);
-            int position = mExercise.add(session);
+            int position = mExercise.add(session, /* update change on file */ true);
             mAdapter.notifyItemInserted(position);
         }
     }

@@ -116,7 +116,9 @@ public class JsonUtils {
                     int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
                     int weight = tmpSession.getInt(context.getString(R.string.json_session_weight));
 
-                    exercise.add(new Session(date, weight, repetitions));
+                    /* Add the read Session to the Exercise but do not sync the change back to file
+                     * again. */
+                    exercise.add(new Session(date, weight, repetitions), /* do not sync changes */ false);
                 }
 
                 result.add(exercise);
