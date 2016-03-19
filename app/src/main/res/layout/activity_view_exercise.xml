@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/view_exercise_textview_date"
         android:text="@string/activity_view_exercise_textview_date"
+        android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/activity_view_exercise_textview_margin"/>
 
     <TextView

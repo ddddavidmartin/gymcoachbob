@@ -16,7 +16,5 @@
     <dimen name="exercise_card_corner_radius">4dp</dimen>
     <dimen name="exercise_card_layout_margin">4dp</dimen>
 
-    <dimen name="session_card_textview_margin">10dp</dimen>
-
     <dimen name="activity_view_exercise_textview_margin">10dp</dimen>
 </resources>
