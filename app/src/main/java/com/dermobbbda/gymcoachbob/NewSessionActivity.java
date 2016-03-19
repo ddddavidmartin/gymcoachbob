@@ -12,14 +12,20 @@ import android.widget.DatePicker;
 import android.widget.NumberPicker;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class NewSessionActivity extends Activity {
     private static final String TAG = "GCB";
     private int mRepetitions;
     private int mWeight;
+    /* Reference to the DatePicker so that we add new Sessions with the selected date. */
+    private DatePickerFragment mDatePicker;
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
+        private int mYear;
+        private int mMonth;
+        private int mDay;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,6 +40,16 @@ public class NewSessionActivity extends Activity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             Log.d(TAG, "Picked date: " + day + "/" + month + "/" + year);
+            mYear = year;
+            mMonth = month;
+            mDay = day;
+        }
+
+        /** Return a Date object for the date that was picked in the DatePicker. */
+        public Date date() {
+            final Calendar c = Calendar.getInstance();
+            c.set(mYear, mMonth, mDay);
+            return c.getTime();
         }
     }
 
@@ -75,12 +91,20 @@ public class NewSessionActivity extends Activity {
     }
 
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
+        if (mDatePicker == null) {
+            mDatePicker = new DatePickerFragment();
+        }
+        mDatePicker.show(getFragmentManager(), "datePicker");
     }
 
     public void addSession(View view) {
-        Session session = new Session(mWeight, mRepetitions);
+        Date date = new Date();
+        /* If the user picked a date via the DatePicker we use it, otherwise we just use the
+         * current one. */
+        if (mDatePicker != null) {
+            date = mDatePicker.date();
+        }
+        Session session = new Session(date, mWeight, mRepetitions);
         Log.d(TAG, "Created new session: " + session);
 
         Intent returnIntent = new Intent();
