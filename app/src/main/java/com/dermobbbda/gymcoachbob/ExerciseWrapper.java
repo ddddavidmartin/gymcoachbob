@@ -1,6 +1,7 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
@@ -65,6 +66,7 @@ public class ExerciseWrapper {
      *  Updates the persistent Exercises on file. */
     public static void notifyExercisesChanged() {
         if (mMainExercises == null || mContext == null) {
+            Log.d(TAG, "Skipping the writing of Exercises to file as they are not initialised yet.");
             return;
         }
         JsonUtils.toFile(mContext, mMainExercises);
