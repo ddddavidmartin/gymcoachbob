@@ -2,6 +2,7 @@ package com.dermobbbda.gymcoachbob;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +45,8 @@ public class Exercise implements Serializable {
      *  Returns the position at which the Session was inserted. */
     public int add(Session session, boolean syncExercisesOnFile) {
         mSessions.add(session);
+        Collections.sort(mSessions);
+        int position = mSessions.indexOf(session);
         mLastWeight = session.weight();
         mLastRepetitions = session.repetitions();
 
@@ -53,9 +56,7 @@ public class Exercise implements Serializable {
             ExerciseWrapper.notifyExercisesChanged();
         }
 
-        /* At this point we are just appending Sessions to the list, so we simply return the last
-         * index in the list. */
-        return mSessions.size() - 1;
+        return position;
     }
 
     @Override
@@ -75,7 +76,7 @@ public class Exercise implements Serializable {
 }
 
 /** A workout session, i.e. a number of repetitions of an Exercise at a specific date. */
-class Session implements Serializable {
+class Session implements Serializable, Comparable<Session> {
     /** The time when the Session was done. */
     private Date mDate;
     /** Number of repetitions of the set. */
@@ -102,5 +103,10 @@ class Session implements Serializable {
     /** Return the number of repetitions of this Session. */
     public int repetitions() {
         return mRepetitions;
+    }
+
+    /** Compare this Session to another to determine relative ordering. */
+    public int compareTo(Session s) {
+        return mDate.compareTo(s.date());
     }
 }
