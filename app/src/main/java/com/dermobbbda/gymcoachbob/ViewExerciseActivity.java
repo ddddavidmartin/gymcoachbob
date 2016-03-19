@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.List;
-
 public class ViewExerciseActivity extends Activity {
     private static final String TAG = "GCB";
     private static final int NEW_SESSION_REQUEST = 1;
