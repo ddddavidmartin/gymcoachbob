@@ -6,26 +6,24 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class NewSessionActivity extends Activity {
+public class NewSessionActivity extends Activity implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = "GCB";
+    private Date mDate;
     private int mRepetitions;
     private int mWeight;
-    /* Reference to the DatePicker so that we add new Sessions with the selected date. */
-    private DatePickerFragment mDatePicker;
 
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-        private int mYear;
-        private int mMonth;
-        private int mDay;
+    public static class DatePickerFragment extends DialogFragment {
+        private DatePickerDialog.OnDateSetListener mCallback;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,21 +33,25 @@ public class NewSessionActivity extends Activity {
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
-            return new DatePickerDialog(getActivity(), this, year, month, day);
+            return new DatePickerDialog(getActivity(), mCallback, year, month, day);
         }
 
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            Log.d(TAG, "Picked date: " + day + "/" + month + "/" + year);
-            mYear = year;
-            mMonth = month;
-            mDay = day;
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+
+            /* Make sure the container Activity has implemented the callback interface. */
+            try {
+                mCallback = (DatePickerDialog.OnDateSetListener) activity;
+            } catch (ClassCastException e) {
+                throw new ClassCastException(activity.toString() + " must implement OnDateSetListener");
+            }
         }
 
-        /** Return a Date object for the date that was picked in the DatePicker. */
-        public Date date() {
-            final Calendar c = Calendar.getInstance();
-            c.set(mYear, mMonth, mDay);
-            return c.getTime();
+        @Override
+        public void onDetach() {
+            super.onDetach();
+            mCallback = null;
         }
     }
 
@@ -57,6 +59,13 @@ public class NewSessionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_session);
+
+        /* Initialise the date for the new Session with the current date. */
+        mDate = new Date();
+        DateFormat df = new DateFormat();
+        String date = df.format("dd/MM/yyyy", mDate).toString();
+        TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
+        dateText.setText("Today" + "\n" + date);
 
         Intent intent = getIntent();
         /* We initialise the weight and repetitions with the previously used values, as the new
@@ -91,20 +100,23 @@ public class NewSessionActivity extends Activity {
     }
 
     public void showDatePickerDialog(View v) {
-        if (mDatePicker == null) {
-            mDatePicker = new DatePickerFragment();
-        }
-        mDatePicker.show(getFragmentManager(), "datePicker");
+        DatePickerFragment datePicker = new DatePickerFragment();
+        datePicker.show(getFragmentManager(), "datePicker");
     }
 
+    /** Callback for when the Date is selected in the DatePicker. */
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        final Calendar c = Calendar.getInstance();
+        c.set(year, month, day);
+        mDate = c.getTime();
+        TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
+        dateText.setText("" + day + "/" + month + "/" + year);
+        Log.d(TAG, "Picked date: " + day + "/" + month + "/" + year);
+    }
+
+
     public void addSession(View view) {
-        Date date = new Date();
-        /* If the user picked a date via the DatePicker we use it, otherwise we just use the
-         * current one. */
-        if (mDatePicker != null) {
-            date = mDatePicker.date();
-        }
-        Session session = new Session(date, mWeight, mRepetitions);
+        Session session = new Session(mDate, mWeight, mRepetitions);
         Log.d(TAG, "Created new session: " + session);
 
         Intent returnIntent = new Intent();
