@@ -6,6 +6,8 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import java.io.FileInputStream;
@@ -24,6 +26,23 @@ public class JsonUtils {
     public static final int BUFSIZE = 1024;
     public static final String TAG = "GCB";
 
+    /** Place the versionCode of the app in the given Context in the given JSONObject.
+     *  The caller is responsible to handle any JSONExceptions thrown. */
+    private static void writeVersionCode(Context context, JSONObject dest) throws JSONException {
+        PackageManager pm = context.getPackageManager();
+        int versionCode;
+        try {
+            PackageInfo pInfo = pm.getPackageInfo(context.getPackageName(), 0);
+            versionCode = pInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Failed to find package info: " + e);
+                /* Not being able to access the versionCode should never happen. If it does we set
+                 * it to 0 which is never going to be valid as the first release is versionCode 1. */
+            versionCode = 0;
+        }
+        dest.put(context.getString(R.string.json_version_code), versionCode);
+    }
+
     /** Write a list of Exercises to file. */
     public static void toFile(Context context, List<Exercise> exercises) {
         FileOutputStream outputStream = null;
@@ -31,6 +50,9 @@ public class JsonUtils {
 
         try {
             JSONObject result = new JSONObject();
+
+            writeVersionCode(context, result);
+
             JSONArray exerciseList = new JSONArray();
             for (Exercise e : exercises) {
                 JSONObject tmp = new JSONObject();
@@ -103,6 +125,10 @@ public class JsonUtils {
 
         try {
             JSONObject jsonObj = new JSONObject(fileContent.toString());
+
+            int versionCode = jsonObj.getInt(context.getString(R.string.json_version_code));
+            Log.d(TAG, "Loading data with versionCode " + versionCode + ".");
+
             JSONArray exerciseList = jsonObj.getJSONArray(context.getString(R.string.json_exercise_list));
             /* Avoid reallocations of the array by setting the size once in advance. */
             result.ensureCapacity(exerciseList.length());
