@@ -43,6 +43,34 @@ public class JsonUtils {
         dest.put(context.getString(R.string.json_version_code), versionCode);
     }
 
+    /** Place the list of exercises in the given JSONObject.
+     *  The caller is responsible to handle any JSONExceptions thrown. */
+    private static void writeExercises(Context context, List<Exercise> exercises, JSONObject dest)
+            throws JSONException {
+
+        JSONArray exerciseList = new JSONArray();
+        for (Exercise e : exercises) {
+            JSONObject tmp = new JSONObject();
+            tmp.put(context.getString(R.string.json_exercise_name), e.getName());
+
+            JSONArray sessions = new JSONArray();
+            for (Session s : e.getSessions()) {
+                JSONObject tmpSession = new JSONObject();
+                /* We store the date as a long as it is the easiest to parse again.
+                 * We may consider using an actual String date as that would make the Json
+                 * file itself more humanly readable. */
+                tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
+                tmpSession.put(context.getString(R.string.json_session_weight), s.weight());
+                tmpSession.put(context.getString(R.string.json_session_repetitions), s.repetitions());
+                sessions.put(tmpSession);
+            }
+            tmp.put(context.getString(R.string.json_exercise_session_list), sessions);
+
+            exerciseList.put(tmp);
+        }
+        dest.put(context.getString(R.string.json_exercise_list), exerciseList);
+    }
+
     /** Write a list of Exercises to file. */
     public static void toFile(Context context, List<Exercise> exercises) {
         FileOutputStream outputStream = null;
@@ -50,30 +78,8 @@ public class JsonUtils {
 
         try {
             JSONObject result = new JSONObject();
-
             writeVersionCode(context, result);
-
-            JSONArray exerciseList = new JSONArray();
-            for (Exercise e : exercises) {
-                JSONObject tmp = new JSONObject();
-                tmp.put(context.getString(R.string.json_exercise_name), e.getName());
-
-                JSONArray sessions = new JSONArray();
-                for (Session s : e.getSessions()) {
-                    JSONObject tmpSession = new JSONObject();
-                    /* We store the date as a long as it is the easiest to parse again.
-                     * We may consider using an actual String date as that would make the Json
-                     * file itself more humanly readable. */
-                    tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
-                    tmpSession.put(context.getString(R.string.json_session_weight), s.weight());
-                    tmpSession.put(context.getString(R.string.json_session_repetitions), s.repetitions());
-                    sessions.put(tmpSession);
-                }
-                tmp.put(context.getString(R.string.json_exercise_session_list), sessions);
-
-                exerciseList.put(tmp);
-            }
-            result.put(context.getString(R.string.json_exercise_list), exerciseList);
+            writeExercises(context, exercises, result);
 
             outputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
             outputStream.write(result.toString().getBytes());
