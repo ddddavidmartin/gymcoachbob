@@ -17,7 +17,6 @@ import java.util.List;
 
 public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.ViewHolder> {
     private static List<Session> mDataSet;
-    private static SessionViewAdapter mAdapter;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mDateTextView;
@@ -34,7 +33,6 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
 
     public SessionViewAdapter(List<Session> sessions) {
         mDataSet = sessions;
-        mAdapter = this;
     }
 
     /** Create new Views (called by the layout manager) */
