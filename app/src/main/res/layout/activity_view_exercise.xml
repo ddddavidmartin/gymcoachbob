@@ -24,7 +24,7 @@
         android:id="@+id/view_exercise_textview_weight"
         android:text="@string/activity_view_exercise_textview_weight"
         android:layout_toRightOf="@id/view_exercise_textview_date"
-        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"/>
 
     <TextView
