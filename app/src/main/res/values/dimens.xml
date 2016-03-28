@@ -15,4 +15,7 @@
     <dimen name="exercise_card_item_height">72dp</dimen>
     <dimen name="exercise_card_corner_radius">4dp</dimen>
     <dimen name="exercise_card_layout_margin">4dp</dimen>
+
+    <dimen name="session_card_weight_width">32dp</dimen>
+    <dimen name="session_card_repetitions_width">32dp</dimen>
 </resources>

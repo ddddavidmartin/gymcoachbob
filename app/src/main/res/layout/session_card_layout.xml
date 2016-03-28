@@ -18,7 +18,7 @@
             android:id="@+id/session_date_textview" />
 
         <TextView
-            android:layout_width="@dimen/margin_large"
+            android:layout_width="@dimen/session_card_weight_width"
             android:layout_height="match_parent"
             android:id="@+id/session_weight_textview"
             android:gravity="end"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="@dimen/margin_medium" />
 
         <TextView
-            android:layout_width="@dimen/margin_large"
+            android:layout_width="@dimen/session_card_repetitions_width"
             android:layout_height="match_parent"
             android:id="@+id/session_repetitions_textview"
             android:gravity="end"
