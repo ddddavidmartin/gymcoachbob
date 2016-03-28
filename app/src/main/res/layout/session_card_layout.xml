@@ -18,14 +18,14 @@
             android:id="@+id/session_date_textview" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/margin_large"
             android:layout_height="match_parent"
             android:id="@+id/session_weight_textview"
             android:layout_toRightOf="@id/session_date_textview"
-            android:layout_marginLeft="@dimen/margin_medium" />
+            android:layout_marginLeft="@dimen/margin_large" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/margin_large"
             android:layout_height="match_parent"
             android:id="@+id/session_repetitions_textview"
             android:layout_toRightOf="@id/session_weight_textview"
