@@ -26,6 +26,10 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
     private Date mDate;
     private int mRepetitions;
     private double mWeight;
+    /** The fraction part of mWeight to use for the NumberPickers. */
+    private int mFraction;
+    /** The whole part of mWeight to use for the NumberPickers. */
+    private int mWhole;
 
     public static class DatePickerFragment extends DialogFragment {
         private DatePickerDialog.OnDateSetListener mCallback;
@@ -60,6 +64,34 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
         }
     }
 
+    /** Set mWeight as a double composed of the given whole and fraction values.
+     *  For example 'setWeight(10, 5)' sets mWeight to 10.5. */
+    private void setWeight(int whole, int fraction) {
+        /* We hardcode to expect one fraction digit. This is somewhat bad for maintenance and future
+         * changes, so we raise an Exception if this condition is not met anymore. */
+        if (String.valueOf(fraction).length() > 1) {
+            throw new IllegalArgumentException("Fraction " + fraction + " must have 1 digit max.");
+        }
+        mWeight = whole + (fraction / 10.0);
+    }
+
+    /** Return the whole part of the given double value.
+     *  For example 'whole(10.5)' returns 10. */
+    private int whole(double value) {
+        return (int) value;
+    }
+
+    /** Return the fraction part of the given double value.
+     *  For example 'fraction(10.5)' returns 5. */
+    private int fraction(double value) {
+        /* We hardcode to expect one fraction digit. This is somewhat bad for maintenance and future
+         * changes, so we raise an Exception if this condition is not met anymore. */
+        if (String.valueOf(value).contains(".") && ((String.valueOf(value).split("\\.")[1].length()) > 1)) {
+            throw new IllegalArgumentException("Fraction part of " + value + " must have 1 digits max.");
+        }
+        return (int) ((value - Math.floor(value)) * 10);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,16 +111,32 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
         mWeight = intent.getDoubleExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
         mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
 
+        mFraction = fraction(mWeight);
+        mWhole = whole(mWeight);
+
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.new_session_weight_picker);
         weightPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_weight));
         weightPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_weight));
-        /* FIXME: Remove int cast once functionality for weights as double is implemented. */
-        weightPicker.setValue((int) mWeight);
+        weightPicker.setValue(mWhole);
         weightPicker.setWrapSelectorWheel(false);
         weightPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
-                mWeight = newValue;
+                mWhole = newValue;
+                setWeight(mWhole, mFraction);
+            }
+        });
+
+        NumberPicker weightDecimalPicker = (NumberPicker) findViewById(R.id.new_session_weight_decimal_picker);
+        weightDecimalPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_decimal_weight));
+        weightDecimalPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_decimal_weight));
+        weightDecimalPicker.setValue(mFraction);
+        weightDecimalPicker.setWrapSelectorWheel(false);
+        weightDecimalPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
+                mFraction = newValue;
+                setWeight(mWhole, mFraction);
             }
         });
 
