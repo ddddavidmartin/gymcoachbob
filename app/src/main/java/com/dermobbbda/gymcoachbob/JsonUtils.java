@@ -151,7 +151,7 @@ public class JsonUtils {
                     String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
                     Date date = new Date(Long.parseLong(dateString));
                     int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
-                    int weight = tmpSession.getInt(context.getString(R.string.json_session_weight));
+                    double weight = tmpSession.getDouble(context.getString(R.string.json_session_weight));
 
                     /* Add the read Session to the Exercise but do not sync the change back to file
                      * again. */

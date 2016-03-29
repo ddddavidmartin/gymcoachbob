@@ -18,7 +18,7 @@ public class Exercise implements Serializable {
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
     /* The weight used for the last Session that was added. */
-    private int mLastWeight = 0;
+    private double mLastWeight = 0;
     /* The number of repetitions used for the last Session that was added. */
     private int mLastRepetitions = 0;
 
@@ -70,7 +70,7 @@ public class Exercise implements Serializable {
     }
 
     /* Return the weight that was used for the last Session. */
-    public int lastWeight() {
+    public double lastWeight() {
         return mLastWeight;
     }
 
@@ -87,9 +87,9 @@ class Session implements Serializable, Comparable<Session> {
     /** Number of repetitions of the set. */
     private int mRepetitions;
     /** Weight used for the set. */
-    private int mWeight;
+    private double mWeight;
 
-    Session(Date date, int weight, int repetitions) {
+    Session(Date date, double weight, int repetitions) {
         mDate = date;
         mWeight = weight;
         mRepetitions = repetitions;
@@ -101,7 +101,7 @@ class Session implements Serializable, Comparable<Session> {
     }
 
     /** Return the weight used for this Session. */
-    public int weight() {
+    public double weight() {
         return mWeight;
     }
 

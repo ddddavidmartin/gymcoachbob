@@ -25,7 +25,7 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
     private static final String TAG = "GCB";
     private Date mDate;
     private int mRepetitions;
-    private int mWeight;
+    private double mWeight;
 
     public static class DatePickerFragment extends DialogFragment {
         private DatePickerDialog.OnDateSetListener mCallback;
@@ -76,13 +76,14 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
         /* We initialise the weight and repetitions with the previously used values, as the new
          * values are most likely close to those and easier to select this way. For example it is
          * quite common to have three Sessions with the same weight, and close repetitions. */
-        mWeight = intent.getIntExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
+        mWeight = intent.getDoubleExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
         mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
 
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.new_session_weight_picker);
         weightPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_weight));
         weightPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_weight));
-        weightPicker.setValue(mWeight);
+        /* FIXME: Remove int cast once functionality for weights as double is implemented. */
+        weightPicker.setValue((int) mWeight);
         weightPicker.setWrapSelectorWheel(false);
         weightPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
