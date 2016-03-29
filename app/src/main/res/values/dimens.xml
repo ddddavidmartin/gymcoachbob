@@ -16,7 +16,7 @@
     <dimen name="exercise_card_corner_radius">4dp</dimen>
     <dimen name="exercise_card_layout_margin">4dp</dimen>
 
-    <dimen name="session_card_weight_width">32dp</dimen>
+    <dimen name="session_card_weight_width">34dp</dimen>
     <dimen name="session_card_repetitions_width">32dp</dimen>
 
     <dimen name="activity_new_session_button_height">48dp</dimen>
