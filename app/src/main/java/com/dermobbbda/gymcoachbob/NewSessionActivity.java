@@ -109,10 +109,9 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
          * values are most likely close to those and easier to select this way. For example it is
          * quite common to have three Sessions with the same weight, and close repetitions. */
         mWeight = intent.getDoubleExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
-        mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
-
         mFraction = fraction(mWeight);
         mWhole = whole(mWeight);
+        mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
 
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.new_session_weight_picker);
         weightPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_weight));
