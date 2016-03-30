@@ -133,7 +133,8 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                     title = title + " '" + mDataSet.get(mSelectedPosition).name() + "'?";
                     builder.setMessage(R.string.alert_delete_exercise_message)
                            .setTitle(title);
-                    builder.setPositiveButton(R.string.alert_delete_exercise_okay, new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.alert_delete_exercise_okay,
+                                              new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
@@ -142,7 +143,8 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                             mSelectedPosition = NO_POSITION_SELECTED;
                         }
                     });
-                    builder.setNegativeButton(R.string.alert_delete_exercise_cancel, new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.alert_delete_exercise_cancel,
+                                              new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             Log.d(TAG, "User cancelled exercise deletion.");
