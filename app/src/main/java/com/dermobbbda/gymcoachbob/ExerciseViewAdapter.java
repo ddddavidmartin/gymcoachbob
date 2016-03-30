@@ -127,7 +127,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                 case R.id.menu_context_delete_exercise:
                     /* Confirm deletion of Exercise as it can not be recovered. */
                     AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-                    /* Include the actual Exercise name in the alert title so that is clear which
+                    /* Include the actual Exercise name in the alert title so that it is clear which
                      * selection is going to be affected. */
                     String title = mActivity.getResources().getString(R.string.alert_delete_exercise_title);
                     title = title + " '" + mDataSet.get(mSelectedPosition).name() + "'?";
