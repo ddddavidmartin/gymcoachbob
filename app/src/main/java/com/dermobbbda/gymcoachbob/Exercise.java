@@ -49,8 +49,10 @@ public class Exercise implements Serializable {
      *  Use syncExercisesOnFile=true to update the Exercises on file after adding the Session.
      *  Returns the position at which the Session was inserted. */
     public int add(Session session, boolean syncExercisesOnFile) {
-        mSessions.add(session);
-        Collections.sort(mSessions);
+        /* Keep Sessions in descending order with the most recent one at the top.
+        *  This way the user does not always have to scroll all the way down to see the latest ones. */
+        mSessions.add(0, session);
+        Collections.sort(mSessions, Collections.reverseOrder());
         int position = mSessions.indexOf(session);
         mLastWeight = session.weight();
         mLastRepetitions = session.repetitions();
