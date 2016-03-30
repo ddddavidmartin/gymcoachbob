@@ -94,6 +94,8 @@ public class ViewExerciseActivity extends Activity {
             Log.d(TAG, "Received Session: " + session);
             int position = mExercise.add(session, /* update change on file */ true);
             mAdapter.notifyItemInserted(position);
+            /* Scroll the view to the newly added Session so that it is visible. */
+            mRecyclerView.scrollToPosition(position);
         }
     }
 }

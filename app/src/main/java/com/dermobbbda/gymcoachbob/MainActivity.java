@@ -82,6 +82,8 @@ public class MainActivity extends Activity {
             Log.d(TAG, "Received Exercise: " + exercise);
             int position = mExercises.add(exercise);
             mAdapter.notifyItemInserted(position);
+            /* Scroll the view to the newly added Exercise so that it is visible. */
+            mRecyclerView.scrollToPosition(position);
         }
     }
 
