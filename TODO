@@ -27,7 +27,7 @@ Backlog of tasks left to do:
 * add swiping in ViewExerciseActivity to swipe to previous or next exercise, see https://developer.android.com/design/patterns/navigation.html
 
 * customise how date is shown:
- * no date if sets are on the same day
+ * no date if sets are on the same day and the current Session is not the topmost visible
  * day and month if a session is in the current year
  * day, month and year if session is not in the current year
 
