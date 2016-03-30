@@ -1,0 +1,130 @@
+Backlog of tasks left to do:
+
+* implement functionality to exit the app
+* add functionality to display that user has to enter text before adding a workout
+* use official Android icon set for ActionBar items (for example to add a new exercise)
+* add 'About' screen with contact and version information
+* use ContentResolver to save currently edited fields
+* add popup after logging an exercise: "good work boy / girl" and variations on it (use first name)
+* consider showing the number of days since the last time an exercise was done
+* consider grouping exercises. Have the user select what it is good for (legs, arms, shoulders, cardio, core, etc.) and make it possible to select more than one
+
+* add separate section with deleted exercises, so that their information is not lost after they are first removed
+ * show deleted always at the bottom as a folder with exercises
+* find way of highlighting the selected exercise
+
+* consider ways to prevent corruption to the stored exercises
+ * use atomic operation to write it (non-interruptible method?)
+ * maybe write temp file first and then overwrite existing one
+ * store a couple of previous versions and offer to load a previous one if loading a new one fails
+ * make sure that a new release never breaks older versions (add requirement and test for it)
+* consider checking return values when adding new exercises, because it may break at some point
+* consider notifying the Adapter that a new exercise is added
+ * alternatively, find out why the view already updates as it is
+  * possibly because we draw the main activity again when we return from the 'new exercise' activity
+
+* work on tests in general
+* add swiping in ViewExerciseActivity to swipe to previous or next exercise, see https://developer.android.com/design/patterns/navigation.html
+
+* customise how date is shown:
+ * no date if sets are on the same day
+ * day and month if a session is in the current year
+ * day, month and year if session is not in the current year
+
+* consider implementing the layout for multiple sizes
+ * https://developer.android.com/training/design-navigation/multiple-sizes.html
+
+* add confirmation dialog before deleting exercises
+
+* show current date and a cog wheel next to it to change it
+* investigate whether returning partial Exercise lists is better than returning an empty one in JsonUtils.java
+
+
+* possible performance / memory footprint improvement:
+  only load exercise names first, and actual session data only when an exercise is opened
+ * save the separate exercises in different files as well
+
+* add onboarding process where user sets their name and gender
+* use SortedList for Sessions rather than sorting them by hand
+* consider not sorting the sessions at startup or at least check best case performance for adding to already sorted lists
+* create release branch with apk in it
+* build apk with obfuscation
+* show last 10 commits on webpage
+* use the date string format set on the current device (EU vs. AU vs. US)
+* consider loading and saving the exercises in the background (json utils in a separate thread or service?)
+ * more info on AsyncTask https://youtu.be/jtlRNNhane0
+ * for a start consider just the write process as separate thread
+* find proper cog wheel button for changing the date or use 'change' as text but make it blue and underscored like a link
+
+* license the app before putting it on the app store
+ * https://developer.android.com/google/play/licensing/index.html
+
+* add option to import and export exercises
+ * maybe provide example pre-populated set on website
+* consider adding a test mode where exercises are prepopulated on the app
+
+* set up post-push hook to update latest commits on static website
+* show "Today" when current date is selected (and not just when the dialog is opened
+  for the first time)
+* use proper date formatter when setting the date in onDateSet in new session activity
+
+* get Photoshop trial version and update app logo
+* implement account switcher functinoality
+ * have a demo account pre-filled with common exercises
+* make it possible to remove sessions
+
+* add decimal dot between the two number pickers for weight selection in NewSessionActivity
+* add markers inbetween session view: 1 week ago, 2 weeks ago, ..., 1 month ago, 2 months ago, ..., 1 year ago, ...
+
+* make it possible to rename / edit exercises and sessions
+ * add a replace method in addition to add and remove
+* check why adding new Exercise with keyboard visible has glitchy scroll animation
+
+* consider renaming repository and account to beartiger_bear
+
+* have cancel and confirm buttons for adding exercises and sessions, similar
+  to alert dialog when deleting an exercise
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+DONE:
+
+* use DatePicker and NumberPicker to select weight and repetitions when adding
+  a Session
+  https://developer.android.com/guide/topics/ui/controls/pickers.html
+  https://developer.android.com/reference/android/widget/NumberPicker.html
+
+* add widget to add sessions to an exercise
+ * we probably want to use a Dialog for that
+ * https://developer.android.com/guide/topics/ui/dialogs.html
+ * https://www.google.com/design/spec/components/dialogs.html#dialogs-behavior
+ * https://www.google.com/design/spec/components/dialogs.html#dialogs-full-screen-dialogs
+ * probably good to use an Activity, and make it optional to be a dialog.
+  * this way it will be easier to extend it but still be flexible
+  * we do not quite know yet what input we need to provide for example
+  * if it is only little input, we can show it as a dialog, if not we can use full Activity
+* consider making an Activity a dialog
+ * https://developer.android.com/guide/topics/ui/dialogs.html#DialogFragment
+   "Tip: If you want a custom dialog, you can instead display an Activity as a dialog instead of using the Dialog APIs."
+
+* maybe card_layout and row_item are separate because of different types, try passing in the correct one similar to example
+ https://developer.android.com/training/material/lists-cards.html
+
+* use Log function rather than System.out.println
+* add license headers and license file
+* write version number for logs to file
+ * https://developer.android.com/tools/publishing/versioning.html
+* use proper margins for list of Sessions
+* center the date text in new session activity
+
+* make it possible to use half kilos
+ * http://stackoverflow.com/q/18794265
+* make it possible to have decimal values for weights
+ * a) include decimal values in existing NumberPicker
+ * b) add a second NumberPicker to select the grams for the kilos
+      the benefit of this is avoiding a hacky solution for the values
+      still need to update the selection everywhere to support decimals
+
+* sort sessions in descending order
+* find good way of reloading list of exercises after one is added
+ * scroll to bottom when a new exercise is added
+* scroll to top when a new session is added
+* add confirmation dialog before deleting an exercise
