@@ -39,4 +39,9 @@
     <string name="activity_view_exercise_textview_date">Date</string>
     <string name="activity_view_exercise_textview_weight">Weight</string>
     <string name="activity_view_exercise_textview_repetitions">Repetition(s)</string>
+
+    <string name="alert_delete_exercise_title">Delete</string>
+    <string name="alert_delete_exercise_message">This exercise and all associated sets will be removed and can not be recovered.</string>
+    <string name="alert_delete_exercise_okay">Delete</string>
+    <string name="alert_delete_exercise_cancel">Cancel</string>
 </resources>

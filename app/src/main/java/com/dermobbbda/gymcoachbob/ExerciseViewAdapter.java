@@ -6,6 +6,8 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -123,10 +125,33 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_context_delete_exercise:
-                    Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
-                    mDataSet.remove(mSelectedPosition);
-                    mAdapter.notifyItemRemoved(mSelectedPosition);
-                    mSelectedPosition = NO_POSITION_SELECTED;
+                    /* Confirm deletion of Exercise as it can not be recovered. */
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+                    /* Include the actual Exercise name in the alert title so that is clear which
+                     * selection is going to be affected. */
+                    String title = mActivity.getResources().getString(R.string.alert_delete_exercise_title);
+                    title = title + " '" + mDataSet.get(mSelectedPosition).name() + "'?";
+                    builder.setMessage(R.string.alert_delete_exercise_message)
+                           .setTitle(title);
+                    builder.setPositiveButton(R.string.alert_delete_exercise_okay, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
+                            mDataSet.remove(mSelectedPosition);
+                            mAdapter.notifyItemRemoved(mSelectedPosition);
+                            mSelectedPosition = NO_POSITION_SELECTED;
+                        }
+                    });
+                    builder.setNegativeButton(R.string.alert_delete_exercise_cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            Log.d(TAG, "User cancelled exercise deletion.");
+                            mSelectedPosition = NO_POSITION_SELECTED;
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
                     mode.finish(); /* Action picked, so close the CAB */
                     return true;
                 default:
