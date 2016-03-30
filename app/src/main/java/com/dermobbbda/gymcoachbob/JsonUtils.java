@@ -51,7 +51,7 @@ public class JsonUtils {
         JSONArray exerciseList = new JSONArray();
         for (Exercise e : exercises) {
             JSONObject tmp = new JSONObject();
-            tmp.put(context.getString(R.string.json_exercise_name), e.getName());
+            tmp.put(context.getString(R.string.json_exercise_name), e.name());
 
             JSONArray sessions = new JSONArray();
             for (Session s : e.getSessions()) {

@@ -48,7 +48,7 @@ public class ViewExerciseActivity extends Activity {
         }
 
         Exercise exercise = ExerciseWrapper.getInstance(this).get(position);
-        setTitle(exercise.getName());
+        setTitle(exercise.name());
 
         mExercise = exercise;
         mAdapter = new SessionViewAdapter(mExercise.getSessions());

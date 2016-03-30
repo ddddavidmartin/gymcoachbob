@@ -91,7 +91,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        String name = mDataSet.get(position).getName();
+        String name = mDataSet.get(position).name();
         holder.mTextView.setText(name);
     }
 

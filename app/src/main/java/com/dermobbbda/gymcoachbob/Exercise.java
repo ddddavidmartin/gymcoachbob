@@ -37,7 +37,7 @@ public class Exercise implements Serializable {
         mSessions = sessions;
     }
 
-    public String getName() {
+    public String name() {
         return mName;
     }
 
