@@ -78,6 +78,11 @@ Backlog of tasks left to do:
 
 * make it possible to rename / edit exercises and sessions
  * add a replace method in addition to add and remove
+ * figure out how to call onActivityResult in Main activity from activity
+   started in RecyclerView
+ * or, figure out how to get onActionItemClicked into Main activity
+   (we may have to implement the whole ActionMode.Callback interface,
+   or create a new interface that only calls what we want)
 * check why adding new Exercise with keyboard visible has glitchy scroll animation
 
 * consider renaming repository and account to beartiger_bear
