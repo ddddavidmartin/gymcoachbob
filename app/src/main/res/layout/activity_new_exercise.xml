@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_exercise_name"
-        android:inputType="textCapWords"/>
+        android:inputType="textCapWords" >
+        <requestFocus />
+    </EditText>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
