@@ -19,17 +19,9 @@ Backlog of tasks left to do:
  * store a couple of previous versions and offer to load a previous one if loading a new one fails
  * make sure that a new release never breaks older versions (add requirement and test for it)
 * consider checking return values when adding new exercises, because it may break at some point
-* consider notifying the Adapter that a new exercise is added
- * alternatively, find out why the view already updates as it is
-  * possibly because we draw the main activity again when we return from the 'new exercise' activity
 
 * work on tests in general
 * add swiping in ViewExerciseActivity to swipe to previous or next exercise, see https://developer.android.com/design/patterns/navigation.html
-
-* customise how date is shown:
- * no date if sets are on the same day and the current Session is not the topmost visible
- * day and month if a session is in the current year
- * day, month and year if session is not in the current year
 
 * consider implementing the layout for multiple sizes
  * https://developer.android.com/training/design-navigation/multiple-sizes.html
@@ -38,7 +30,6 @@ Backlog of tasks left to do:
 
 * show current date and a cog wheel next to it to change it
 * investigate whether returning partial Exercise lists is better than returning an empty one in JsonUtils.java
-
 
 * possible performance / memory footprint improvement:
   only load exercise names first, and actual session data only when an exercise is opened
@@ -85,8 +76,6 @@ Backlog of tasks left to do:
    or create a new interface that only calls what we want)
 * check why adding new Exercise with keyboard visible has glitchy scroll animation
 
-* consider renaming repository and account to beartiger_bear
-
 * have cancel and confirm buttons for adding exercises and sessions, similar
   to alert dialog when deleting an exercise
 
@@ -94,8 +83,14 @@ Backlog of tasks left to do:
   (see Android alarm clock as a reference)
  * investigate why going from entering text in one numberpicker to entering
    text in the next one does not work
+
+* implement functionality to add comments to Sessions (for example 'hard!' or 'easy!')
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
+
+* consider notifying the Adapter that a new exercise is added
+ * alternatively, find out why the view already updates as it is
+  * possibly because we draw the main activity again when we return from the 'new exercise' activity
 
 * use DatePicker and NumberPicker to select weight and repetitions when adding
   a Session
@@ -138,3 +133,11 @@ DONE:
  * scroll to bottom when a new exercise is added
 * scroll to top when a new session is added
 * add confirmation dialog before deleting an exercise
+
+* consider renaming repository and account to beartiger_bear
+ * disagree for now as it reads weirdly
+
+* customise how date is shown:
+ * no date if sets are on the same day and the current Session is not the topmost visible
+ * day and month if a session is in the current year (not implemented as it does not look right)
+ * day, month and year if session is not in the current year
