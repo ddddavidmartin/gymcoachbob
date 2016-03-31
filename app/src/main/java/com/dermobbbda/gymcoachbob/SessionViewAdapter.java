@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -43,12 +44,42 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
         return new ViewHolder(v);
     }
 
+    /** Determine the format of the date for the Session at the given position.
+     *  For example we only show the date for the topmost Session on a given day, as it makes
+     *  the list of Sessions more readable. */
+    private String determineDateFormat(int position) {
+        Session session = mDataSet.get(position);
+        String date = DateFormat.format("dd/MM/yyyy", session.date()).toString();
+
+        /* The topmost Session always shows the date it was done. */
+        if (position == 0) {
+            return date;
+        }
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(mDataSet.get(position - 1).date());
+        int previousYear = cal.get(Calendar.YEAR);
+        int previousMonth = cal.get(Calendar.MONTH);
+        int previousDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        cal.setTime(session.date());
+        int currentYear = cal.get(Calendar.YEAR);
+        int currentMonth = cal.get(Calendar.MONTH);
+        int currentDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        /* The previous Session sits above the current one. If it was on the same day, we do not
+         * print the date again. */
+        if ((currentYear == previousYear) && (currentMonth == previousMonth) && (currentDay == previousDay)) {
+            date = "";
+        }
+        return date;
+    }
+
     /** Replace the contents of a view (invoked by the layout manager) */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Session session = mDataSet.get(position);
-        DateFormat df = new DateFormat();
-        String date = df.format("dd/MM/yyyy", session.date()).toString();
+        String date = determineDateFormat(position);
         holder.mDateTextView.setText(date);
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));
