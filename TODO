@@ -84,6 +84,11 @@ Backlog of tasks left to do:
 
 * have cancel and confirm buttons for adding exercises and sessions, similar
   to alert dialog when deleting an exercise
+
+* implement next and done for NumberPickers when adding a session
+  (see Android alarm clock as a reference)
+ * investigate why going from entering text in one numberpicker to entering
+   text in the next one does not work
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
