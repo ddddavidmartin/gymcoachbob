@@ -7,6 +7,7 @@ package com.dermobbbda.gymcoachbob;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -52,7 +53,7 @@ public class Exercise implements Serializable {
         /* Keep Sessions in descending order with the most recent one at the top.
         *  This way the user does not always have to scroll all the way down to see the latest ones. */
         mSessions.add(0, session);
-        Collections.sort(mSessions, Collections.reverseOrder());
+        Collections.sort(mSessions);
         int position = mSessions.indexOf(session);
         mLastWeight = session.weight();
         mLastRepetitions = session.repetitions();
@@ -112,8 +113,37 @@ class Session implements Serializable, Comparable<Session> {
         return mRepetitions;
     }
 
-    /** Compare this Session to another to determine relative ordering. */
+    /** Compare this Session to another to determine relative ordering.
+     *  Sessions on the same day are ordered chronologically in the order they are added.
+     *  Sessions on different days are sorted with the most recent one first.
+     *  This way the latest day of exercises is always at the top, but the Sessions for a given
+     *  day are listed in the order performed.
+     */
     public int compareTo(Session s) {
-        return mDate.compareTo(s.date());
+        Date thisDate = date();
+        Date otherDate = s.date();
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(thisDate);
+        int thisYear = cal.get(Calendar.YEAR);
+        int thisMonth = cal.get(Calendar.MONTH);
+        int thisDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        cal.setTime(otherDate);
+        int otherYear = cal.get(Calendar.YEAR);
+        int otherMonth = cal.get(Calendar.MONTH);
+        int otherDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        boolean onSameDay = (thisYear == otherYear) && (thisMonth == otherMonth) && (thisDay == otherDay);
+
+        if (onSameDay && (thisDate.after(otherDate)) ||
+            (!onSameDay && thisDate.before(otherDate))) {
+            return 1;
+        } else if ((onSameDay && thisDate.before(otherDate)) ||
+                   (!onSameDay && thisDate.after(otherDate))) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
