@@ -26,8 +26,6 @@ Backlog of tasks left to do:
 * consider implementing the layout for multiple sizes
  * https://developer.android.com/training/design-navigation/multiple-sizes.html
 
-* add confirmation dialog before deleting exercises
-
 * show current date and a cog wheel next to it to change it
 * investigate whether returning partial Exercise lists is better than returning an empty one in JsonUtils.java
 
@@ -85,6 +83,11 @@ Backlog of tasks left to do:
    text in the next one does not work
 
 * implement functionality to add comments to Sessions (for example 'hard!' or 'easy!')
+
+* tasks to be considered for completion for first release:
+ * user switcher with option to add a new account
+ * example account
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
@@ -141,3 +144,16 @@ DONE:
  * no date if sets are on the same day and the current Session is not the topmost visible
  * day and month if a session is in the current year (not implemented as it does not look right)
  * day, month and year if session is not in the current year
+
+* fix issue where adding two new sessions to the top results in both of them
+  showing the full date (probably because the second one is not updated when
+  there is a new one)
+ * does not happen anymore now that new sessions on the same day are sorted
+   chronologically
+
+* add confirmation dialog before deleting exercises
+
+* add utility functions for Dates
+* correctly set the date for the last added Session
+ * either the first Session added or the latest one added on the same day as
+   the first Session in the overall list
