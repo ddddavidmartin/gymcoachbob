@@ -52,8 +52,21 @@ public class Exercise implements Serializable {
         mSessions.add(0, session);
         Collections.sort(mSessions);
         int position = mSessions.indexOf(session);
-        mLastWeight = session.weight();
-        mLastRepetitions = session.repetitions();
+
+        boolean setLastWeightAndRepetitions;
+        /* We initialise the 'new Session' dialog with the weight and repetitions of the most recently
+         * added Session. For this reason we only set these values if the new Session is at the top of
+         * the list (i.e. at position 0) or on the same day as the Session at the top of the list. */
+        if (position == 0) {
+            setLastWeightAndRepetitions = true;
+        } else {
+            Date mostRecentDate = mSessions.get(0).date();
+            setLastWeightAndRepetitions = Util.onSameDay(session.date(), mostRecentDate);
+        }
+        if (setLastWeightAndRepetitions) {
+            mLastWeight = session.weight();
+            mLastRepetitions = session.repetitions();
+        }
 
         /* As we are modifying the Sessions directly, we have to notify the Exercise backend
          * about the change. */
