@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -56,20 +56,10 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
             return date;
         }
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(mDataSet.get(position - 1).date());
-        int previousYear = cal.get(Calendar.YEAR);
-        int previousMonth = cal.get(Calendar.MONTH);
-        int previousDay = cal.get(Calendar.DAY_OF_MONTH);
-
-        cal.setTime(session.date());
-        int currentYear = cal.get(Calendar.YEAR);
-        int currentMonth = cal.get(Calendar.MONTH);
-        int currentDay = cal.get(Calendar.DAY_OF_MONTH);
-
         /* The previous Session sits above the current one. If it was on the same day, we do not
          * print the date again. */
-        if ((currentYear == previousYear) && (currentMonth == previousMonth) && (currentDay == previousDay)) {
+        Date previousDate = mDataSet.get(position - 1).date();
+        if (Util.onSameDay(previousDate, session.date())) {
             date = "";
         }
         return date;

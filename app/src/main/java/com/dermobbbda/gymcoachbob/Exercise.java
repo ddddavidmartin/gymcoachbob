@@ -7,7 +7,6 @@ package com.dermobbbda.gymcoachbob;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -120,19 +119,7 @@ class Session implements Serializable, Comparable<Session> {
     public int compareTo(Session s) {
         Date thisDate = date();
         Date otherDate = s.date();
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(thisDate);
-        int thisYear = cal.get(Calendar.YEAR);
-        int thisMonth = cal.get(Calendar.MONTH);
-        int thisDay = cal.get(Calendar.DAY_OF_MONTH);
-
-        cal.setTime(otherDate);
-        int otherYear = cal.get(Calendar.YEAR);
-        int otherMonth = cal.get(Calendar.MONTH);
-        int otherDay = cal.get(Calendar.DAY_OF_MONTH);
-
-        boolean onSameDay = (thisYear == otherYear) && (thisMonth == otherMonth) && (thisDay == otherDay);
+        boolean onSameDay = Util.onSameDay(thisDate, otherDate);
 
         if (onSameDay && (thisDate.after(otherDate)) ||
             (!onSameDay && thisDate.before(otherDate))) {
