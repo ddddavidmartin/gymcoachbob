@@ -41,7 +41,7 @@ public class Exercise implements Serializable {
         return mName;
     }
 
-    public List<Session> getSessions() {
+    public List<Session> sessions() {
         return mSessions;
     }
 

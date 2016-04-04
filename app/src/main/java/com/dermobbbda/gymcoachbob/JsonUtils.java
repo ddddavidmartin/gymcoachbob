@@ -54,7 +54,7 @@ public class JsonUtils {
             tmp.put(context.getString(R.string.json_exercise_name), e.name());
 
             JSONArray sessions = new JSONArray();
-            for (Session s : e.getSessions()) {
+            for (Session s : e.sessions()) {
                 JSONObject tmpSession = new JSONObject();
                 /* We store the date as a long as it is the easiest to parse again.
                  * We may consider using an actual String date as that would make the Json
