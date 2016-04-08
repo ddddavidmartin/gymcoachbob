@@ -31,6 +31,10 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     private static final int NO_POSITION_SELECTED = -1;
     /** The currently selected position / Exercise. */
     private static int mSelectedPosition = NO_POSITION_SELECTED;
+    /** Flag to mark that an ActionBar item has been selected. In that case the respective
+     *  ActionBar item is responsible to unselect any picked items. Whilst the flag is true,
+     *  the selection will not automatically be unmarked when the ActionBar is closed. */
+    private static boolean mActionItemClicked = false;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
@@ -62,10 +66,12 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         return false;
                     }
 
-                    mSelectedPosition = pos;
-                    Log.d(TAG, "Element " + mSelectedPosition + " long clicked.");
+                    Log.d(TAG, "Element " + pos + " long clicked.");
+                    markExerciseAsSelected(pos);
 
                     v.setSelected(true);
+                    /* Reset any previous ActionBar item selections before starting a new ActionBar. */
+                    mActionItemClicked = false;
                     mActionMode = mActivity.startActionMode(mActionModeCallback);
                     return true;
                 }
@@ -78,6 +84,26 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         mDataSet = exercises;
         mActivity = activity;
         mAdapter = this;
+    }
+
+    /** Mark the given position as being selected.
+     *  This means mSelectedPosition will be updated and the ViewAdapter notified. */
+    private static void markExerciseAsSelected(int position) {
+        mSelectedPosition = position;
+        mAdapter.notifyItemChanged(mSelectedPosition);
+    }
+
+    /** Unmark the currently selected position.
+     *  mSelectedPosition will be reset.
+     *  If notifyAdapter is true, the ViewAdapter will be notified about the change.
+     *  Returns the position that was unmarked. */
+    private static int unmarkSelectedExercise(boolean notifyAdapter) {
+        int previousSelection = mSelectedPosition;
+        mSelectedPosition = NO_POSITION_SELECTED;
+        if (notifyAdapter) {
+            mAdapter.notifyItemChanged(previousSelection);
+        }
+        return previousSelection;
     }
 
     /** Create new Views (called by the layout manager) */
@@ -93,7 +119,11 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        String name = mDataSet.get(position).name();
+        Exercise exercise = mDataSet.get(position);
+        String name = exercise.name();
+        if (position == mSelectedPosition) {
+            name += " (selected)";
+        }
         holder.mTextView.setText(name);
     }
 
@@ -123,6 +153,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         /* Called when the user selects a contextual menu item */
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            mActionItemClicked = true;
             switch (item.getItemId()) {
                 case R.id.menu_context_delete_exercise:
                     /* Confirm deletion of Exercise as it can not be recovered. */
@@ -138,9 +169,9 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
-                            mDataSet.remove(mSelectedPosition);
-                            mAdapter.notifyItemRemoved(mSelectedPosition);
-                            mSelectedPosition = NO_POSITION_SELECTED;
+                            int selection = unmarkSelectedExercise(/* do not notify adapter */ false);
+                            mDataSet.remove(selection);
+                            mAdapter.notifyItemRemoved(selection);
                         }
                     });
                     builder.setNegativeButton(R.string.alert_delete_exercise_cancel,
@@ -148,7 +179,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             Log.d(TAG, "User cancelled exercise deletion.");
-                            mSelectedPosition = NO_POSITION_SELECTED;
+                            unmarkSelectedExercise(/* notify adapter */ true);
                         }
                     });
                     AlertDialog dialog = builder.create();
@@ -164,7 +195,13 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         /* Called when the user exits the action mode */
         @Override
         public void onDestroyActionMode(ActionMode mode) {
+            /* If no ActionBar item was picked, we have to unmark the selection through here. */
+            if (!mActionItemClicked) {
+                unmarkSelectedExercise(/* notify adapter */ true);
+            }
             mActionMode = null;
         }
+
+
     };
 }
