@@ -163,7 +163,11 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
         c.set(year, month, day);
         mDate = c.getTime();
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        dateText.setText("" + day + "/" + month + "/" + year);
+        String dateString = "" + day + "/" + month + "/" + year;
+        if (Util.onSameDay(mDate, new Date())) {
+            dateString = "Today\n" + dateString;
+        }
+        dateText.setText(dateString);
         Log.d(TAG, "Picked date: " + day + "/" + month + "/" + year);
     }
 
