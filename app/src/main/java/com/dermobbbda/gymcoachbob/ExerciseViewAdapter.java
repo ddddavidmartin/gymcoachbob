@@ -37,7 +37,8 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     private static boolean mActionItemClicked = false;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextView;
+        public TextView mNameTextView;
+        public TextView mTimeSinceTextView;
         public ViewHolder(View v) {
             super(v);
             /* Short clicking one of the listed Exercises opens the respective Exercise in detail. */
@@ -76,7 +77,8 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                     return true;
                 }
             });
-            mTextView = (TextView) v.findViewById(R.id.exercise_row_item_text_view);
+            mNameTextView = (TextView) v.findViewById(R.id.exercise_row_item_name_textview);
+            mTimeSinceTextView = (TextView) v.findViewById(R.id.exercise_row_item_time_since_textview);
         }
     }
 
@@ -127,14 +129,15 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
 
         Session lastSession = exercise.lastSession();
         String last = mActivity.getString(R.string.exercise_last);
+        String timeSinceLast;
         if (lastSession == null) {
-            String never = mActivity.getString(R.string.time_never);
-            name += " (" + last  + ": " + never + ")";
+            timeSinceLast = last  + ": " + mActivity.getString(R.string.time_never);
         } else {
-            name += " (" + last + ": " + Util.timeSince(mActivity, lastSession.date()) + ")";
+            timeSinceLast = last + ": " + Util.timeSince(mActivity, lastSession.date());
         }
 
-        holder.mTextView.setText(name);
+        holder.mNameTextView.setText(name);
+        holder.mTimeSinceTextView.setText(timeSinceLast);
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */
