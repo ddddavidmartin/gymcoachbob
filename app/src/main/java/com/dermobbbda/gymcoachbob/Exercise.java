@@ -91,6 +91,27 @@ public class Exercise implements Serializable {
     public int lastRepetitions() {
         return mLastRepetitions;
     }
+
+    /** Return the last Session that was added to this Exercise.
+     *  Returns null if there are no Sessions for this Exercise. */
+    public Session lastSession() {
+        if (mSessions.size() == 0) {
+            return null;
+        }
+
+        Session lastSession = null;
+        for (Session s : mSessions) {
+            if ((lastSession == null) || s.date().after(lastSession.date())) {
+                lastSession = s;
+            /* As soon as we come across a Session that is older, we know that no newer one will
+             * follow anymore, as only Sessions on the same day are in ascending order. */
+            } else if (s.date().before(lastSession.date())) {
+                break;
+            }
+        }
+
+        return lastSession;
+    }
 }
 
 /** A workout session, i.e. a number of repetitions of an Exercise at a specific date. */

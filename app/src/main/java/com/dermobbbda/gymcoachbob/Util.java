@@ -5,6 +5,8 @@
 
 package com.dermobbbda.gymcoachbob;
 
+import android.content.Context;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,5 +29,37 @@ public class Util {
             return true;
         }
         return false;
+    }
+
+    /** Return the number of days since the given Date. */
+    private static int daysSinceDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        /* Convert time in 'milliseconds since Jan 1 1970 Midnight GMT' to number of days */
+        long startDay = date.getTime() / 1000 / 60 / 60 / 24;
+        long endDay = cal.getTime().getTime() / 1000 / 60 / 60 / 24;
+
+        return (int) (endDay - startDay);
+    }
+
+    /* Return the time since the given date.
+     * Example return values:
+     *  in the future, today, yesterday, x days ago, ... */
+    public static String timeSince(Context context, Date date) {
+        String result;
+        if (onSameDay(new Date(), date)) {
+            result = context.getString(R.string.time_today);
+        } else {
+            int daysSinceLastExercise = daysSinceDate(date);
+            if (daysSinceLastExercise < 0) {
+                result = context.getString(R.string.time_future);
+            /* Even if it is less than 24 hours since the last Session it was the previous day
+             * as the case where it is on the same day is covered earlier. */
+            } else if (daysSinceLastExercise <= 1) {
+                result = context.getString(R.string.time_yesterday);
+            } else {
+                result = "" + daysSinceLastExercise + " " + context.getString(R.string.time_days_ago);
+            }
+        }
+        return result;
     }
 }
