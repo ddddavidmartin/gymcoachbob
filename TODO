@@ -6,12 +6,12 @@ Backlog of tasks left to do:
 * add 'About' screen with contact and version information
 * use ContentResolver to save currently edited fields
 * add popup after logging an exercise: "good work boy / girl" and variations on it (use first name)
-* consider showing the number of days since the last time an exercise was done
 * consider grouping exercises. Have the user select what it is good for (legs, arms, shoulders, cardio, core, etc.) and make it possible to select more than one
+
+* fix runtime errors that show up in Log
 
 * add separate section with deleted exercises, so that their information is not lost after they are first removed
  * show deleted always at the bottom as a folder with exercises
-* find way of highlighting the selected exercise
 
 * consider ways to prevent corruption to the stored exercises
  * use atomic operation to write it (non-interruptible method?)
@@ -53,8 +53,6 @@ Backlog of tasks left to do:
 * consider adding a test mode where exercises are prepopulated on the app
 
 * set up post-push hook to update latest commits on static website
-* show "Today" when current date is selected (and not just when the dialog is opened
-  for the first time)
 * use proper date formatter when setting the date in onDateSet in new session activity
 
 * get Photoshop trial version and update app logo
@@ -87,6 +85,22 @@ Backlog of tasks left to do:
 * tasks to be considered for completion for first release:
  * user switcher with option to add a new account
  * example account
+
+* reduce size of the exercise cards so that more fit on the screen
+* check whether date field in session view is wide enough as it breaks the line
+  on the emulator
+* add Description field for exercises
+ * show it above the list of Sessions
+ * enter it when adding an exercise
+ * check whether json even supports strings across multiple lines as values
+* for NewExerciseActivity, rather than having "Done" in the keyboard to close
+  the keyboard, add the Exercise straight from there
+
+* extend Util.timeSince to show number of weeks, months and years as well
+ * for example '1 week ago (7 days), more than 1 week ago (x days), more than 1 month ago (x days)'
+
+* update the time since last Session when a new Session is added
+* find a better way of highlighting the selected exercise (for example showing it in blue)
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -157,3 +171,9 @@ DONE:
 * correctly set the date for the last added Session
  * either the first Session added or the latest one added on the same day as
    the first Session in the overall list
+* show "Today" when current date is selected (and not just when the dialog is opened
+  for the first time)
+
+* consider showing the number of days since the last time an exercise was done
+ * http://stackoverflow.com/a/13936264
+ * make sure the Exercise view is updated when a Session is added
