@@ -14,10 +14,14 @@ import java.util.List;
  * Wrapper to handle the state of all Exercises.
  */
 public class ExerciseWrapper {
+    /** Value to show that no Exercise was last accessed. */
+    public static final int NO_LAST_EXERCISE = -1;
     private static final String TAG = "GCB";
     private static List<Exercise> mMainExercises;
     private static Context mContext;
     private static ExerciseWrapper mExerciseWrapper = null;
+    /** The position of the Exercise that was last accessed. */
+    private static int mLastSelected = NO_LAST_EXERCISE;
 
     private ExerciseWrapper(Context context) {
         if (mMainExercises != null) {
@@ -49,6 +53,7 @@ public class ExerciseWrapper {
 
     /** Return the Exercise at the given position. */
     public Exercise get(int position) {
+        mLastSelected = position;
         return mMainExercises.get(position);
     }
 
@@ -60,8 +65,19 @@ public class ExerciseWrapper {
     /** Remove the Exercise at the given position.
      *  Updates the persistent Exercises on file. */
     public void remove(int position) {
+        /* If we remove the item that was last selected, then it should not be accessed anymore. */
+        if (mLastSelected == position)
+        {
+            mLastSelected = NO_LAST_EXERCISE;
+        }
         mMainExercises.remove(position);
         JsonUtils.toFile(mContext, mMainExercises);
+    }
+
+    /** Return the position of the last selected Exercise.
+     *  Returns ExerciseWrapper.NO_LAST_EXERCISE if no Exercise was selected yet. */
+    public int last() {
+        return mLastSelected;
     }
 
     /** Notify the ExerciseWrapper that the existing Exercises have changed.

@@ -45,6 +45,18 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        /* Update the latest Exercise when we return to the MainActivity in case we modified a
+           Session of that Exercise. */
+        int position = mExercises.last();
+        if (position != ExerciseWrapper.NO_LAST_EXERCISE) {
+            mAdapter.notifyItemChanged(position);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_activity_actions, menu);
