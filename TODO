@@ -99,8 +99,31 @@ Backlog of tasks left to do:
 * extend Util.timeSince to show number of weeks, months and years as well
  * for example '1 week ago (7 days), more than 1 week ago (x days), more than 1 month ago (x days)'
 
-* update the time since last Session when a new Session is added
 * find a better way of highlighting the selected exercise (for example showing it in blue)
+
+* consider taking half day differences into account for 'days since' view
+ * for example exercises added in the evening are not shown as a full day later
+   when looked at in the morning. Maybe normalise each date so that they are
+   at the same time? When we calculate the time since, set both in a calendar
+   to the same time?
+
+* add support for time based exercises
+ * store time and distance in json
+ * select from the two when adding a new exercise
+  * two options, have an i button next to it which pops up a small explanation
+    on what the two options mean, for example
+    weight-based: Exercises measured in weight and repetitions, for example
+                  sit-ups, lifts, lunges
+    time-based: Exercises measured in time and distance, for example running,
+                cycling or swimming
+ * when selecting an exercise load the respective title as for the exercise type
+  * consider dynamically loading the exercise or having two separate exercise
+    classes with separate layouts (probably the latter as it offers more flexibility)
+ * when adding a session have the same for weight, but have two selectors for
+   time-based exercises: time hh:mm:ss and distance xx.xx
+
+* bold entries where the weight has changed for weight-based Sessions
+* add search functionality to search for exercises (see tripview for an example)
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -177,3 +200,11 @@ DONE:
 * consider showing the number of days since the last time an exercise was done
  * http://stackoverflow.com/a/13936264
  * make sure the Exercise view is updated when a Session is added
+
+* update the time since last Session when a new Session is added
+ * maybe mark the selected Exercise when it is opened and update it when the
+   we go back to the main overview
+ * mark in ExerciseWrapper the last Exercise that is accessed? Or would that be
+   overwritten before onResume when the adapter is used?
+
+* show the time since last exercise session as well after the date (+xd)
