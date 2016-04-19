@@ -100,9 +100,9 @@ public class NewSessionActivity extends Activity implements DatePickerDialog.OnD
         /* Initialise the date for the new Session with the current date. */
         mDate = new Date();
         DateFormat df = new DateFormat();
-        String date = df.format("dd/MM/yyyy", mDate).toString();
+        String dateString = df.format("dd/MM/yyyy", mDate).toString();
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        dateText.setText("Today" + "\n" + date);
+        dateText.setText("Today" + "\n" + dateString);
 
         Intent intent = getIntent();
         /* We initialise the weight and repetitions with the previously used values, as the new

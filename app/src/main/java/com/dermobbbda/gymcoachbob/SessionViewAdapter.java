@@ -49,28 +49,28 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
      *  the list of Sessions more readable. */
     private String determineDateFormat(int position) {
         Session session = mDataSet.get(position);
-        String date = DateFormat.format("dd/MM/yyyy", session.date()).toString();
+        String dateString = DateFormat.format("dd/MM/yyyy", session.date()).toString();
 
         /* The topmost Session always shows the date it was done. */
         if (position == 0) {
-            return date;
+            return dateString;
         }
 
         /* The previous Session sits above the current one. If it was on the same day, we do not
          * print the date again. */
         Date previousDate = mDataSet.get(position - 1).date();
         if (Util.onSameDay(previousDate, session.date())) {
-            date = "";
+            dateString = "";
         }
-        return date;
+        return dateString;
     }
 
     /** Replace the contents of a view (invoked by the layout manager) */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Session session = mDataSet.get(position);
-        String date = determineDateFormat(position);
-        holder.mDateTextView.setText(date);
+        String dateString = determineDateFormat(position);
+        holder.mDateTextView.setText(dateString);
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));
     }
