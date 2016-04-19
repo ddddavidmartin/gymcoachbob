@@ -33,10 +33,15 @@ public class Util {
 
     /** Return the number of days since the given Date. */
     private static int daysSinceDate(Date date) {
-        Calendar cal = Calendar.getInstance();
+        return daysBetweenDates(date, new Date());
+    }
+
+    /** Return the number of days between the two Dates.
+     *  d1 should be before d2 for a positive value of days to be returned. */
+    public static int daysBetweenDates(Date d1, Date d2) {
         /* Convert time in 'milliseconds since Jan 1 1970 Midnight GMT' to number of days */
-        long startDay = date.getTime() / 1000 / 60 / 60 / 24;
-        long endDay = cal.getTime().getTime() / 1000 / 60 / 60 / 24;
+        long startDay = d1.getTime() / 1000 / 60 / 60 / 24;
+        long endDay = d2.getTime() / 1000 / 60 / 60 / 24;
 
         return (int) (endDay - startDay);
     }

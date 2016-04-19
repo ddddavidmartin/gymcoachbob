@@ -61,6 +61,12 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
         Date previousDate = mDataSet.get(position - 1).date();
         if (Util.onSameDay(previousDate, session.date())) {
             dateString = "";
+        /* For Session that are not the top ones, we print both the Date and the number of days
+         * since the respective previous Session, as it makes it clear how much times has passed
+         * between Sessions. */
+        } else {
+            int days = Util.daysBetweenDates(session.date(), previousDate);
+            dateString += "  +" + days + "d";
         }
         return dateString;
     }
