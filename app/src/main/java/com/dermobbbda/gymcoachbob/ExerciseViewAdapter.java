@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 
 public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
-    public static final String TAG = "GCB";
     private static ActionMode mActionMode;
     private static Activity mActivity;
     private static ExerciseWrapper mDataSet;
@@ -67,7 +66,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         return false;
                     }
 
-                    Log.d(TAG, "Element " + pos + " long clicked.");
+                    Log.d(Util.TAG, "Element " + pos + " long clicked.");
                     markExerciseAsSelected(pos);
 
                     v.setSelected(true);
@@ -181,7 +180,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                                               new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            Log.d(TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
+                            Log.d(Util.TAG, "Selected to delete the exercise on slot " + mSelectedPosition + ".");
                             int selection = unmarkSelectedExercise(/* do not notify adapter */ false);
                             mDataSet.remove(selection);
                             mAdapter.notifyItemRemoved(selection);
@@ -191,7 +190,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                                               new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            Log.d(TAG, "User cancelled exercise deletion.");
+                            Log.d(Util.TAG, "User cancelled exercise deletion.");
                             unmarkSelectedExercise(/* notify adapter */ true);
                         }
                     });

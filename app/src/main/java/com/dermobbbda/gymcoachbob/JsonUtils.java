@@ -24,7 +24,6 @@ import org.json.JSONObject;
 
 public class JsonUtils {
     public static final int BUFSIZE = 1024;
-    public static final String TAG = "GCB";
 
     /** Place the versionCode of the app in the given Context in the given JSONObject.
      *  The caller is responsible to handle any JSONExceptions thrown. */
@@ -35,7 +34,7 @@ public class JsonUtils {
             PackageInfo pInfo = pm.getPackageInfo(context.getPackageName(), 0);
             versionCode = pInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "Failed to find package info: " + e);
+            Log.e(Util.TAG, "Failed to find package info: " + e);
                 /* Not being able to access the versionCode should never happen. If it does we set
                  * it to 0 which is never going to be valid as the first release is versionCode 1. */
             versionCode = 0;
@@ -94,7 +93,7 @@ public class JsonUtils {
                 try {
                     outputStream.close();
                 } catch (IOException e) {
-                    Log.d(TAG, "Failed to close stream: " + e);
+                    Log.d(Util.TAG, "Failed to close stream: " + e);
                 }
             }
         }
@@ -114,17 +113,17 @@ public class JsonUtils {
                 fileContent.append(new String(buffer));
             }
         } catch (FileNotFoundException e) {
-            Log.e(TAG, "Exercises file not found: " + e);
+            Log.e(Util.TAG, "Exercises file not found: " + e);
             return result;
         } catch (IOException e) {
-            Log.e(TAG, "IOException during reading: " + e);
+            Log.e(Util.TAG, "IOException during reading: " + e);
             return result;
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException e) {
-                    Log.d(TAG, "Failed to close stream: " + e);
+                    Log.d(Util.TAG, "Failed to close stream: " + e);
                 }
             }
         }
@@ -133,7 +132,7 @@ public class JsonUtils {
             JSONObject jsonObj = new JSONObject(fileContent.toString());
 
             int versionCode = jsonObj.getInt(context.getString(R.string.json_version_code));
-            Log.d(TAG, "Loading data with versionCode " + versionCode + ".");
+            Log.d(Util.TAG, "Loading data with versionCode " + versionCode + ".");
 
             JSONArray exerciseList = jsonObj.getJSONArray(context.getString(R.string.json_exercise_list));
             /* Avoid reallocations of the array by setting the size once in advance. */
@@ -161,7 +160,7 @@ public class JsonUtils {
                 result.add(exercise);
             }
         } catch (JSONException e) {
-            Log.e(TAG, "JSONException during parsing: " + e);
+            Log.e(Util.TAG, "JSONException during parsing: " + e);
             return result;
         }
 

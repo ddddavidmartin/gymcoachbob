@@ -18,7 +18,6 @@ import android.view.View;
 
 public class MainActivity extends Activity {
     public static final int NEW_EXERCISE_REQUEST = 1;
-    public static final String TAG = "GCB";
 
     /** All Exercises the app knows about. */
     private static ExerciseWrapper mExercises;
@@ -85,13 +84,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_CANCELED) {
-            Log.d(TAG, "Received cancellation of request with code %d " + requestCode + ".");
+            Log.d(Util.TAG, "Received cancellation of request with code %d " + requestCode + ".");
             return;
         }
 
         if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
-            Log.d(TAG, "Received Exercise: " + exercise);
+            Log.d(Util.TAG, "Received Exercise: " + exercise);
             int position = mExercises.add(exercise);
             mAdapter.notifyItemInserted(position);
             /* Scroll the view to the newly added Exercise so that it is visible. */

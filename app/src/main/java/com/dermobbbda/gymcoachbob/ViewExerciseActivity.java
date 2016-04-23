@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ViewExerciseActivity extends Activity {
-    private static final String TAG = "GCB";
     private static final int NEW_SESSION_REQUEST = 1;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -42,7 +41,7 @@ public class ViewExerciseActivity extends Activity {
          * ViewExerciseActivity instance, and the Exercise position is not provided. We avoid it by
          * setting the launchMode of this Activity to 'singleTop'. */
         if (position == -1) {
-            Log.e(TAG, "Not starting activity as exercise position is missing.");
+            Log.e(Util.TAG, "Not starting activity as exercise position is missing.");
             finish();
             return;
         }
@@ -85,13 +84,13 @@ public class ViewExerciseActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_CANCELED) {
-            Log.d(TAG, "Received cancellation of request with code %d " + requestCode + ".");
+            Log.d(Util.TAG, "Received cancellation of request with code %d " + requestCode + ".");
             return;
         }
 
         if (requestCode == NEW_SESSION_REQUEST && resultCode == RESULT_OK) {
             Session session = (Session) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
-            Log.d(TAG, "Received Session: " + session);
+            Log.d(Util.TAG, "Received Session: " + session);
             int position = mExercise.add(session, /* update change on file */ true);
             mAdapter.notifyItemInserted(position);
             /* Scroll the view to the newly added Session so that it is visible. */

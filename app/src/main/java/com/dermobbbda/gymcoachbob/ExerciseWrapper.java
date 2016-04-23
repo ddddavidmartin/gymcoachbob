@@ -16,7 +16,6 @@ import java.util.List;
 public class ExerciseWrapper {
     /** Value to show that no Exercise was last accessed. */
     public static final int NO_LAST_EXERCISE = -1;
-    private static final String TAG = "GCB";
     private static List<Exercise> mMainExercises;
     private static Context mContext;
     private static ExerciseWrapper mExerciseWrapper = null;
@@ -87,7 +86,7 @@ public class ExerciseWrapper {
      *  Updates the persistent Exercises on file. */
     public static void notifyExercisesChanged() {
         if (mMainExercises == null || mContext == null) {
-            Log.d(TAG, "Skipping the writing of Exercises to file as they are not initialised yet.");
+            Log.d(Util.TAG, "Skipping the writing of Exercises to file as they are not initialised yet.");
             return;
         }
         JsonUtils.toFile(mContext, mMainExercises);

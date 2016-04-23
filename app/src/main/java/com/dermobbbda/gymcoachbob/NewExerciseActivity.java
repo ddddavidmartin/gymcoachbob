@@ -16,8 +16,6 @@ import android.widget.EditText;
 
 
 public class NewExerciseActivity extends Activity {
-    public static final String TAG = "GCB";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +50,11 @@ public class NewExerciseActivity extends Activity {
         String exerciseName = editText.getText().toString();
 
         if (exerciseName.isEmpty()) {
-            Log.d(TAG, "Ignoring button press for empty exercise name.");
+            Log.d(Util.TAG, "Ignoring button press for empty exercise name.");
             return;
         }
 
-        Log.d(TAG, "new exerciseName: " + exerciseName);
+        Log.d(Util.TAG, "new exerciseName: " + exerciseName);
 
         Exercise exercise = new Exercise(exerciseName);
 

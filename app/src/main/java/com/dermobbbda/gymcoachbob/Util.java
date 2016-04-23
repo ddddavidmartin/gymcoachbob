@@ -12,6 +12,9 @@ import java.util.Date;
 
 /** Utility functions that do not quite fit anywhere else. */
 public class Util {
+    /** Tag for log prints. */
+    public static final String TAG = "GCB";
+
     /** Determine whether the two given Dates are on the same day. */
     public static boolean onSameDay(Date d1, Date d2) {
         Calendar cal = Calendar.getInstance();
