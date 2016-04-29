@@ -49,7 +49,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         return;
                     }
 
-                    Intent intent = new Intent(mActivity, ViewExerciseActivity.class);
+                    Intent intent = new Intent(mActivity.getApplicationContext(), ViewExerciseActivity.class);
                     intent.putExtra(mActivity.getString(R.string.EXTRA_EXERCISE_POSITION), pos);
                     mActivity.startActivity(intent);
                 }
@@ -132,7 +132,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         if (lastSession == null) {
             timeSinceLast = last  + ": " + mActivity.getString(R.string.time_never);
         } else {
-            timeSinceLast = last + ": " + Util.timeSince(mActivity, lastSession.date());
+            timeSinceLast = last + ": " + Util.timeSince(mActivity.getApplicationContext(), lastSession.date());
         }
 
         holder.mNameTextView.setText(name);
@@ -169,7 +169,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
             switch (item.getItemId()) {
                 case R.id.menu_context_delete_exercise:
                     /* Confirm deletion of Exercise as it can not be recovered. */
-                    AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mActivity.getApplicationContext());
                     /* Include the actual Exercise name in the alert title so that it is clear which
                      * selection is going to be deleted. */
                     String title = mActivity.getResources().getString(R.string.alert_delete_exercise_title);

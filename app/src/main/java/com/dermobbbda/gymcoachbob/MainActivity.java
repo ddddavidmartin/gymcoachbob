@@ -35,9 +35,9 @@ public class MainActivity extends Activity {
          * layout size of the RecyclerView. */
         mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mExercises = ExerciseWrapper.getInstance(this);
+        mExercises = ExerciseWrapper.getInstance(getApplicationContext());
 
         mAdapter = new ExerciseViewAdapter(this, mExercises);
         mRecyclerView.setAdapter(mAdapter);

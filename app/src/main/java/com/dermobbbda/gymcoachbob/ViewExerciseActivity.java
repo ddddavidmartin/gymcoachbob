@@ -46,7 +46,7 @@ public class ViewExerciseActivity extends Activity {
             return;
         }
 
-        Exercise exercise = ExerciseWrapper.getInstance(this).get(position);
+        Exercise exercise = ExerciseWrapper.getInstance(getApplicationContext()).get(position);
         setTitle(exercise.name());
 
         mExercise = exercise;
