@@ -61,6 +61,7 @@ Backlog of tasks left to do:
 * make it possible to remove sessions
 
 * add decimal dot between the two number pickers for weight selection in NewSessionActivity
+ * consider adding it to the numbers in the second numberpicker itself (eg. '.1, .2, .3 etc.')
 * add markers inbetween session view: 1 week ago, 2 weeks ago, ..., 1 month ago, 2 months ago, ..., 1 year ago, ...
 
 * make it possible to rename / edit exercises and sessions
@@ -125,6 +126,42 @@ Backlog of tasks left to do:
 * bold entries where the weight has changed for weight-based Sessions
 * add search functionality to search for exercises (see tripview for an example)
 
+* implement widget for off-screen to add Sessions
+
+* update second Session when a new one is added at the top
+ * move the logic for the days since for the Sessions into its own methods,
+   so that it is clear where it is used and it is not magically strewn all
+   through the code base
+ * it probably makes sense to have a wrapper around Sessions so that we can
+   still call the usual 'get' and 'add' methods, but as well have methods
+   to determine whether a Session should have '+d' info for example
+
+* update the 'days since' infos when a new day occurred since the app was last
+  opened
+ * probably save the current date at startup and compare against it when
+   onResume is called
+ * move this into its own function to keep it clear that it belongs to the 'days
+   since' logic
+
+* consider moving 'days since' logic into the Exercise class
+ * this is where it is determined through the Session
+ * ExerciseViewAdapter needs days since last Session
+ * SessionViewAdapter needs days between two Sessions
+ * we may be able to remove the lastSession method as it is only used to
+   determine the days since the last Session
+
+* consider grouping Sessions through a wrapper
+ * rather than having a separate card for each Session, only have one card per day
+ * the list of Sessions would look much less busy that way and probably allowed
+   to show more information as well (for example if it always allowed space for
+   3 sets, and expanded when it needed to show more)
+
+* implement functionality to select the directory in which exercises are saved
+ * that way we can select the dropbox folder to sync the stored exercises
+
+* work out the correct minSdkVersion etc., this may resolve the startup errors
+  that show up as well
+ * https://developer.android.com/guide/topics/manifest/uses-sdk-element.html
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
@@ -208,3 +245,8 @@ DONE:
    overwritten before onResume when the adapter is used?
 
 * show the time since last exercise session as well after the date (+xd)
+
+* use public static String TAG in util for the log output tag
+ * this way we do not have to define it in every single class that uses logging
+
+* avoid memory leaks by not keeping Activity Context references
