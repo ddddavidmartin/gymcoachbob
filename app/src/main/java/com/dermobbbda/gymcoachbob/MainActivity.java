@@ -48,10 +48,20 @@ public class MainActivity extends Activity {
         super.onResume();
 
         /* Update the latest Exercise when we return to the MainActivity in case we modified a
-           Session of that Exercise. */
+         * Session of that Exercise. */
         int position = mExercises.last();
         if (position != ExerciseWrapper.NO_LAST_EXERCISE) {
             mAdapter.notifyItemChanged(position);
+        }
+
+        /* If the date has changed we need to update all Exercise entries to update their
+           'days since last Exercise' info. */
+        if (Exercise.datesHaveChangedSinceLastCheck()) {
+            Log.d(Util.TAG, "Updating Exercises as dates have changed since last check.");
+            /* We call notifyItemRangeChanged rather than notifyDataSetChanged as the former
+             * implies changes on only the data of the items, and not the position. This should
+             * be more efficient. */
+            mAdapter.notifyItemRangeChanged(0, mExercises.size());
         }
     }
 

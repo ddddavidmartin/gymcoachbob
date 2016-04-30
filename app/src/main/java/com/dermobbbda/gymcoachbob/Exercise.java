@@ -15,6 +15,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Exercise implements Serializable {
+    /* The last time the dates of the Exercises where checked.
+     * See datesHaveChangedSinceLastCheck. */
+    private static Date mLastDateCheck = null;
+
     /* Name of the exercise */
     private String mName;
     private Context mContext;
@@ -160,6 +164,23 @@ public class Exercise implements Serializable {
 
         dateString += "  +" + days + "d";
         return dateString;
+    }
+
+    /** Return whether the Exercise dates have changed since the last time this method was called.
+     *  This allows the caller to check whether it should update any Exercises it is showing. */
+    public static boolean datesHaveChangedSinceLastCheck() {
+        boolean res = false;
+        Date currentDate = new Date();
+
+        /* Rather than checking whether any of the Exercises have actually changed we simply check
+         * against the current date, as all 'days since' information needs to be updated on a date
+         * change. */
+        if ((mLastDateCheck != null) && !Util.onSameDay(mLastDateCheck, currentDate)) {
+            res = true;
+        }
+        mLastDateCheck = currentDate;
+
+        return res;
     }
 }
 
