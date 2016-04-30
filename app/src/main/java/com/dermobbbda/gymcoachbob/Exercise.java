@@ -138,23 +138,26 @@ public class Exercise implements Serializable {
         Session session = mSessions.get(position);
         String dateString = DateFormat.format("dd/MM/yyyy", session.date()).toString();
 
+        int days;
         /* The topmost Session always shows the date it was done. */
         if (position == 0) {
-            return dateString;
+            days = Util.daysBetweenDates(session.date(), new Date());
+        } else {
+            /* The previous Session sits above the current one. If it was on the same day, we do not
+             * print the date again. */
+            Date previousDate = mSessions.get(position - 1).date();
+            if (Util.onSameDay(previousDate, session.date())) {
+                return "";
+
+            /* For Session that are not the top ones, we print both the Date and the number of days
+             * since the respective previous Session, as it makes it clear how much times has passed
+             * between Sessions. */
+            } else {
+                days = Util.daysBetweenDates(session.date(), previousDate);
+            }
         }
 
-        /* The previous Session sits above the current one. If it was on the same day, we do not
-         * print the date again. */
-        Date previousDate = mSessions.get(position - 1).date();
-        if (Util.onSameDay(previousDate, session.date())) {
-            dateString = "";
-        /* For Session that are not the top ones, we print both the Date and the number of days
-         * since the respective previous Session, as it makes it clear how much times has passed
-         * between Sessions. */
-        } else {
-            int days = Util.daysBetweenDates(session.date(), previousDate);
-            dateString += "  +" + days + "d";
-        }
+        dateString += "  +" + days + "d";
         return dateString;
     }
 }
