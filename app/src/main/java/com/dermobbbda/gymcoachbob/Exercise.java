@@ -32,6 +32,7 @@ public class Exercise implements Serializable {
 
     /** Create an Exercise with the given name and enough space allocated to save capacity Sessions. */
     Exercise(Context context, String name, int capacity) {
+        mContext = context;
         mName = name;
         ArrayList<Session> sessions = new ArrayList<Session>();
         if (capacity > DEFAULT_CAPACITY) {
