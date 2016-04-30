@@ -126,7 +126,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
             name += " (selected)";
         }
 
-        Session lastSession = exercise.lastSession();
+        Session lastSession = exercise.mostRecentSession();
         String last = mActivity.getString(R.string.exercise_last);
         String timeSinceLast;
         if (lastSession == null) {

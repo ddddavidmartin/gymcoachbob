@@ -92,9 +92,9 @@ public class Exercise implements Serializable {
         return mLastRepetitions;
     }
 
-    /** Return the last Session that was added to this Exercise.
+    /** Return the most recent Session of this Exercise.
      *  Returns null if there are no Sessions for this Exercise. */
-    public Session lastSession() {
+    public Session mostRecentSession() {
         if (mSessions.size() == 0) {
             return null;
         }
