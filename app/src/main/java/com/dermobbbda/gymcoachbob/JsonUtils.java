@@ -143,7 +143,7 @@ public class JsonUtils {
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
                 JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
 
-                Exercise exercise = new Exercise(exerciseName, sessionList.length());
+                Exercise exercise = new Exercise(context, exerciseName, sessionList.length());
 
                 for (int j = 0; j < sessionList.length(); j++) {
                     JSONObject tmpSession = sessionList.getJSONObject(j);

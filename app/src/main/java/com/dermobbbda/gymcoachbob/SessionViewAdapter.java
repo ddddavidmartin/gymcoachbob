@@ -6,17 +6,16 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Date;
 import java.util.List;
 
 
 public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.ViewHolder> {
+    private static Exercise mExercise;
     private static List<Session> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -32,8 +31,9 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
         }
     }
 
-    public SessionViewAdapter(List<Session> sessions) {
-        mDataSet = sessions;
+    public SessionViewAdapter(Exercise exercise) {
+        mExercise = exercise;
+        mDataSet = exercise.sessions();
     }
 
     /** Create new Views (called by the layout manager) */
@@ -44,39 +44,11 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
         return new ViewHolder(v);
     }
 
-    /** Determine the format of the date for the Session at the given position.
-     *  For example we only show the date for the topmost Session on a given day, as it makes
-     *  the list of Sessions more readable. */
-    private String determineDateFormat(int position) {
-        Session session = mDataSet.get(position);
-        String dateString = DateFormat.format("dd/MM/yyyy", session.date()).toString();
-
-        /* The topmost Session always shows the date it was done. */
-        if (position == 0) {
-            return dateString;
-        }
-
-        /* The previous Session sits above the current one. If it was on the same day, we do not
-         * print the date again. */
-        Date previousDate = mDataSet.get(position - 1).date();
-        if (Util.onSameDay(previousDate, session.date())) {
-            dateString = "";
-        /* For Session that are not the top ones, we print both the Date and the number of days
-         * since the respective previous Session, as it makes it clear how much times has passed
-         * between Sessions. */
-        } else {
-            int days = Util.daysBetweenDates(session.date(), previousDate);
-            dateString += "  +" + days + "d";
-        }
-        return dateString;
-    }
-
     /** Replace the contents of a view (invoked by the layout manager) */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Session session = mDataSet.get(position);
-        String dateString = determineDateFormat(position);
-        holder.mDateTextView.setText(dateString);
+        holder.mDateTextView.setText(mExercise.timeOfSession(position));
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));
     }

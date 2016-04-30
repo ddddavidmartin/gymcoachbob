@@ -126,17 +126,8 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
             name += " (selected)";
         }
 
-        Session lastSession = exercise.mostRecentSession();
-        String last = mActivity.getString(R.string.exercise_last);
-        String timeSinceLast;
-        if (lastSession == null) {
-            timeSinceLast = last  + ": " + mActivity.getString(R.string.time_never);
-        } else {
-            timeSinceLast = last + ": " + Util.timeSince(mActivity.getApplicationContext(), lastSession.date());
-        }
-
         holder.mNameTextView.setText(name);
-        holder.mTimeSinceTextView.setText(timeSinceLast);
+        holder.mTimeSinceTextView.setText(exercise.timeSinceMostRecentSession());
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */

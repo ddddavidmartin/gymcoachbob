@@ -5,6 +5,9 @@
 
 package com.dermobbbda.gymcoachbob;
 
+import android.content.Context;
+import android.text.format.DateFormat;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +17,7 @@ import java.util.List;
 public class Exercise implements Serializable {
     /* Name of the exercise */
     private String mName;
+    private Context mContext;
     private List<Session> mSessions;
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
@@ -22,12 +26,12 @@ public class Exercise implements Serializable {
     /* The number of repetitions used for the last Session that was added. */
     private int mLastRepetitions = 0;
 
-    Exercise(String name) {
-        this(name, DEFAULT_CAPACITY);
+    Exercise(Context context, String name) {
+        this(context, name, DEFAULT_CAPACITY);
     }
 
     /** Create an Exercise with the given name and enough space allocated to save capacity Sessions. */
-    Exercise(String name, int capacity) {
+    Exercise(Context context, String name, int capacity) {
         mName = name;
         ArrayList<Session> sessions = new ArrayList<Session>();
         if (capacity > DEFAULT_CAPACITY) {
@@ -94,7 +98,7 @@ public class Exercise implements Serializable {
 
     /** Return the most recent Session of this Exercise.
      *  Returns null if there are no Sessions for this Exercise. */
-    public Session mostRecentSession() {
+    private Session mostRecentSession() {
         if (mSessions.size() == 0) {
             return null;
         }
@@ -111,6 +115,47 @@ public class Exercise implements Serializable {
         }
 
         return lastSession;
+    }
+
+    /** Return a String describing the time since the most recent Session. */
+    public String timeSinceMostRecentSession() {
+        Session lastSession = mostRecentSession();
+        String last = mContext.getString(R.string.exercise_last);
+        String timeSinceLast;
+        if (lastSession == null) {
+            timeSinceLast = last  + ": " + mContext.getString(R.string.time_never);
+        } else {
+            timeSinceLast = last + ": " + Util.timeSince(mContext, lastSession.date());
+        }
+        return timeSinceLast;
+    }
+
+    /** Return a String describing the time the Session took place.
+     *  If the previous Session was on the same day, an empty String is returned.
+     *  If the previous Session took place at an earlier day, the number of days since then will be
+     *  included in the returned String. */
+    public String timeOfSession(int position) {
+        Session session = mSessions.get(position);
+        String dateString = DateFormat.format("dd/MM/yyyy", session.date()).toString();
+
+        /* The topmost Session always shows the date it was done. */
+        if (position == 0) {
+            return dateString;
+        }
+
+        /* The previous Session sits above the current one. If it was on the same day, we do not
+         * print the date again. */
+        Date previousDate = mSessions.get(position - 1).date();
+        if (Util.onSameDay(previousDate, session.date())) {
+            dateString = "";
+        /* For Session that are not the top ones, we print both the Date and the number of days
+         * since the respective previous Session, as it makes it clear how much times has passed
+         * between Sessions. */
+        } else {
+            int days = Util.daysBetweenDates(session.date(), previousDate);
+            dateString += "  +" + days + "d";
+        }
+        return dateString;
     }
 }
 

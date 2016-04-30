@@ -56,7 +56,7 @@ public class NewExerciseActivity extends Activity {
 
         Log.d(Util.TAG, "new exerciseName: " + exerciseName);
 
-        Exercise exercise = new Exercise(exerciseName);
+        Exercise exercise = new Exercise(getApplicationContext(), exerciseName);
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.EXTRA_EXERCISE), exercise);

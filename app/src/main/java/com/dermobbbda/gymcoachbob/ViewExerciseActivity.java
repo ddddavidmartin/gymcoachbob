@@ -50,7 +50,7 @@ public class ViewExerciseActivity extends Activity {
         setTitle(exercise.name());
 
         mExercise = exercise;
-        mAdapter = new SessionViewAdapter(mExercise.sessions());
+        mAdapter = new SessionViewAdapter(mExercise);
         mRecyclerView.setAdapter(mAdapter);
     }
 
