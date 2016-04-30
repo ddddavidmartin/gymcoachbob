@@ -143,13 +143,6 @@ Backlog of tasks left to do:
  * move this into its own function to keep it clear that it belongs to the 'days
    since' logic
 
-* consider moving 'days since' logic into the Exercise class
- * this is where it is determined through the Session
- * ExerciseViewAdapter needs days since last Session
- * SessionViewAdapter needs days between two Sessions
- * we may be able to remove the lastSession method as it is only used to
-   determine the days since the last Session
-
 * consider grouping Sessions through a wrapper
  * rather than having a separate card for each Session, only have one card per day
  * the list of Sessions would look much less busy that way and probably allowed
@@ -250,3 +243,10 @@ DONE:
  * this way we do not have to define it in every single class that uses logging
 
 * avoid memory leaks by not keeping Activity Context references
+
+* consider moving 'days since' logic into the Exercise class
+ * this is where it is determined through the Session
+ * ExerciseViewAdapter needs days since last Session
+ * SessionViewAdapter needs days between two Sessions
+ * we may be able to remove the lastSession method as it is only used to
+   determine the days since the last Session
