@@ -127,7 +127,8 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         }
 
         holder.mNameTextView.setText(name);
-        holder.mTimeSinceTextView.setText(exercise.timeSinceMostRecentSession());
+        String timeSince = exercise.timeSinceMostRecentSession(mActivity.getApplicationContext());
+        holder.mTimeSinceTextView.setText(timeSince);
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */

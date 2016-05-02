@@ -21,7 +21,6 @@ public class Exercise implements Serializable {
 
     /* Name of the exercise */
     private String mName;
-    private Context mContext;
     private List<Session> mSessions;
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
@@ -30,13 +29,12 @@ public class Exercise implements Serializable {
     /* The number of repetitions used for the last Session that was added. */
     private int mLastRepetitions = 0;
 
-    Exercise(Context context, String name) {
-        this(context, name, DEFAULT_CAPACITY);
+    Exercise(String name) {
+        this(name, DEFAULT_CAPACITY);
     }
 
     /** Create an Exercise with the given name and enough space allocated to save capacity Sessions. */
-    Exercise(Context context, String name, int capacity) {
-        mContext = context;
+    Exercise(String name, int capacity) {
         mName = name;
         ArrayList<Session> sessions = new ArrayList<Session>();
         if (capacity > DEFAULT_CAPACITY) {
@@ -123,14 +121,14 @@ public class Exercise implements Serializable {
     }
 
     /** Return a String describing the time since the most recent Session. */
-    public String timeSinceMostRecentSession() {
+    public String timeSinceMostRecentSession(Context context) {
         Session lastSession = mostRecentSession();
-        String last = mContext.getString(R.string.exercise_last);
+        String last = context.getString(R.string.exercise_last);
         String timeSinceLast;
         if (lastSession == null) {
-            timeSinceLast = last  + ": " + mContext.getString(R.string.time_never);
+            timeSinceLast = last  + ": " + context.getString(R.string.time_never);
         } else {
-            timeSinceLast = last + ": " + Util.timeSince(mContext, lastSession.date());
+            timeSinceLast = last + ": " + Util.timeSince(context, lastSession.date());
         }
         return timeSinceLast;
     }
