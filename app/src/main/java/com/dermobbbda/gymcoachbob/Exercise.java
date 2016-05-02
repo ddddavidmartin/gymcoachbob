@@ -180,6 +180,21 @@ public class Exercise implements Serializable {
 
         return res;
     }
+
+    /** Return whether the Session below the given position needs to be updated after an update
+     *  of the given Session. */
+    public boolean nextSessionNeedsUpdate(int position) {
+        boolean res = false;
+        if (position < (mSessions.size() - 1)) {
+            Session one = mSessions.get(position);
+            Session other = mSessions.get(position + 1);
+
+            if (!Util.onSameDay(one.date(), other.date())) {
+                res = true;
+            }
+        }
+        return res;
+    }
 }
 
 /** A workout session, i.e. a number of repetitions of an Exercise at a specific date. */
