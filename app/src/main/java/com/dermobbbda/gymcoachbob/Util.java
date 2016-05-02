@@ -35,7 +35,7 @@ public class Util {
     }
 
     /** Return the number of days since the given Date. */
-    private static int daysSinceDate(Date date) {
+    public static int daysSinceDate(Date date) {
         return daysBetweenDates(date, new Date());
     }
 

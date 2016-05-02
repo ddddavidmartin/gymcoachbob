@@ -146,7 +146,7 @@ public class Exercise implements Serializable {
         int days;
         /* The topmost Session always shows the date it was done. */
         if (position == 0) {
-            days = Util.daysBetweenDates(session.date(), new Date());
+            days = Util.daysSinceDate(session.date());
         } else {
             /* The previous Session sits above the current one. If it was on the same day, we do not
              * print the date again. */
