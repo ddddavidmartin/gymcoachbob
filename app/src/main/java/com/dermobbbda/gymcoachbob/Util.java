@@ -34,6 +34,19 @@ public class Util {
         return false;
     }
 
+    /** Return a normalised version of the given Date.
+     *  The returned Date is set to 00h:00m:00s^ on the same day.
+     *  (^ the time in Dates is stored as milliseconds since Midnight Jan 1 1970) */
+    private static Date normaliseDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        cal.set(year, month, day, /* hour */ 0, /* minute */ 0, /* second */ 0);
+        return cal.getTime();
+    }
+
     /** Return the number of days since the given Date. */
     public static int daysSinceDate(Date date) {
         return daysBetweenDates(date, new Date());
@@ -42,6 +55,8 @@ public class Util {
     /** Return the number of days between the two Dates.
      *  d1 should be before d2 for a positive value of days to be returned. */
     public static int daysBetweenDates(Date d1, Date d2) {
+        d1 = normaliseDate(d1);
+        d2 = normaliseDate(d2);
         /* Convert time in 'milliseconds since Jan 1 1970 Midnight GMT' to number of days */
         long startDay = d1.getTime() / 1000 / 60 / 60 / 24;
         long endDay = d2.getTime() / 1000 / 60 / 60 / 24;
@@ -54,19 +69,15 @@ public class Util {
      *  in the future, today, yesterday, x days ago, ... */
     public static String timeSince(Context context, Date date) {
         String result;
-        if (onSameDay(new Date(), date)) {
+        int daysSinceLastExercise = daysSinceDate(date);
+        if (daysSinceLastExercise < 0) {
+            result = context.getString(R.string.time_future);
+        } else if (daysSinceLastExercise == 0) {
             result = context.getString(R.string.time_today);
+        } else if (daysSinceLastExercise == 1) {
+            result = context.getString(R.string.time_yesterday);
         } else {
-            int daysSinceLastExercise = daysSinceDate(date);
-            if (daysSinceLastExercise < 0) {
-                result = context.getString(R.string.time_future);
-            /* Even if it is less than 24 hours since the last Session it was the previous day
-             * as the case where it is on the same day is covered earlier. */
-            } else if (daysSinceLastExercise <= 1) {
-                result = context.getString(R.string.time_yesterday);
-            } else {
-                result = "" + daysSinceLastExercise + " " + context.getString(R.string.time_days_ago);
-            }
+            result = "" + daysSinceLastExercise + " " + context.getString(R.string.time_days_ago);
         }
         return result;
     }
