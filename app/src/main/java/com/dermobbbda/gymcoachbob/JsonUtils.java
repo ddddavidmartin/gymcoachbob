@@ -8,8 +8,10 @@ package com.dermobbbda.gymcoachbob;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Environment;
 import android.util.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -70,18 +72,49 @@ public class JsonUtils {
         dest.put(context.getString(R.string.json_exercise_list), exerciseList);
     }
 
+    /** Return a File descriptor for the External storage.
+     *  Returns null if external storage can not be written to. */
+    private static File getExternalStorage() {
+        File storage = Environment.getExternalStorageDirectory();
+        String state = Environment.getExternalStorageState();
+
+        String path = storage.getAbsolutePath();
+        if (state.equals(Environment.MEDIA_MOUNTED)) {
+            return storage;
+        } else {
+            Log.e(Util.TAG, "External media '" + path + "' not available: '" + state + "'");
+            return null;
+        }
+    }
+
+    /** Return a File descriptor for the Exercise file.
+     *  Returns null if access is not possible. */
+    private static File getExerciseFile(Context context) {
+        File storage = getExternalStorage();
+        if (storage == null) {
+            return null;
+        }
+
+        File dir = new File(storage.getAbsolutePath() + "/" + context.getString(R.string.app_directory_name));
+        dir.mkdir();
+        return new File(dir, context.getString(R.string.file_exercises));
+    }
+
     /** Write a list of Exercises to file. */
     public static void toFile(Context context, List<Exercise> exercises) {
+        File outputFile = getExerciseFile(context);
+        if (outputFile == null) {
+            Log.d(Util.TAG, "Not writing Exercises as media is not available.");
+        }
         FileOutputStream outputStream = null;
-        String fileName = context.getString(R.string.file_exercises);
-
         try {
             JSONObject result = new JSONObject();
             writeVersionCode(context, result);
             writeExercises(context, exercises, result);
 
-            outputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
-            outputStream.write(result.toString().getBytes());
+            outputStream = new FileOutputStream(outputFile);
+            int spaces = context.getResources().getInteger(R.integer.exercise_file_spaces);
+            outputStream.write(result.toString(spaces).getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -103,12 +136,17 @@ public class JsonUtils {
     public static List<Exercise> readExercisesFromFile(Context context) {
         StringBuffer fileContent = new StringBuffer("");
         FileInputStream inputStream = null;
-        String fileName = context.getString(R.string.file_exercises);
-        byte[] buffer = new byte[BUFSIZE];
         ArrayList<Exercise> result = new ArrayList<Exercise>();
 
+        File inputFile = getExerciseFile(context);
+        if (inputFile == null) {
+            Log.e(Util.TAG, "Not reading Exercises as media is not available.");
+            return result;
+        }
+        byte[] buffer = new byte[BUFSIZE];
+
         try {
-            inputStream = context.openFileInput(fileName);
+            inputStream = new FileInputStream(inputFile);
             while (inputStream.read(buffer) != -1) {
                 fileContent.append(new String(buffer));
             }

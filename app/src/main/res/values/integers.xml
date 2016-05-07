@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <integer name="exercise_file_spaces">2</integer>
+
     <integer name="new_session_min_weight">0</integer>
     <integer name="new_session_max_weight">999</integer>
     <integer name="new_session_min_decimal_weight">0</integer>
