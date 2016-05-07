@@ -139,7 +139,16 @@ Backlog of tasks left to do:
   that show up as well
  * https://developer.android.com/guide/topics/manifest/uses-sdk-element.html
 
-* investigate why deleting Exercises crashes the app
+* rather than sorting sessions by time, sort them on the same day by a counter
+ * otherwise, if a Session is added the next day at an earlier time it will
+   be added before the other ones
+
+* consider allowing reading of Exercises even when writing is not allowed
+* consider using internal memory as fallback for when external is not available
+ * always write to both memories
+ * fall back to internal if reading from external fails
+* check that writing to file works on API > 18, as in that case we are not
+  requesting the permission
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
@@ -260,3 +269,8 @@ through the code base
  * probably safe to always update the next Session when a new one is added as
    every time a Session is added in the middle (with a new one on a separate
    day following after it), the 'days since' need to be updated
+
+* investigate why deleting Exercises crashes the app
+
+* store exercises on sd card
+ * use .json extension
