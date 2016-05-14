@@ -5,13 +5,13 @@
 
 package com.dermobbbda.gymcoachbob;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.ActionMode;
+import android.support.v7.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
     private static ActionMode mActionMode;
-    private static Activity mActivity;
+    private static ActionBarActivity mActivity;
     private static ExerciseWrapper mDataSet;
     private static ExerciseViewAdapter mAdapter;
     /** Value to mark that no position is currently selected. */
@@ -72,7 +72,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                     v.setSelected(true);
                     /* Reset any previous ActionBar item selections before starting a new ActionBar. */
                     mActionItemClicked = false;
-                    mActionMode = mActivity.startActionMode(mActionModeCallback);
+                    mActionMode = mActivity.startSupportActionMode(mActionModeCallback);
                     return true;
                 }
             });
@@ -81,7 +81,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         }
     }
 
-    public ExerciseViewAdapter(Activity activity, ExerciseWrapper exercises) {
+    public ExerciseViewAdapter(ActionBarActivity activity, ExerciseWrapper exercises) {
         mDataSet = exercises;
         mActivity = activity;
         mAdapter = this;

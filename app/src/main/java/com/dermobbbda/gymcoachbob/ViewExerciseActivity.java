@@ -7,14 +7,14 @@ package com.dermobbbda.gymcoachbob;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ViewExerciseActivity extends Activity {
+public class ViewExerciseActivity extends ActionBarActivity {
     private static final int NEW_SESSION_REQUEST = 1;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -26,7 +26,6 @@ public class ViewExerciseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_exercise);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.view_exercise_recyclerview);
         /* Improves performance. Only set to true if changes in content do not change the
          * layout size of the RecyclerView. */

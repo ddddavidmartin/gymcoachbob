@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
-public class NewSessionActivity extends Activity implements DatePickerDialog.OnDateSetListener {
+public class NewSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = "GCB";
     private Date mDate;
     private int mRepetitions;
