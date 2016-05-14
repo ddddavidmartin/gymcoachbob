@@ -122,15 +122,16 @@ Backlog of tasks left to do:
 
 * implement widget for off-screen to add Sessions
 
-* check that the date update on a new day actually works
- * it may not work as we for example do not count a full day if only half a
-   day passed (should be fixed now but nevertheless check)
-
 * consider grouping Sessions through a wrapper
  * rather than having a separate card for each Session, only have one card per day
  * the list of Sessions would look much less busy that way and probably allowed
    to show more information as well (for example if it always allowed space for
    3 sets, and expanded when it needed to show more)
+ * consider drawing a bitmap behind each Sessions
+  * this way we can avoid using a wrapper and just have a continous bitmap
+    if a Session has a following one on the same day, or an ending one if it
+    is the last for that day, and we can avoid the whole list inside a list thing
+  * consider not using card view at all for Sessions and instead a custom layout
 
 * implement functionality to select the directory in which exercises are saved
  * that way we can select the dropbox folder to sync the stored exercises
@@ -147,8 +148,13 @@ Backlog of tasks left to do:
 * consider using internal memory as fallback for when external is not available
  * always write to both memories
  * fall back to internal if reading from external fails
-* check that writing to file works on API > 18, as in that case we are not
-  requesting the permission
+
+* check whether entering values through keyboard actually calls the NumberPicker
+  callback correctly
+ * when entering the number via keyboard is cancelled it leaves the value on
+   the number picker but does not call the callback that sets it to the given
+   value
+
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
@@ -274,3 +280,11 @@ through the code base
 
 * store exercises on sd card
  * use .json extension
+
+* check that the date update on a new day actually works
+ * it may not work as we for example do not count a full day if only half a
+   day passed (should be fixed now but nevertheless check)
+
+* check that writing to file works on API > 18, as in that case we are not
+  requesting the permission
+ * (it does not work)
