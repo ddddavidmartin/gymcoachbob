@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     card_view:cardCornerRadius="@dimen/exercise_card_corner_radius"
-    android:layout_margin="@dimen/exercise_card_layout_margin"
+    card_view:contentPaddingLeft="@dimen/activity_horizontal_margin"
+    card_view:contentPaddingRight="@dimen/activity_horizontal_margin"
+    android:layout_margin="@dimen/session_card_layout_margin"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout

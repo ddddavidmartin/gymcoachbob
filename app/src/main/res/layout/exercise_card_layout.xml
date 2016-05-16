@@ -5,6 +5,10 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           card_view:cardCornerRadius="@dimen/exercise_card_corner_radius"
+          card_view:contentPaddingLeft="@dimen/activity_horizontal_margin"
+          card_view:contentPaddingRight="@dimen/activity_horizontal_margin"
+          card_view:contentPaddingTop="@dimen/exercise_card_padding_vertical"
+          card_view:contentPaddingBottom="@dimen/exercise_card_padding_vertical"
           android:layout_margin="@dimen/exercise_card_layout_margin"
           android:foreground="?android:attr/selectableItemBackground">
 
