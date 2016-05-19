@@ -15,13 +15,16 @@
 
     <dimen name="exercise_card_item_height">72dp</dimen>
     <dimen name="exercise_card_corner_radius">0dp</dimen>
-    <dimen name="exercise_card_layout_margin">0dp</dimen>
+    <dimen name="exercise_card_layout_margin">1dp</dimen>
     <dimen name="exercise_card_padding_vertical">2dp</dimen>
+    <dimen name="exercise_card_elevation">2dp</dimen>
 
     <dimen name="session_card_date_width">115dp</dimen>
     <dimen name="session_card_weight_width">34dp</dimen>
     <dimen name="session_card_repetitions_width">32dp</dimen>
-    <dimen name="session_card_layout_margin">2dp</dimen>
+    <dimen name="session_card_layout_margin">1dp</dimen>
+    <dimen name="session_card_corner_radius">0dp</dimen>
+    <dimen name="session_card_elevation">2dp</dimen>
 
     <dimen name="activity_new_session_button_height">48dp</dimen>
 

@@ -9,6 +9,7 @@
           card_view:contentPaddingRight="@dimen/activity_horizontal_margin"
           card_view:contentPaddingTop="@dimen/exercise_card_padding_vertical"
           card_view:contentPaddingBottom="@dimen/exercise_card_padding_vertical"
+          card_view:cardElevation="@dimen/exercise_card_elevation"
           android:layout_margin="@dimen/exercise_card_layout_margin"
           android:foreground="?android:attr/selectableItemBackground">
 
