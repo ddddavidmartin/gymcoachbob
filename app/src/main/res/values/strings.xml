@@ -16,6 +16,9 @@
     <string name="button_pick_date">Pick date</string>
     <string name="button_add_session">Add set</string>
 
+    <string name="radio_button_new_exercise_weight_based">weight-based</string>
+    <string name="radio_button_new_exercise_time_based">time-based</string>
+
     <string name="EXTRA_EXERCISE">com.dermobbbda.gymcoachbob.extra.exercise</string>
     <string name="EXTRA_EXERCISE_POSITION">com.dermobbbda.gymcoachbob.extra.exercise_position</string>
     <string name="EXTRA_SESSION">com.dermobbbda.gymcoachbob.extra.session</string>

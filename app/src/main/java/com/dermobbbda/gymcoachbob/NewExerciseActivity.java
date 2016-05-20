@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 
 public class NewExerciseActivity extends ActionBarActivity {
@@ -43,6 +44,21 @@ public class NewExerciseActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /** Callback for Radio Button presses. */
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        if (checked) {
+            switch (view.getId()) {
+                case R.id.radio_button_new_exercise_weight_based:
+                    Log.d(Util.TAG, "Weight-based exercise selected");
+                    break;
+                case R.id.radio_button_new_exercise_time_based:
+                    Log.d(Util.TAG, "Time-based exercise selected");
+            }
+        }
     }
 
     public void addExercise(View view) {

@@ -16,10 +16,37 @@
         android:inputType="textCapWords" >
         <requestFocus />
     </EditText>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/radio_button_new_exercise_weight_based"
+        android:layout_below="@id/exercise_name"
+        android:layout_marginTop="@dimen/margin_small"
+        android:id="@+id/radio_group_new_exercise" >
+
+        <RadioButton
+            android:id="@id/radio_button_new_exercise_weight_based"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_new_exercise_weight_based"
+            android:layout_below="@id/exercise_name"
+            android:onClick="onRadioButtonClicked" />
+
+        <RadioButton
+            android:id="@+id/radio_button_new_exercise_time_based"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_new_exercise_time_based"
+            android:layout_below="@id/radio_button_new_exercise_weight_based"
+            android:onClick="onRadioButtonClicked" />
+    </RadioGroup>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/exercise_name"
+        android:layout_below="@id/radio_group_new_exercise"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/button_add_exercise"
         android:onClick="addExercise"/>
 </RelativeLayout>
