@@ -72,8 +72,12 @@ public class ViewExerciseActivity extends ActionBarActivity {
                 Intent intent = new Intent(this, NewSessionActivity.class);
                 /* Provide the last added Session details so that the Activity can be initialised
                  * with good default values. */
-                intent.putExtra(getString(R.string.EXTRA_LAST_WEIGHT), mExercise.lastWeight());
-                intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS), mExercise.lastRepetitions());
+                if (mExercise.type() == Exercise.WEIGHT_BASED) {
+                    intent.putExtra(getString(R.string.EXTRA_LAST_WEIGHT),
+                                    ((ExerciseWeightBased) mExercise).lastWeight());
+                    intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS),
+                                    ((ExerciseWeightBased) mExercise).lastRepetitions());
+                }
                 startActivityForResult(intent, NEW_SESSION_REQUEST);
                 break;
         }

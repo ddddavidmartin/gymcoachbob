@@ -15,19 +15,22 @@ import java.util.Date;
 import java.util.List;
 
 public class Exercise implements Serializable {
+    /* Weight based Exercise. */
+    protected static final int WEIGHT_BASED = 0;
+    /* Name of the exercise */
+    protected String mName;
+    protected List<ExerciseSession> mSessions;
+    protected int mExerciseType;
     /* The last time the dates of the Exercises where checked.
      * See datesHaveChangedSinceLastCheck. */
     private static Date mLastDateCheck = null;
 
-    /* Name of the exercise */
-    private String mName;
-    private List<ExerciseSession> mSessions;
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
-    /* The weight used for the last Session that was added. */
-    private double mLastWeight = 0;
-    /* The number of repetitions used for the last Session that was added. */
-    private int mLastRepetitions = 0;
+
+    Exercise() {
+        this("", DEFAULT_CAPACITY);
+    }
 
     Exercise(String name) {
         this(name, DEFAULT_CAPACITY);
@@ -48,6 +51,10 @@ public class Exercise implements Serializable {
         return mName;
     }
 
+    public int type() {
+        return mExerciseType;
+    }
+
     public List<ExerciseSession> sessions() {
         return mSessions;
     }
@@ -59,21 +66,6 @@ public class Exercise implements Serializable {
         mSessions.add(0, session);
         Collections.sort(mSessions);
         int position = mSessions.indexOf(session);
-
-        boolean setLastWeightAndRepetitions;
-        /* We initialise the 'new Session' dialog with the weight and repetitions of the most recently
-         * added Session. For this reason we only set these values if the new Session is at the top of
-         * the list (i.e. at position 0) or on the same day as the Session at the top of the list. */
-        if (position == 0) {
-            setLastWeightAndRepetitions = true;
-        } else {
-            Date mostRecentDate = mSessions.get(0).date();
-            setLastWeightAndRepetitions = Util.onSameDay(session.date(), mostRecentDate);
-        }
-        if (setLastWeightAndRepetitions) {
-            mLastWeight = session.weight();
-            mLastRepetitions = session.repetitions();
-        }
 
         /* As we are modifying the Sessions directly, we have to notify the Exercise backend
          * about the change. */
@@ -87,16 +79,6 @@ public class Exercise implements Serializable {
     @Override
     public String toString() {
         return "Exercise: " + mName;
-    }
-
-    /* Return the weight that was used for the last Session. */
-    public double lastWeight() {
-        return mLastWeight;
-    }
-
-    /** Return the number of repetitions that were used for the last Session. */
-    public int lastRepetitions() {
-        return mLastRepetitions;
     }
 
     /** Return the most recent Session of this Exercise.
