@@ -72,7 +72,7 @@ public class NewExerciseActivity extends ActionBarActivity {
 
         Log.d(Util.TAG, "new exerciseName: " + exerciseName);
 
-        ExerciseWeightBased exercise = new ExerciseWeightBased(exerciseName);
+        WeightBasedExercise exercise = new WeightBasedExercise(exerciseName);
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.EXTRA_EXERCISE), exercise);

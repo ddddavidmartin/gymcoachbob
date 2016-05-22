@@ -64,7 +64,7 @@ public class JsonUtils {
                      * file itself more humanly readable. */
                     tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
                     if (e.type() == Exercise.WEIGHT_BASED) {
-                        ExerciseSessionWeightBased currentSession = (ExerciseSessionWeightBased) s;
+                        WeightBasedExerciseSession currentSession = (WeightBasedExerciseSession) s;
                         tmpSession.put(context.getString(R.string.json_session_weight), currentSession.weight());
                         tmpSession.put(context.getString(R.string.json_session_repetitions), currentSession.repetitions());
                     }
@@ -200,7 +200,7 @@ public class JsonUtils {
 
                         /* Add the read Session to the Exercise but do not sync the change back to file
                          * again. */
-                        exercise.add(new ExerciseSessionWeightBased(date, weight, repetitions), /* do not sync changes */ false);
+                        exercise.add(new WeightBasedExerciseSession(date, weight, repetitions), /* do not sync changes */ false);
                     }
                 }
 

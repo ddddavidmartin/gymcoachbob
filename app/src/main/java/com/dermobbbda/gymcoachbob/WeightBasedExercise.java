@@ -2,13 +2,13 @@ package com.dermobbbda.gymcoachbob;
 
 import java.util.Date;
 
-public class ExerciseWeightBased extends Exercise {
+public class WeightBasedExercise extends Exercise {
     /* The weight used for the last Session that was added. */
     private double mLastWeight = 0;
     /* The number of repetitions used for the last Session that was added. */
     private int mLastRepetitions = 0;
 
-    ExerciseWeightBased(String name) {
+    WeightBasedExercise(String name) {
         super(name);
         mExerciseType = WEIGHT_BASED;
     }
@@ -23,7 +23,7 @@ public class ExerciseWeightBased extends Exercise {
         return mLastRepetitions;
     }
 
-    public int add(ExerciseSessionWeightBased session, boolean syncExercisesOnFile) {
+    public int add(WeightBasedExerciseSession session, boolean syncExercisesOnFile) {
         int position = super.add(session, syncExercisesOnFile);
 
         boolean setLastWeightAndRepetitions;

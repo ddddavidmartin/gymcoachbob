@@ -174,7 +174,7 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
 
 
     public void addSession(View view) {
-        ExerciseSession session = new ExerciseSessionWeightBased(mDate, mWeight, mRepetitions);
+        ExerciseSession session = new WeightBasedExerciseSession(mDate, mWeight, mRepetitions);
         Log.d(TAG, "Created new session: " + session);
 
         Intent returnIntent = new Intent();

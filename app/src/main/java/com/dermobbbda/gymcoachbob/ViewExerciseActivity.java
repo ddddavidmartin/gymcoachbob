@@ -74,9 +74,9 @@ public class ViewExerciseActivity extends ActionBarActivity {
                  * with good default values. */
                 if (mExercise.type() == Exercise.WEIGHT_BASED) {
                     intent.putExtra(getString(R.string.EXTRA_LAST_WEIGHT),
-                                    ((ExerciseWeightBased) mExercise).lastWeight());
+                                    ((WeightBasedExercise) mExercise).lastWeight());
                     intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS),
-                                    ((ExerciseWeightBased) mExercise).lastRepetitions());
+                                    ((WeightBasedExercise) mExercise).lastRepetitions());
                 }
                 startActivityForResult(intent, NEW_SESSION_REQUEST);
                 break;

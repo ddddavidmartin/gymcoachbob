@@ -47,7 +47,7 @@ public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBa
     /** Replace the contents of a view (invoked by the layout manager) */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ExerciseSessionWeightBased session = (ExerciseSessionWeightBased) mDataSet.get(position);
+        WeightBasedExerciseSession session = (WeightBasedExerciseSession) mDataSet.get(position);
         holder.mDateTextView.setText(mExercise.timeOfSession(position));
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));
