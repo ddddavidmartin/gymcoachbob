@@ -28,10 +28,6 @@ public class Exercise implements Serializable {
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
 
-    Exercise() {
-        this("", DEFAULT_CAPACITY);
-    }
-
     Exercise(String name) {
         this(name, DEFAULT_CAPACITY);
     }
