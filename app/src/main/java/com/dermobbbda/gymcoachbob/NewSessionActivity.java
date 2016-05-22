@@ -174,7 +174,7 @@ public class NewSessionActivity extends ActionBarActivity implements DatePickerD
 
 
     public void addSession(View view) {
-        Session session = new Session(mDate, mWeight, mRepetitions);
+        ExerciseSession session = new ExerciseSession(mDate, mWeight, mRepetitions);
         Log.d(TAG, "Created new session: " + session);
 
         Intent returnIntent = new Intent();

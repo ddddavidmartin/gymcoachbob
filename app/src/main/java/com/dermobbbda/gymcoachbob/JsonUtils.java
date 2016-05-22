@@ -55,7 +55,7 @@ public class JsonUtils {
             tmp.put(context.getString(R.string.json_exercise_name), e.name());
 
             JSONArray sessions = new JSONArray();
-            for (Session s : e.sessions()) {
+            for (ExerciseSession s : e.sessions()) {
                 JSONObject tmpSession = new JSONObject();
                 /* We store the date as a long as it is the easiest to parse again.
                  * We may consider using an actual String date as that would make the Json
@@ -192,7 +192,7 @@ public class JsonUtils {
 
                     /* Add the read Session to the Exercise but do not sync the change back to file
                      * again. */
-                    exercise.add(new Session(date, weight, repetitions), /* do not sync changes */ false);
+                    exercise.add(new ExerciseSession(date, weight, repetitions), /* do not sync changes */ false);
                 }
 
                 result.add(exercise);

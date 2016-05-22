@@ -88,7 +88,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
         }
 
         if (requestCode == NEW_SESSION_REQUEST && resultCode == RESULT_OK) {
-            Session session = (Session) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
+            ExerciseSession session = (ExerciseSession) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
             Log.d(Util.TAG, "Received Session: " + session);
             int position = mExercise.add(session, /* update change on file */ true);
             mAdapter.notifyItemInserted(position);

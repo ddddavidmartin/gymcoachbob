@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
-    private static List<Session> mDataSet;
+    private static List<ExerciseSession> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mDateTextView;
@@ -47,7 +47,7 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
     /** Replace the contents of a view (invoked by the layout manager) */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Session session = mDataSet.get(position);
+        ExerciseSession session = mDataSet.get(position);
         holder.mDateTextView.setText(mExercise.timeOfSession(position));
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));

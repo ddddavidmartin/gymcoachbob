@@ -21,7 +21,7 @@ public class Exercise implements Serializable {
 
     /* Name of the exercise */
     private String mName;
-    private List<Session> mSessions;
+    private List<ExerciseSession> mSessions;
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
     /* The weight used for the last Session that was added. */
@@ -36,7 +36,7 @@ public class Exercise implements Serializable {
     /** Create an Exercise with the given name and enough space allocated to save capacity Sessions. */
     Exercise(String name, int capacity) {
         mName = name;
-        ArrayList<Session> sessions = new ArrayList<Session>();
+        ArrayList<ExerciseSession> sessions = new ArrayList<ExerciseSession>();
         if (capacity > DEFAULT_CAPACITY) {
             /* Setting the size up front avoids reallocations when Sessions are added. */
             sessions.ensureCapacity(capacity);
@@ -48,14 +48,14 @@ public class Exercise implements Serializable {
         return mName;
     }
 
-    public List<Session> sessions() {
+    public List<ExerciseSession> sessions() {
         return mSessions;
     }
 
     /** Add the given Session to the Exercise.
      *  Use syncExercisesOnFile=true to update the Exercises on file after adding the Session.
      *  Returns the position at which the Session was inserted. */
-    public int add(Session session, boolean syncExercisesOnFile) {
+    public int add(ExerciseSession session, boolean syncExercisesOnFile) {
         mSessions.add(0, session);
         Collections.sort(mSessions);
         int position = mSessions.indexOf(session);
@@ -101,13 +101,13 @@ public class Exercise implements Serializable {
 
     /** Return the most recent Session of this Exercise.
      *  Returns null if there are no Sessions for this Exercise. */
-    private Session mostRecentSession() {
+    private ExerciseSession mostRecentSession() {
         if (mSessions.size() == 0) {
             return null;
         }
 
-        Session lastSession = null;
-        for (Session s : mSessions) {
+        ExerciseSession lastSession = null;
+        for (ExerciseSession s : mSessions) {
             if ((lastSession == null) || s.date().after(lastSession.date())) {
                 lastSession = s;
             /* As soon as we come across a Session that is older, we know that no newer one will
@@ -122,7 +122,7 @@ public class Exercise implements Serializable {
 
     /** Return a String describing the time since the most recent Session. */
     public String timeSinceMostRecentSession(Context context) {
-        Session lastSession = mostRecentSession();
+        ExerciseSession lastSession = mostRecentSession();
         String last = context.getString(R.string.exercise_last);
         String timeSinceLast;
         if (lastSession == null) {
@@ -138,7 +138,7 @@ public class Exercise implements Serializable {
      *  If the previous Session took place at an earlier day, the number of days since then will be
      *  included in the returned String. */
     public String timeOfSession(int position) {
-        Session session = mSessions.get(position);
+        ExerciseSession session = mSessions.get(position);
         String dateString = DateFormat.format("dd/MM/yyyy", session.date()).toString();
 
         int days;
@@ -186,66 +186,13 @@ public class Exercise implements Serializable {
     public boolean nextSessionNeedsUpdate(int position) {
         boolean res = false;
         if (position < (mSessions.size() - 1)) {
-            Session one = mSessions.get(position);
-            Session other = mSessions.get(position + 1);
+            ExerciseSession one = mSessions.get(position);
+            ExerciseSession other = mSessions.get(position + 1);
 
             if (!Util.onSameDay(one.date(), other.date())) {
                 res = true;
             }
         }
         return res;
-    }
-}
-
-/** A workout session, i.e. a number of repetitions of an Exercise at a specific date. */
-class Session implements Serializable, Comparable<Session> {
-    /** The time when the Session was done. */
-    private Date mDate;
-    /** Number of repetitions of the set. */
-    private int mRepetitions;
-    /** Weight used for the set. */
-    private double mWeight;
-
-    Session(Date date, double weight, int repetitions) {
-        mDate = date;
-        mWeight = weight;
-        mRepetitions = repetitions;
-    }
-
-    /** Return the time at which the Session took place. */
-    public Date date() {
-        return mDate;
-    }
-
-    /** Return the weight used for this Session. */
-    public double weight() {
-        return mWeight;
-    }
-
-    /** Return the number of repetitions of this Session. */
-    public int repetitions() {
-        return mRepetitions;
-    }
-
-    /** Compare this Session to another to determine relative ordering.
-     *  Sessions on the same day are ordered chronologically in the order they are added.
-     *  Sessions on different days are sorted with the most recent one first.
-     *  This way the latest day of exercises is always at the top, but the Sessions for a given
-     *  day are listed in the order performed.
-     */
-    public int compareTo(Session s) {
-        Date thisDate = date();
-        Date otherDate = s.date();
-        boolean onSameDay = Util.onSameDay(thisDate, otherDate);
-
-        if (onSameDay && (thisDate.after(otherDate)) ||
-            (!onSameDay && thisDate.before(otherDate))) {
-            return 1;
-        } else if ((onSameDay && thisDate.before(otherDate)) ||
-                   (!onSameDay && thisDate.after(otherDate))) {
-            return -1;
-        } else {
-            return 0;
-        }
     }
 }
