@@ -27,6 +27,7 @@
 
     <string name="json_version_code">versionCode</string>
     <string name="json_exercise_name">name</string>
+    <string name="json_exercise_type">type</string>
     <string name="json_exercise_list">exercises</string>
     <string name="json_exercise_session_list">sessions</string>
     <string name="json_session_date">date</string>

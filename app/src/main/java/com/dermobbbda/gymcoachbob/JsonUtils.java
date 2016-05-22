@@ -53,17 +53,23 @@ public class JsonUtils {
         for (Exercise e : exercises) {
             JSONObject tmp = new JSONObject();
             tmp.put(context.getString(R.string.json_exercise_name), e.name());
+            tmp.put(context.getString(R.string.json_exercise_type), e.type());
 
             JSONArray sessions = new JSONArray();
-            for (ExerciseSession s : e.sessions()) {
-                JSONObject tmpSession = new JSONObject();
-                /* We store the date as a long as it is the easiest to parse again.
-                 * We may consider using an actual String date as that would make the Json
-                 * file itself more humanly readable. */
-                tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
-                tmpSession.put(context.getString(R.string.json_session_weight), s.weight());
-                tmpSession.put(context.getString(R.string.json_session_repetitions), s.repetitions());
-                sessions.put(tmpSession);
+            if (e.type() == Exercise.WEIGHT_BASED) {
+                for (ExerciseSession s : e.sessions()) {
+                    JSONObject tmpSession = new JSONObject();
+                    /* We store the date as a long as it is the easiest to parse again.
+                     * We may consider using an actual String date as that would make the Json
+                     * file itself more humanly readable. */
+                    tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
+                    if (e.type() == Exercise.WEIGHT_BASED) {
+                        ExerciseSessionWeightBased currentSession = (ExerciseSessionWeightBased) s;
+                        tmpSession.put(context.getString(R.string.json_session_weight), currentSession.weight());
+                        tmpSession.put(context.getString(R.string.json_session_repetitions), currentSession.repetitions());
+                    }
+                    sessions.put(tmpSession);
+                }
             }
             tmp.put(context.getString(R.string.json_exercise_session_list), sessions);
 
@@ -179,6 +185,7 @@ public class JsonUtils {
             for (int i = 0; i < exerciseList.length(); i++){
                 JSONObject tmp = exerciseList.getJSONObject(i);
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
+                int exerciseType = tmp.getInt(context.getString(R.string.json_exercise_type));
                 JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
 
                 Exercise exercise = new Exercise(exerciseName, sessionList.length());
@@ -187,12 +194,14 @@ public class JsonUtils {
                     JSONObject tmpSession = sessionList.getJSONObject(j);
                     String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
                     Date date = new Date(Long.parseLong(dateString));
-                    int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
-                    double weight = tmpSession.getDouble(context.getString(R.string.json_session_weight));
+                    if (exerciseType == Exercise.WEIGHT_BASED) {
+                        int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
+                        double weight = tmpSession.getDouble(context.getString(R.string.json_session_weight));
 
-                    /* Add the read Session to the Exercise but do not sync the change back to file
-                     * again. */
-                    exercise.add(new ExerciseSession(date, weight, repetitions), /* do not sync changes */ false);
+                        /* Add the read Session to the Exercise but do not sync the change back to file
+                         * again. */
+                        exercise.add(new ExerciseSessionWeightBased(date, weight, repetitions), /* do not sync changes */ false);
+                    }
                 }
 
                 result.add(exercise);

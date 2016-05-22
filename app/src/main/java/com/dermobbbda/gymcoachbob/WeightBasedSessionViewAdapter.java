@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.ViewHolder> {
+public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBasedSessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
     private static List<ExerciseSession> mDataSet;
 
@@ -31,14 +31,14 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
         }
     }
 
-    public SessionViewAdapter(Exercise exercise) {
+    public WeightBasedSessionViewAdapter(Exercise exercise) {
         mExercise = exercise;
         mDataSet = exercise.sessions();
     }
 
     /** Create new Views (called by the layout manager) */
     @Override
-    public SessionViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WeightBasedSessionViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.session_card_layout, parent, false);
         return new ViewHolder(v);
@@ -47,7 +47,7 @@ public class SessionViewAdapter extends RecyclerView.Adapter<SessionViewAdapter.
     /** Replace the contents of a view (invoked by the layout manager) */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ExerciseSession session = mDataSet.get(position);
+        ExerciseSessionWeightBased session = (ExerciseSessionWeightBased) mDataSet.get(position);
         holder.mDateTextView.setText(mExercise.timeOfSession(position));
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));

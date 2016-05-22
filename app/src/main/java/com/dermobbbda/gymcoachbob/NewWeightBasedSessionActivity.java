@@ -22,7 +22,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
-public class NewSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
+public class NewWeightBasedSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = "GCB";
     private Date mDate;
     private int mRepetitions;
@@ -174,7 +174,7 @@ public class NewSessionActivity extends ActionBarActivity implements DatePickerD
 
 
     public void addSession(View view) {
-        ExerciseSession session = new ExerciseSession(mDate, mWeight, mRepetitions);
+        ExerciseSession session = new ExerciseSessionWeightBased(mDate, mWeight, mRepetitions);
         Log.d(TAG, "Created new session: " + session);
 
         Intent returnIntent = new Intent();

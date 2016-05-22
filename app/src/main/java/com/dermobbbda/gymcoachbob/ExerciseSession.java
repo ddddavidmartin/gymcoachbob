@@ -6,32 +6,16 @@ import java.util.Date;
 /** A workout session, i.e. a number of repetitions of an Exercise at a specific date. */
 class ExerciseSession implements Serializable, Comparable<ExerciseSession> {
     /** The time when the ExerciseSession was done. */
-    private Date mDate;
-    /** Number of repetitions of the set. */
-    private int mRepetitions;
-    /** Weight used for the set. */
-    private double mWeight;
+    protected Date mDate;
 
-    ExerciseSession(Date date, double weight, int repetitions) {
+    ExerciseSession(Date date) {
         mDate = date;
-        mWeight = weight;
-        mRepetitions = repetitions;
     }
 
     /** Return the time at which the ExerciseSession took place. */
     public Date date() {
                  return mDate;
                               }
-
-    /** Return the weight used for this ExerciseSession. */
-    public double weight() {
-                     return mWeight;
-                                    }
-
-    /** Return the number of repetitions of this ExerciseSession. */
-    public int repetitions() {
-                       return mRepetitions;
-                                           }
 
     /** Compare this ExerciseSession to another to determine relative ordering.
      *  ExerciseSessions on the same day are ordered chronologically in the order they are added.

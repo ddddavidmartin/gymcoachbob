@@ -49,7 +49,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
         setTitle(exercise.name());
 
         mExercise = exercise;
-        mAdapter = new SessionViewAdapter(mExercise);
+        mAdapter = new WeightBasedSessionViewAdapter(mExercise);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -69,7 +69,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
         switch (id) {
             case R.id.action_new_session:
-                Intent intent = new Intent(this, NewSessionActivity.class);
+                Intent intent = new Intent(this, NewWeightBasedSessionActivity.class);
                 /* Provide the last added Session details so that the Activity can be initialised
                  * with good default values. */
                 if (mExercise.type() == Exercise.WEIGHT_BASED) {

@@ -23,8 +23,7 @@ public class ExerciseWeightBased extends Exercise {
         return mLastRepetitions;
     }
 
-    @Override
-    public int add(ExerciseSession session, boolean syncExercisesOnFile) {
+    public int add(ExerciseSessionWeightBased session, boolean syncExercisesOnFile) {
         int position = super.add(session, syncExercisesOnFile);
 
         boolean setLastWeightAndRepetitions;
