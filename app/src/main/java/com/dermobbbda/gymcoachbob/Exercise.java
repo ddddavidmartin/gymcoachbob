@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-public class Exercise implements Serializable {
+public abstract class Exercise implements Serializable {
     /* Weight based Exercise. */
     protected static final int WEIGHT_BASED = 0;
     /* Name of the exercise */

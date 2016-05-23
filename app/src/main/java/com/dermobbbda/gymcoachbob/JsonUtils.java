@@ -188,7 +188,7 @@ public class JsonUtils {
                 int exerciseType = tmp.getInt(context.getString(R.string.json_exercise_type));
                 JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
 
-                Exercise exercise = new Exercise(exerciseName, sessionList.length());
+                Exercise exercise = new WeightBasedExercise(exerciseName, sessionList.length());
 
                 for (int j = 0; j < sessionList.length(); j++) {
                     JSONObject tmpSession = sessionList.getJSONObject(j);

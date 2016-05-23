@@ -13,6 +13,11 @@ public class WeightBasedExercise extends Exercise {
         mExerciseType = WEIGHT_BASED;
     }
 
+    WeightBasedExercise(String name, int capacity) {
+        super(name, capacity);
+        mExerciseType = WEIGHT_BASED;
+    }
+
     /* Return the weight that was used for the last Session. */
     public double lastWeight() {
         return mLastWeight;
@@ -23,7 +28,8 @@ public class WeightBasedExercise extends Exercise {
         return mLastRepetitions;
     }
 
-    public int add(WeightBasedExerciseSession session, boolean syncExercisesOnFile) {
+    @Override
+    public int add(ExerciseSession session, boolean syncExercisesOnFile) {
         int position = super.add(session, syncExercisesOnFile);
 
         boolean setLastWeightAndRepetitions;
@@ -37,8 +43,8 @@ public class WeightBasedExercise extends Exercise {
             setLastWeightAndRepetitions = Util.onSameDay(session.date(), mostRecentDate);
         }
         if (setLastWeightAndRepetitions) {
-            mLastWeight = session.weight();
-            mLastRepetitions = session.repetitions();
+            mLastWeight = ((WeightBasedExerciseSession) session).weight();
+            mLastRepetitions = ((WeightBasedExerciseSession) session).repetitions();
         }
 
         return position;

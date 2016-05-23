@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /** A workout session, i.e. a number of repetitions of an Exercise at a specific date. */
-class ExerciseSession implements Serializable, Comparable<ExerciseSession> {
+public abstract class ExerciseSession implements Serializable, Comparable<ExerciseSession> {
     /** The time when the ExerciseSession was done. */
     protected Date mDate;
 
