@@ -14,8 +14,8 @@ public abstract class ExerciseSession implements Serializable, Comparable<Exerci
 
     /** Return the time at which the ExerciseSession took place. */
     public Date date() {
-                 return mDate;
-                              }
+        return mDate;
+    }
 
     /** Compare this ExerciseSession to another to determine relative ordering.
      *  ExerciseSessions on the same day are ordered chronologically in the order they are added.
