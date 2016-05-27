@@ -45,6 +45,8 @@
     <string name="activity_view_exercise_textview_weight">Weight</string>
     <string name="activity_view_exercise_textview_repetitions">Repetition(s)</string>
 
+    <string name="activity_view_empty_exercise_description">This is an empty exercise.\n\nPress plus to add a set.</string>
+
     <string name="alert_delete_exercise_title">Delete</string>
     <string name="alert_delete_exercise_message">This exercise and all associated sets will be removed and can not be recovered.</string>
     <string name="alert_delete_exercise_okay">Delete</string>

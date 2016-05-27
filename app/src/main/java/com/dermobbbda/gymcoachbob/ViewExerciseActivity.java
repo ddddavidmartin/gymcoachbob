@@ -25,14 +25,6 @@ public class ViewExerciseActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_exercise);
-        mRecyclerView = (RecyclerView) findViewById(R.id.view_exercise_recyclerview);
-        /* Improves performance. Only set to true if changes in content do not change the
-         * layout size of the RecyclerView. */
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(getString(R.string.EXTRA_EXERCISE_POSITION), -1);
@@ -49,6 +41,29 @@ public class ViewExerciseActivity extends ActionBarActivity {
         setTitle(exercise.name());
 
         mExercise = exercise;
+
+        if (mExercise.sessions().size() > 0) {
+            setUpNonEmptyExercise();
+        } else {
+            setUpEmptyExercise();
+        }
+    }
+
+    /** Set up the Exercise layout for when no Sessions have been added yet. */
+    protected void setUpEmptyExercise() {
+        setContentView(R.layout.activity_view_empty_exercise);
+    }
+
+    /** Set up the Exercise layout for when there are Sessions for this Exercise. */
+    protected void setUpNonEmptyExercise() {
+        setContentView(R.layout.activity_view_exercise);
+        mRecyclerView = (RecyclerView) findViewById(R.id.view_exercise_recyclerview);
+        /* Improves performance. Only set to true if changes in content do not change the
+         * layout size of the RecyclerView. */
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new WeightBasedSessionViewAdapter(mExercise);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -92,6 +107,10 @@ public class ViewExerciseActivity extends ActionBarActivity {
         }
 
         if (requestCode == NEW_SESSION_REQUEST && resultCode == RESULT_OK) {
+            /* If we added our first Session, we have to show the list of Sessions now. */
+            if (mExercise.sessions().size() == 0) {
+                setUpNonEmptyExercise();
+            }
             ExerciseSession session = (ExerciseSession) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
             Log.d(Util.TAG, "Received Session: " + session);
             int position = mExercise.add(session, /* update change on file */ true);
