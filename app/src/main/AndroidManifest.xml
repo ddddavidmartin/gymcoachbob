@@ -26,7 +26,6 @@
         </activity>
         <activity
             android:name=".NewExerciseActivity"
-            android:theme="@style/DialogTheme"
             android:label="@string/title_activity_add_exercise"
             android:windowSoftInputMode="stateVisible"
             android:parentActivityName=".MainActivity" >
@@ -43,7 +42,6 @@
                 android:value="com.dermobbbda.gymcoachbob.MainActivity" />
         </activity>
         <activity android:name=".NewWeightBasedSessionActivity"
-            android:theme="@style/DialogTheme"
             android:label="@string/title_activity_new_session"
             android:parentActivityName=".ViewExerciseActivity" >
             <meta-data
