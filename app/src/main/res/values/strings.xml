@@ -2,7 +2,7 @@
     <string name="app_name">gymcoachbob</string>
     <string name="app_directory_name">gymcoachbob</string>
 
-    <string name="hint_exercise_name">Enter name of exercise</string>
+    <string name="hint_exercise_name">exercise name</string>
 
     <string name="title_activity_add_exercise">Add exercise</string>
     <string name="title_activity_new_session">Add exercise set</string>
