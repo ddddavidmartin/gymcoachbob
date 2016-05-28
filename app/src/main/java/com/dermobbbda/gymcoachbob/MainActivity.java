@@ -116,11 +116,6 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_CANCELED) {
-            Log.d(Util.TAG, "Received cancellation of request with code %d " + requestCode + ".");
-            return;
-        }
-
         if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             setUpNonEmptyLayout();
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
