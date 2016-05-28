@@ -9,8 +9,7 @@ card_view:cardElevation="@dimen/exercise_card_elevation"
 android:layout_margin="@dimen/exercise_card_layout_margin" >
 
 <TextView
-    android:id="@+id/exercise_row_item_name_textview"
-    android:text="@string/activity_view_empty_exercise_description"
+    android:id="@+id/activity_view_empty_textview"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"

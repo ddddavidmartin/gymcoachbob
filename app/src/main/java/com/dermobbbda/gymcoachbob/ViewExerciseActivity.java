@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class ViewExerciseActivity extends ActionBarActivity {
     private static final int NEW_SESSION_REQUEST = 1;
@@ -51,7 +52,9 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
     /** Set up the Exercise layout for when no Sessions have been added yet. */
     protected void setUpEmptyExercise() {
-        setContentView(R.layout.activity_view_empty_exercise);
+        setContentView(R.layout.activity_view_empty);
+        TextView textView = (TextView) findViewById(R.id.activity_view_empty_textview);
+        textView.setText(R.string.activity_view_empty_exercise_description);
     }
 
     /** Set up the Exercise layout for when there are Sessions for this Exercise. */
