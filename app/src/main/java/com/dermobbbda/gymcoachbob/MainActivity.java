@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -28,6 +29,17 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mExercises = ExerciseWrapper.getInstance(getApplicationContext());
+        if (mExercises.size() > 0) {
+            setUpNonEmptyLayout();
+        } else {
+            setUpEmptyLayout();
+        }
+    }
+
+    /** Set up the layout for when there are existing Exercises to be shown. */
+    private void setUpNonEmptyLayout() {
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.main_recyclerview);
 
@@ -37,15 +49,26 @@ public class MainActivity extends ActionBarActivity {
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mExercises = ExerciseWrapper.getInstance(getApplicationContext());
 
         mAdapter = new ExerciseViewAdapter(this, mExercises);
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    /** Set up the layout for when no Exercises have been added yet. */
+    private void setUpEmptyLayout() {
+        setContentView(R.layout.activity_view_empty);
+        TextView textView = (TextView) findViewById(R.id.activity_view_empty_textview);
+        textView.setText(R.string.activity_main_empty_description);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        /* Return early if there are no Exercises yet, as no Exercises are set up. */
+        if (mExercises.size() == 0) {
+            return;
+        }
 
         /* Update the latest Exercise when we return to the MainActivity in case we modified a
          * Session of that Exercise. */
@@ -99,6 +122,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
+            setUpNonEmptyLayout();
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             Log.d(Util.TAG, "Received Exercise: " + exercise);
             int position = mExercises.add(exercise);
