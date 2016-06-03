@@ -83,10 +83,6 @@ Backlog of tasks left to do:
 
 * implement functionality to add comments to Sessions (for example 'hard!' or 'easy!')
 
-* tasks to be considered for completion for first release:
- * user switcher with option to add a new account
- * example account
-
 * reduce size of the exercise cards so that more fit on the screen
 * check whether date field in session view is wide enough as it breaks the line
   on the emulator
@@ -97,7 +93,7 @@ Backlog of tasks left to do:
 * for NewExerciseActivity, rather than having "Done" in the keyboard to close
   the keyboard, add the Exercise straight from there
 
-* extend Util.timeSince to show number of weeks, months and years as well
+* consider extending Util.timeSince to show number of weeks, months and years as well
  * for example '1 week ago (7 days), more than 1 week ago (x days), more than 1 month ago (x days)'
 
 * find a better way of highlighting the selected exercise (for example showing it in blue)
@@ -116,6 +112,9 @@ Backlog of tasks left to do:
     classes with separate layouts (probably the latter as it offers more flexibility)
  * when adding a session have the same for weight, but have two selectors for
    time-based exercises: time hh:mm:ss and distance xx.xx
+ * for json just store whether it is a time-based or weight-based exercise
+  * depending on which one load/store weight and repitions or time and distance
+  * split NewSessionActivity into 3 classes for generic, weight- and time-based
 
 * bold entries where the weight has changed for weight-based Sessions
 * add search functionality to search for exercises (see tripview for an example)
@@ -154,6 +153,46 @@ Backlog of tasks left to do:
  * when entering the number via keyboard is cancelled it leaves the value on
    the number picker but does not call the callback that sets it to the given
    value
+
+* for Sessions, set layout margin to 0 if it is on the same day as the previous
+  Session
+
+* user switcher with option to add a new account
+* example account
+
+* raise card when it is selected via long press
+ * http://www.google.com/design/spec/what-is-material/elevation-shadows.html#elevation-shadows-shadows
+
+* tasks to be considered for completion for first release:
+ * welcome screens (done)
+ * per item spacing (optional)
+ * time based exercises
+ * updated logo
+ * (lock screen widget)
+
+* use proper material design icons for adding and deleting Exercises
+* use stylised logo for weight and time exercises as background for
+  the respective exercise cards in the main activity
+
+* consider releasing the app for free with built-in payments
+ * have it free to use and every ten times, show a popup asking to pay
+ * textra has it built-in, so that it opens the payment dialog directly
+  * about as easy as it gets
+  * https://developer.android.com/training/in-app-billing/preparing-iab-app.html#SetPermission
+ * have a good thank you dialog for whoever pays
+ * consider counting the number of hours worked on the project and show it
+   in the dialog, something like "the sole developer of gymcoachbob has
+   spent 9701 hours on the app so far"
+
+* set up crossfading between empty and filled exercise view
+ * https://developer.android.com/training/animation/crossfade.html
+* consider using cardview for the textview background
+
+* figure out a better way to space the New{Exercise, Session}
+
+* add a 'help' option to show the welcome screen again
+* use TimePicker with seconds for time based exercises
+ * https://github.com/IvanKovac/TimePickerWithSeconds
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -288,3 +327,10 @@ through the code base
 * check that writing to file works on API > 18, as in that case we are not
   requesting the permission
  * (it does not work)
+
+* check why deleting an exercise shows the black background (it does not anymore)
+
+* set MainActity margin top to 0
+* set ViewErciseActivity top and bottom margins to 0
+
+* set up uncrustify with git pre-commit hook
