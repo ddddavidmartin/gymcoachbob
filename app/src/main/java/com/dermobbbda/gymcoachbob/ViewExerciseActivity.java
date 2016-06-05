@@ -104,11 +104,6 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_CANCELED) {
-            Log.d(Util.TAG, "Received cancellation of request with code %d " + requestCode + ".");
-            return;
-        }
-
         if (requestCode == NEW_SESSION_REQUEST && resultCode == RESULT_OK) {
             /* If we added our first Session, we have to show the list of Sessions now. */
             if (mExercise.sessions().size() == 0) {
