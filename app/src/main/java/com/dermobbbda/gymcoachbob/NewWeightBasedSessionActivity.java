@@ -100,7 +100,7 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
 
         /* Initialise the date for the new Session with the current date. */
         mDate = new Date();
-        String dateString = DateFormat.format("dd/MM/yyyy", mDate).toString();
+        String dateString = Util.dateString(mDate);
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
         dateText.setText("Today" + "\n" + dateString);
 
@@ -163,7 +163,7 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         c.set(year, month, day);
         mDate = c.getTime();
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        String dateString = "" + day + "/" + month + "/" + year;
+        String dateString = Util.dateString(mDate);
         if (Util.onSameDay(mDate, new Date())) {
             dateString = "Today\n" + dateString;
         }

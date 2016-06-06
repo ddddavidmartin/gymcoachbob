@@ -6,6 +6,7 @@
 package com.dermobbbda.gymcoachbob;
 
 import android.content.Context;
+import android.text.format.DateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -80,5 +81,10 @@ public class Util {
             result = "" + daysSinceLastExercise + " " + context.getString(R.string.time_days_ago);
         }
         return result;
+    }
+
+    /** Return a String representation of the given Date. */
+    public static String dateString(Date date) {
+        return DateFormat.format("dd/MM/yyyy", date).toString();
     }
 }
