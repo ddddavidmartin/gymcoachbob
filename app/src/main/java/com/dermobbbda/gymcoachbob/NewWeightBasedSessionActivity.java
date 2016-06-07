@@ -12,10 +12,13 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -93,6 +96,21 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         return (int) ((value - Math.floor(value)) * 10);
     }
 
+    /** Locate the first EditText component in the given ViewGroup and return it.
+     *  Returns null if none is found. */
+    private EditText findInput(ViewGroup np) {
+        int count = np.getChildCount();
+        for (int i = 0; i < count; i++) {
+            final View child = np.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                findInput((ViewGroup) child);
+            } else if (child instanceof EditText) {
+                return (EditText) child;
+            }
+        }
+        return null;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,8 +145,16 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         });
 
         NumberPicker weightDecimalPicker = (NumberPicker) findViewById(R.id.new_session_weight_decimal_picker);
-        weightDecimalPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_decimal_weight));
-        weightDecimalPicker.setMinValue(getResources().getInteger(R.integer.new_session_min_decimal_weight));
+        int minDecimalWeight = getResources().getInteger(R.integer.new_session_min_decimal_weight);
+        int maxDecimalWeight = getResources().getInteger(R.integer.new_session_max_decimal_weight);
+        /* We start at 0 so have to accommodate max + 1. */
+        String[] decimalStrings = new String[maxDecimalWeight + 1];
+        for (int i = minDecimalWeight; i <= maxDecimalWeight; i++) {
+            decimalStrings[i] = "." + i;
+        }
+        weightDecimalPicker.setMinValue(minDecimalWeight);
+        weightDecimalPicker.setMaxValue(maxDecimalWeight);
+        weightDecimalPicker.setDisplayedValues(decimalStrings);
         weightDecimalPicker.setValue(mFraction);
         weightDecimalPicker.setWrapSelectorWheel(false);
         weightDecimalPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -138,6 +164,16 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
                 setWeight(mWhole, mFraction);
             }
         });
+        EditText input = findInput(weightDecimalPicker);
+        /* We should always be able to find an EditText instance of the NumberPicker. But, if we do
+         * not for some reason then we just show the regular text based keyboard rather than having
+         * the app crash with a null pointer exception. This way the user can still enter the weight
+         * and use the app as expected. */
+        if (input != null) {
+            input.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        } else {
+            Log.e(Util.TAG, "Failed to find EditText for decimal NumberPicker.");
+        }
 
         NumberPicker repetitionsPicker = (NumberPicker) findViewById(R.id.new_session_repetitions_picker);
         repetitionsPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_repetitions));
@@ -168,7 +204,7 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
             dateString = "Today\n" + dateString;
         }
         dateText.setText(dateString);
-        Log.d(TAG, "Picked date: " + day + "/" + month + "/" + year);
+        Log.d(TAG, "Picked date: " + dateString);
     }
 
 
