@@ -53,11 +53,11 @@
     <string name="alert_delete_exercise_okay">Delete</string>
     <string name="alert_delete_exercise_cancel">Cancel</string>
 
-    <string name="time_today">today</string>
-    <string name="time_yesterday">yesterday</string>
-    <string name="time_future">in the future</string>
+    <string name="time_today">Today</string>
+    <string name="time_yesterday">Yesterday</string>
+    <string name="time_future">In the future</string>
     <string name="time_days_ago">days ago</string>
-    <string name="time_never">never</string>
+    <string name="time_never">Never</string>
 
     <string name="exercise_last">Last</string>
 </resources>
