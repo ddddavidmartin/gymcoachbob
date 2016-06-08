@@ -101,12 +101,11 @@ public abstract class Exercise implements Serializable {
     /** Return a String describing the time since the most recent Session. */
     public String timeSinceMostRecentSession(Context context) {
         ExerciseSession lastSession = mostRecentSession();
-        String last = context.getString(R.string.exercise_last);
         String timeSinceLast;
         if (lastSession == null) {
-            timeSinceLast = last  + ": " + context.getString(R.string.time_never);
+            timeSinceLast = context.getString(R.string.time_never);
         } else {
-            timeSinceLast = last + ": " + Util.timeSince(context, lastSession.date());
+            timeSinceLast = Util.timeSince(context, lastSession.date());
         }
         return timeSinceLast;
     }

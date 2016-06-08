@@ -58,6 +58,4 @@
     <string name="time_future">In the future</string>
     <string name="time_days_ago">days ago</string>
     <string name="time_never">Never</string>
-
-    <string name="exercise_last">Last</string>
 </resources>
