@@ -127,7 +127,7 @@ public abstract class Exercise implements Serializable {
              * print the date again. */
             Date previousDate = mSessions.get(position - 1).date();
             if (Util.onSameDay(previousDate, session.date())) {
-                return "";
+                return "         ...";
 
             /* For Session that are not the top ones, we print both the Date and the number of days
              * since the respective previous Session, as it makes it clear how much times has passed
