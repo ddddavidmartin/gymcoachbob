@@ -119,7 +119,8 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         mDate = new Date();
         String dateString = Util.dateString(mDate);
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        dateText.setText("Today" + "\n" + dateString);
+        String today = getString(R.string.time_today);
+        dateText.setText(getString(R.string.activity_new_session_picked_date, today, dateString));
 
         Intent intent = getIntent();
         /* We initialise the weight and repetitions with the previously used values, as the new
@@ -200,7 +201,7 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
         String dateString = Util.dateString(mDate);
         String timeSince = Util.timeSince(getApplicationContext(), mDate);
-        dateText.setText(timeSince + "\n" + dateString);
+        dateText.setText(getString(R.string.activity_new_session_picked_date, timeSince, dateString));
         Log.d(TAG, "Picked date: " + dateString);
     }
 
