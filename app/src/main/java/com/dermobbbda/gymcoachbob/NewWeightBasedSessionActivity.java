@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -200,10 +199,8 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         mDate = c.getTime();
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
         String dateString = Util.dateString(mDate);
-        if (Util.onSameDay(mDate, new Date())) {
-            dateString = "Today\n" + dateString;
-        }
-        dateText.setText(dateString);
+        String timeSince = Util.timeSince(getApplicationContext(), mDate);
+        dateText.setText(timeSince + "\n" + dateString);
         Log.d(TAG, "Picked date: " + dateString);
     }
 
