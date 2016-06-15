@@ -67,7 +67,9 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new WeightBasedSessionViewAdapter(mExercise);
+        if (mExercise.type() == Exercise.WEIGHT_BASED) {
+            mAdapter = new WeightBasedSessionViewAdapter(mExercise);
+        }
         mRecyclerView.setAdapter(mAdapter);
     }
 
