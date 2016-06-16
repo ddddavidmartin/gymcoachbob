@@ -25,7 +25,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class NewWeightBasedSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
-    private static final String TAG = "GCB";
     private Date mDate;
     private int mRepetitions;
     private double mWeight;
@@ -202,13 +201,13 @@ public class NewWeightBasedSessionActivity extends ActionBarActivity implements 
         String dateString = Util.dateString(mDate);
         String timeSince = Util.timeSince(getApplicationContext(), mDate);
         dateText.setText(getString(R.string.activity_new_session_picked_date, timeSince, dateString));
-        Log.d(TAG, "Picked date: " + dateString);
+        Log.d(Util.TAG, "Picked date: " + dateString);
     }
 
 
     public void addSession(View view) {
         ExerciseSession session = new WeightBasedExerciseSession(mDate, mWeight, mRepetitions);
-        Log.d(TAG, "Created new session: " + session);
+        Log.d(Util.TAG, "Created new session: " + session);
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.EXTRA_SESSION), session);
