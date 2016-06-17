@@ -30,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_button_new_exercise_weight_based"
-            android:layout_below="@id/exercise_name"
             android:onClick="onRadioButtonClicked" />
 
         <RadioButton
@@ -38,7 +37,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_button_new_exercise_time_based"
-            android:layout_below="@id/radio_button_new_exercise_weight_based"
             android:onClick="onRadioButtonClicked" />
     </RadioGroup>
 
