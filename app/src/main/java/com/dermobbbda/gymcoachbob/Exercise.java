@@ -17,6 +17,7 @@ import java.util.List;
 public abstract class Exercise implements Serializable {
     /* Weight based Exercise. */
     protected static final int WEIGHT_BASED = 0;
+    protected static final int TIME_BASED = 1;
     /* Name of the exercise */
     protected String mName;
     protected List<ExerciseSession> mSessions;

@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 
 public class NewExerciseActivity extends ActionBarActivity {
@@ -60,6 +61,19 @@ public class NewExerciseActivity extends ActionBarActivity {
         }
     }
 
+    /** Return the selected type for the new Exercise. */
+    private int selectedExerciseType() {
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_new_exercise);
+        final int selectedButtonId = radioGroup.getCheckedRadioButtonId();
+        if (selectedButtonId == R.id.radio_button_new_exercise_weight_based) {
+            return Exercise.WEIGHT_BASED;
+        } else if (selectedButtonId == R.id.radio_button_new_exercise_time_based) {
+            return Exercise.TIME_BASED;
+        } else {
+            throw new RuntimeException("Unknown Exercise type button used.");
+        }
+    }
+
     public void addExercise(View view) {
         EditText editText = (EditText) findViewById(R.id.exercise_name);
         String exerciseName = editText.getText().toString();
@@ -71,7 +85,17 @@ public class NewExerciseActivity extends ActionBarActivity {
 
         Log.d(Util.TAG, "new exerciseName: " + exerciseName);
 
-        WeightBasedExercise exercise = new WeightBasedExercise(exerciseName);
+        Exercise exercise;
+        int exerciseType = selectedExerciseType();
+        if (exerciseType == Exercise.WEIGHT_BASED) {
+            exercise = new WeightBasedExercise(exerciseName);
+        } else if (exerciseType == Exercise.TIME_BASED) {
+            /* Time-based Exercises are not yet supported at this point, so we simply do not react
+             * to the button press and just return. */
+            return;
+        } else {
+            throw new RuntimeException("Trying to add Exercise of unknown type.");
+        }
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.EXTRA_EXERCISE), exercise);
