@@ -71,7 +71,7 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_session);
+        setContentView(R.layout.activity_new_weightbased_session);
 
         /* Initialise the date for the new Session with the current date. */
         mDate = new Date();
