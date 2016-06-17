@@ -67,7 +67,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        if (mExercise.type() == Exercise.WEIGHT_BASED) {
+        if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
             mAdapter = new WeightBasedSessionViewAdapter(mExercise);
         }
         mRecyclerView.setAdapter(mAdapter);
@@ -89,7 +89,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
         switch (id) {
             case R.id.action_new_session:
-                if (mExercise.type() == Exercise.WEIGHT_BASED) {
+                if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
                     Intent intent = new Intent(this, NewWeightBasedSessionActivity.class);
                     /* Provide the last added Session details so that the Activity can be initialised
                      * with good default values. */

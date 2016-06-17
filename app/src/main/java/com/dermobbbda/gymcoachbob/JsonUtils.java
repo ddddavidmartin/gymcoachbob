@@ -56,14 +56,14 @@ public class JsonUtils {
             tmp.put(context.getString(R.string.json_exercise_type), e.type());
 
             JSONArray sessions = new JSONArray();
-            if (e.type() == Exercise.WEIGHT_BASED) {
+            if (e.type() == Exercise.TYPE_WEIGHT_BASED) {
                 for (ExerciseSession s : e.sessions()) {
                     JSONObject tmpSession = new JSONObject();
                     /* We store the date as a long as it is the easiest to parse again.
                      * We may consider using an actual String date as that would make the Json
                      * file itself more humanly readable. */
                     tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
-                    if (e.type() == Exercise.WEIGHT_BASED) {
+                    if (e.type() == Exercise.TYPE_WEIGHT_BASED) {
                         WeightBasedExerciseSession currentSession = (WeightBasedExerciseSession) s;
                         tmpSession.put(context.getString(R.string.json_session_weight), currentSession.weight());
                         tmpSession.put(context.getString(R.string.json_session_repetitions), currentSession.repetitions());
@@ -194,7 +194,7 @@ public class JsonUtils {
                     JSONObject tmpSession = sessionList.getJSONObject(j);
                     String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
                     Date date = new Date(Long.parseLong(dateString));
-                    if (exerciseType == Exercise.WEIGHT_BASED) {
+                    if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
                         int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
                         double weight = tmpSession.getDouble(context.getString(R.string.json_session_weight));
 

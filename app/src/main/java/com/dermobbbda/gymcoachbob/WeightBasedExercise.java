@@ -10,12 +10,12 @@ public class WeightBasedExercise extends Exercise {
 
     WeightBasedExercise(String name) {
         super(name);
-        mExerciseType = WEIGHT_BASED;
+        mExerciseType = TYPE_WEIGHT_BASED;
     }
 
     WeightBasedExercise(String name, int capacity) {
         super(name, capacity);
-        mExerciseType = WEIGHT_BASED;
+        mExerciseType = TYPE_WEIGHT_BASED;
     }
 
     /* Return the weight that was used for the last Session. */

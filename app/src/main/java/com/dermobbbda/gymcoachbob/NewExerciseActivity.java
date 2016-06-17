@@ -66,9 +66,9 @@ public class NewExerciseActivity extends ActionBarActivity {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_new_exercise);
         final int selectedButtonId = radioGroup.getCheckedRadioButtonId();
         if (selectedButtonId == R.id.radio_button_new_exercise_weight_based) {
-            return Exercise.WEIGHT_BASED;
+            return Exercise.TYPE_WEIGHT_BASED;
         } else if (selectedButtonId == R.id.radio_button_new_exercise_time_based) {
-            return Exercise.TIME_BASED;
+            return Exercise.TYPE_TIME_BASED;
         } else {
             throw new RuntimeException("Unknown Exercise type button used.");
         }
@@ -87,9 +87,9 @@ public class NewExerciseActivity extends ActionBarActivity {
 
         Exercise exercise;
         int exerciseType = selectedExerciseType();
-        if (exerciseType == Exercise.WEIGHT_BASED) {
+        if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
             exercise = new WeightBasedExercise(exerciseName);
-        } else if (exerciseType == Exercise.TIME_BASED) {
+        } else if (exerciseType == Exercise.TYPE_TIME_BASED) {
             /* Time-based Exercises are not yet supported at this point, so we simply do not react
              * to the button press and just return. */
             return;
