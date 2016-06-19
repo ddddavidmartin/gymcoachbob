@@ -37,8 +37,8 @@ public class JsonUtils {
             versionCode = pInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(Util.TAG, "Failed to find package info: " + e);
-                /* Not being able to access the versionCode should never happen. If it does we set
-                 * it to 0 which is never going to be valid as the first release is versionCode 1. */
+            /* Not being able to access the versionCode should never happen. If it does we set
+             * it to 0 which is never going to be valid as the first release is versionCode 1. */
             versionCode = 0;
         }
         dest.put(context.getString(R.string.json_version_code), versionCode);
@@ -182,7 +182,7 @@ public class JsonUtils {
             /* Avoid reallocations of the array by setting the size once in advance. */
             result.ensureCapacity(exerciseList.length());
 
-            for (int i = 0; i < exerciseList.length(); i++){
+            for (int i = 0; i < exerciseList.length(); i++) {
                 JSONObject tmp = exerciseList.getJSONObject(i);
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
                 int exerciseType = tmp.getInt(context.getString(R.string.json_exercise_type));
