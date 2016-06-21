@@ -138,6 +138,28 @@ public class JsonUtils {
         }
     }
 
+    /** Return a new WeightBasedExerciseObject with the given name and Sessions. */
+    private static Exercise readWeightBasedExercise(Context context, String name, JSONArray sessionList)
+            throws JSONException {
+
+        Exercise exercise = new WeightBasedExercise(name, sessionList.length());
+
+        for (int j = 0; j < sessionList.length(); j++) {
+            JSONObject tmpSession = sessionList.getJSONObject(j);
+            String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
+            Date date = new Date(Long.parseLong(dateString));
+            int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
+            double weight = tmpSession.getDouble(context.getString(R.string.json_session_weight));
+
+            ExerciseSession s = new WeightBasedExerciseSession(date, weight, repetitions);
+            /* Add the read Session to the Exercise but do not sync the change back to file
+             * again. */
+            exercise.add(s, /* do not sync changes */ false);
+        }
+
+        return exercise;
+    }
+
     /* Return exercises read from the given file. */
     public static List<Exercise> readExercisesFromFile(Context context) {
         StringBuffer fileContent = new StringBuffer("");
@@ -185,26 +207,9 @@ public class JsonUtils {
             for (int i = 0; i < exerciseList.length(); i++) {
                 JSONObject tmp = exerciseList.getJSONObject(i);
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
-                int exerciseType = tmp.getInt(context.getString(R.string.json_exercise_type));
                 JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
 
-                Exercise exercise = new WeightBasedExercise(exerciseName, sessionList.length());
-
-                for (int j = 0; j < sessionList.length(); j++) {
-                    JSONObject tmpSession = sessionList.getJSONObject(j);
-                    String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
-                    Date date = new Date(Long.parseLong(dateString));
-                    if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
-                        int repetitions = tmpSession.getInt(context.getString(R.string.json_session_repetitions));
-                        double weight = tmpSession.getDouble(context.getString(R.string.json_session_weight));
-
-                        /* Add the read Session to the Exercise but do not sync the change back to file
-                         * again. */
-                        ExerciseSession s = new WeightBasedExerciseSession(date, weight, repetitions);
-                        exercise.add(s, /* do not sync changes */ false);
-                    }
-                }
-
+                Exercise exercise = readWeightBasedExercise(context, exerciseName, sessionList);
                 result.add(exercise);
             }
         } catch (JSONException e) {
