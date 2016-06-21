@@ -200,7 +200,8 @@ public class JsonUtils {
 
                         /* Add the read Session to the Exercise but do not sync the change back to file
                          * again. */
-                        exercise.add(new WeightBasedExerciseSession(date, weight, repetitions), /* do not sync changes */ false);
+                        ExerciseSession s = new WeightBasedExerciseSession(date, weight, repetitions);
+                        exercise.add(s, /* do not sync changes */ false);
                     }
                 }
 
