@@ -90,9 +90,7 @@ public class NewExerciseActivity extends ActionBarActivity {
         if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
             exercise = new WeightBasedExercise(exerciseName);
         } else if (exerciseType == Exercise.TYPE_TIME_BASED) {
-            /* Time-based Exercises are not yet supported at this point, so we simply do not react
-             * to the button press and just return. */
-            return;
+            exercise = new TimeBasedExercise(exerciseName);
         } else {
             throw new RuntimeException("Trying to add Exercise of unknown type.");
         }

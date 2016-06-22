@@ -207,9 +207,17 @@ public class JsonUtils {
             for (int i = 0; i < exerciseList.length(); i++) {
                 JSONObject tmp = exerciseList.getJSONObject(i);
                 String exerciseName = tmp.getString(context.getString(R.string.json_exercise_name));
+                int exerciseType = tmp.getInt(context.getString(R.string.json_exercise_type));
                 JSONArray sessionList = tmp.getJSONArray(context.getString(R.string.json_exercise_session_list));
 
-                Exercise exercise = readWeightBasedExercise(context, exerciseName, sessionList);
+                Exercise exercise;
+                if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
+                    exercise = readWeightBasedExercise(context, exerciseName, sessionList);
+                } else if (exerciseType == Exercise.TYPE_TIME_BASED) {
+                    exercise = new TimeBasedExercise(exerciseName);
+                } else {
+                    throw new RuntimeException("Trying to write Exercise of unhandled type " + exerciseType + ".");
+                }
                 result.add(exercise);
             }
         } catch (JSONException e) {
