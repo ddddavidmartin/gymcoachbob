@@ -47,7 +47,7 @@ public class JsonUtils {
     /** Place the list of exercises in the given JSONObject.
      *  The caller is responsible to handle any JSONExceptions thrown. */
     private static void writeExercises(Context context, List<Exercise> exercises, JSONObject dest)
-            throws JSONException {
+    throws JSONException {
 
         JSONArray exerciseList = new JSONArray();
         for (Exercise e : exercises) {
@@ -140,7 +140,7 @@ public class JsonUtils {
 
     /** Return a new WeightBasedExerciseObject with the given name and Sessions. */
     private static Exercise readWeightBasedExercise(Context context, String name, JSONArray sessionList)
-            throws JSONException {
+    throws JSONException {
 
         Exercise exercise = new WeightBasedExercise(name, sessionList.length());
 
