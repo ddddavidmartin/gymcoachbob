@@ -56,6 +56,15 @@ public class NewExerciseSessionActivity extends ActionBarActivity implements Dat
         }
     }
 
+    /** Initialise the date for the new Session with the current date. */
+    public void initialiseDateText() {
+        mDate = new Date();
+        String dateString = Util.dateString(mDate);
+        TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
+        String today = getString(R.string.time_today);
+        dateText.setText(getString(R.string.activity_new_session_picked_date, today, dateString));
+    }
+
     public void showDatePickerDialog(View v) {
         DatePickerFragment datePicker = new DatePickerFragment();
         datePicker.show(getFragmentManager(), "datePicker");

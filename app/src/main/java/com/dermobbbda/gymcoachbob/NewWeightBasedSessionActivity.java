@@ -73,12 +73,7 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_weightbased_session);
 
-        /* Initialise the date for the new Session with the current date. */
-        mDate = new Date();
-        String dateString = Util.dateString(mDate);
-        TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        String today = getString(R.string.time_today);
-        dateText.setText(getString(R.string.activity_new_session_picked_date, today, dateString));
+        initialiseDateText();
 
         Intent intent = getIntent();
         /* We initialise the weight and repetitions with the previously used values, as the new
