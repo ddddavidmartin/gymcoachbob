@@ -47,6 +47,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dermobbbda.gymcoachbob.ViewExerciseActivity" />
         </activity>
+        <activity android:name=".NewTimeBasedSessionActivity"
+            android:label="@string/title_activity_new_session"
+            android:parentActivityName=".ViewExerciseActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dermobbbda.gymcoachbob.ViewExerciseActivity" />
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

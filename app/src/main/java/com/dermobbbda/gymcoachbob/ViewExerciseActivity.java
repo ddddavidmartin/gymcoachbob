@@ -98,6 +98,10 @@ public class ViewExerciseActivity extends ActionBarActivity {
                     intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS),
                                     ((WeightBasedExercise) mExercise).lastRepetitions());
                     startActivityForResult(intent, NEW_SESSION_REQUEST);
+
+                } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
+                    Intent intent = new Intent(this, NewTimeBasedSessionActivity.class);
+                    startActivityForResult(intent, NEW_SESSION_REQUEST);
                 }
                 break;
         }

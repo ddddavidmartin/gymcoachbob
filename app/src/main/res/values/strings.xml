@@ -36,6 +36,8 @@
 
     <string name="text_new_session_weight">Weight</string>
     <string name="text_new_session_repetitions">Repetitions</string>
+    <string name="text_new_session_time">Time</string>
+    <string name="text_new_session_distance">Distance</string>
 
     <string name="file_exercises">exercises.json</string>
 
