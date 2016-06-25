@@ -43,7 +43,7 @@ public class NewExerciseSessionActivity extends ActionBarActivity implements Dat
 
             /* Make sure the container Activity has implemented the callback interface. */
             try {
-                mCallback = (DatePickerDialog.OnDateSetListener) activity;
+                mCallback = (DatePickerDialog.OnDateSetListener)activity;
             } catch (ClassCastException e) {
                 throw new ClassCastException(activity.toString() + " must implement OnDateSetListener");
             }
