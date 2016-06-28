@@ -8,4 +8,8 @@
     <integer name="new_session_max_decimal_weight">9</integer>
     <integer name="new_session_min_repetitions">0</integer>
     <integer name="new_session_max_repetitions">999</integer>
+    <integer name="new_session_min_time">0</integer>
+    <integer name="new_session_max_time">999</integer>
+    <integer name="new_session_min_distance">0</integer>
+    <integer name="new_session_max_distance">999</integer>
 </resources>
