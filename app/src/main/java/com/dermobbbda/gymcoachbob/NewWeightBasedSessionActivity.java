@@ -142,8 +142,7 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
         ExerciseSession session = new WeightBasedExerciseSession(mDate, mWeight, mRepetitions);
         Log.d(Util.TAG, "Created new session: " + session);
 
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(getString(R.string.EXTRA_SESSION), session);
+        Intent returnIntent = createIntentWithSession(session);
         setResult(RESULT_OK, returnIntent);
         finish();
     }

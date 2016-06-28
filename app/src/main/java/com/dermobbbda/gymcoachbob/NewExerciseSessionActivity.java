@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -80,5 +81,12 @@ public class NewExerciseSessionActivity extends ActionBarActivity implements Dat
         String timeSince = Util.timeSince(getApplicationContext(), mDate);
         dateText.setText(getString(R.string.activity_new_session_picked_date, timeSince, dateString));
         Log.d(Util.TAG, "Picked date: " + dateString);
+    }
+
+    /** Return a new Intent that contains the given ExerciseSession. */
+    public Intent createIntentWithSession(ExerciseSession session) {
+        Intent intent = new Intent();
+        intent.putExtra(getString(R.string.EXTRA_SESSION), session);
+        return intent;
     }
 }
