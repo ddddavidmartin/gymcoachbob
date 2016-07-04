@@ -69,6 +69,8 @@ public class ViewExerciseActivity extends ActionBarActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
             mAdapter = new WeightBasedSessionViewAdapter(mExercise);
+        } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
+            mAdapter = new TimeBasedSessionViewAdapter(mExercise);
         }
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -98,7 +100,6 @@ public class ViewExerciseActivity extends ActionBarActivity {
                     intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS),
                                     ((WeightBasedExercise) mExercise).lastRepetitions());
                     startActivityForResult(intent, NEW_SESSION_REQUEST);
-
                 } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
                     Intent intent = new Intent(this, NewTimeBasedSessionActivity.class);
                     startActivityForResult(intent, NEW_SESSION_REQUEST);

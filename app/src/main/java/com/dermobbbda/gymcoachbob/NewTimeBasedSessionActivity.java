@@ -52,8 +52,7 @@ public class NewTimeBasedSessionActivity extends NewExerciseSessionActivity {
         ExerciseSession session = new TimeBasedExerciseSession(mDate, mDistance, mTime);
 
         Intent returnIntent = createIntentWithSession(session);
-        /* FIXME: Once backend support is there, return success here. */
-        setResult(RESULT_CANCELED, returnIntent);
+        setResult(RESULT_OK, returnIntent);
         finish();
     }
 }

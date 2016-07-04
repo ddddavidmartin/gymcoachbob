@@ -11,11 +11,19 @@ public class TimeBasedExerciseSession extends ExerciseSession {
     /** The distance of the respective Session. */
     private double mDistance;
     /** The time in seconds of the respective Session. */
-    private int mTime;
+    private int mDuration;
 
     TimeBasedExerciseSession(Date date, double distance, int time) {
         super(date);
         mDistance = distance;
-        mTime = time;
+        mDuration = time;
+    }
+
+    public double distance() {
+        return mDistance;
+    }
+
+    public int duration() {
+        return mDuration;
     }
 }

@@ -26,6 +26,9 @@
     <dimen name="session_card_corner_radius">0dp</dimen>
     <dimen name="session_card_elevation">2dp</dimen>
 
+    <dimen name="session_card_duration_width">34dp</dimen>
+    <dimen name="session_card_distance_width">32dp</dimen>
+
     <dimen name="activity_new_session_button_height">48dp</dimen>
 
     <dimen name="activity_view_exercise_padding_top">4dp</dimen>
