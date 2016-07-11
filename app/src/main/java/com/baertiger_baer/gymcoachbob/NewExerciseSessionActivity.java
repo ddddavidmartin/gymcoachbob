@@ -12,7 +12,6 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;

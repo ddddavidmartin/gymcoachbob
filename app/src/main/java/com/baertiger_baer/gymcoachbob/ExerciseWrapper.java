@@ -6,7 +6,6 @@
 package com.baertiger_baer.gymcoachbob;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 
