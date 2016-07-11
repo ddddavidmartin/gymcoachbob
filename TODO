@@ -166,9 +166,10 @@ Backlog of tasks left to do:
 * tasks to be considered for completion for first release:
  * welcome screens (done)
  * per item spacing (optional)
- * time based exercises
+ * time based exercises (optional)
  * updated logo (done)
  * decimal point between weight pickers (done)
+ * update package name
  * (lock screen widget)
 
 * use proper material design icons for adding and deleting Exercises
