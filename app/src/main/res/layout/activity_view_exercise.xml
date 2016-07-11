@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_view_exercise_padding_top"
-    tools:context="com.dermobbbda.gymcoachbob.ViewExerciseActivity">
+    tools:context="com.baertiger_baer.gymcoachbob.ViewExerciseActivity">
 
     <TextView
         android:layout_width="wrap_content"

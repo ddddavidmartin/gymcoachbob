@@ -1,4 +1,4 @@
-package com.dermobbbda.gymcoachbob;
+package com.baertiger_baer.gymcoachbob;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

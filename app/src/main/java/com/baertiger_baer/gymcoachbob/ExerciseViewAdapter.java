@@ -3,7 +3,7 @@
  * file 'LICENSE', which is part of this source code package.
  */
 
-package com.dermobbbda.gymcoachbob;
+package com.baertiger_baer.gymcoachbob;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

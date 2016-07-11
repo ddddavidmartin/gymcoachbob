@@ -1,4 +1,4 @@
-package com.dermobbbda.gymcoachbob;
+package com.baertiger_baer.gymcoachbob;
 
 import java.io.Serializable;
 import java.util.Date;

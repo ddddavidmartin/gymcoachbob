@@ -4,7 +4,7 @@
  * file 'LICENSE', which is part of this source code package.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dermobbbda.gymcoachbob"
+    package="com.baertiger_baer.gymcoachbob"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -30,7 +30,7 @@
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dermobbbda.gymcoachbob.MainActivity" />
+                android:value="com.baertiger_baer.gymcoachbob.MainActivity" />
         </activity>
         <activity
             android:name=".ViewExerciseActivity"
@@ -38,21 +38,21 @@
             android:launchMode="singleTop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dermobbbda.gymcoachbob.MainActivity" />
+                android:value="com.baertiger_baer.gymcoachbob.MainActivity" />
         </activity>
         <activity android:name=".NewWeightBasedSessionActivity"
             android:label="@string/title_activity_new_session"
             android:parentActivityName=".ViewExerciseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dermobbbda.gymcoachbob.ViewExerciseActivity" />
+                android:value="com.baertiger_baer.gymcoachbob.ViewExerciseActivity" />
         </activity>
         <activity android:name=".NewTimeBasedSessionActivity"
             android:label="@string/title_activity_new_session"
             android:parentActivityName=".ViewExerciseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.dermobbbda.gymcoachbob.ViewExerciseActivity" />
+                android:value="com.baertiger_baer.gymcoachbob.ViewExerciseActivity" />
         </activity>
     </application>
 
