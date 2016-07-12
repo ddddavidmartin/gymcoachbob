@@ -102,11 +102,6 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings:
-                return true;
-            case R.id.action_quit:
-                // TODO: Find good way of exiting the app.
-                return true;
             case R.id.action_new_exercise:
                 newExercise(getCurrentFocus());
         }

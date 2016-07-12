@@ -5,11 +5,4 @@
           android:icon="@mipmap/ic_action_new_workout"
           android:title="@string/action_new_exercise"
           app:showAsAction="always" />
-    <!-- Settings are always in overflow -->
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          app:showAsAction="never" />
-    <item android:id="@+id/action_quit"
-          android:title="@string/action_quit"
-          app:showAsAction="never" />
 </menu>
