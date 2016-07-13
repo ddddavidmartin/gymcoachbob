@@ -54,8 +54,7 @@ Backlog of tasks left to do:
 
 * set up post-push hook to update latest commits on static website
 
-* get Photoshop trial version and update app logo
-* implement account switcher functinoality
+* implement account switcher functionality
  * have a demo account pre-filled with common exercises
 * make it possible to remove sessions
 
@@ -148,12 +147,6 @@ Backlog of tasks left to do:
  * always write to both memories
  * fall back to internal if reading from external fails
 
-* check whether entering values through keyboard actually calls the NumberPicker
-  callback correctly
- * when entering the number via keyboard is cancelled it leaves the value on
-   the number picker but does not call the callback that sets it to the given
-   value
-
 * for Sessions, set layout margin to 0 if it is on the same day as the previous
   Session
 
@@ -162,15 +155,6 @@ Backlog of tasks left to do:
 
 * raise card when it is selected via long press
  * http://www.google.com/design/spec/what-is-material/elevation-shadows.html#elevation-shadows-shadows
-
-* tasks to be considered for completion for first release:
- * welcome screens (done)
- * per item spacing (optional)
- * time based exercises (optional)
- * updated logo (done)
- * decimal point between weight pickers (done)
- * update package name (done)
- * (lock screen widget)
 
 * use proper material design icons for adding and deleting Exercises
 * use stylised logo for weight and time exercises as background for
@@ -201,28 +185,6 @@ Backlog of tasks left to do:
  * http://stackoverflow.com/questions/6993645/ordered-jsonobject
 
 * figure out why last weight decimal is one less sometimes than the actual last write
- * does not seem to happen anymore? at least since 19/06/2016
-
-* show 'x days ago' in Session row and always show it in 2 rows
- * also the days since inbetween Sessions
- * consider showing the day (as in Mon/Tue/Wed/Thu/Fri/Sat/Sun)
- * Example layout:
-    Mon 05/06/2016
-    4 days ago, +4d
-
-    Tue 07/06/2016
-    Today, +0d
-
-    Thu 25/06/2016
-    Yesterday, +1d
- * center the weight and repetitions vertically now that there are two lines
- * consider not having the +0d for today's Session anymore because it
-   actually says today in the line below
- * consider having a bigger margin around the text now as the row item is quite
-   packed with text now
- * consider hardcoding the height of the Date text field rather than always
-   returning two lines and tricking it like that
- * show days since after picking a Date in the DatePicker
 
 * consider removing the shadow under the actual weights in the app logo
 
@@ -230,9 +192,27 @@ Backlog of tasks left to do:
  * play with ideas about showing information about the exercises without
    actually having to implement it in the app
  * put it on github as open source addition to the app (after app lands on Google Play)
+* write Python generator to create json exercise file
+ * create 5,000 or 10,000 sessions and check how the app performs
 
 * check whether inheriting classes need to implement the Serializable interface
   if the super class already does so
+
+* consider showing statistics somewhere (for example in a separate Activity)
+ * number of total sessions, total active days, average sessions per week etc.
+
+* test the app on different screen sizes
+ * https://developer.android.com/guide/practices/screens_support.html#screen-independence
+
+* tasks to be considered for completion of 1.0 release:
+ * check whether proguard obfuscates the code (done)
+ * per item spacing (optional)
+ * time based exercises (optional)
+ * welcome screens (done)
+ * updated logo (done)
+ * decimal point between weight pickers (done)
+ * update package name (done)
+ * (lock screen widget)
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -380,3 +360,35 @@ through the code base
 * add decimal dot between the two number pickers for weight selection in NewSessionActivity
  * consider adding it to the numbers in the second numberpicker itself (eg. '.1, .2, .3 etc.')
 * add markers inbetween session view: 1 week ago, 2 weeks ago, ..., 1 month ago, 2 months ago, ..., 1 year ago, ...
+
+* get Photoshop trial version and update app logo
+ * Photoshop does not work on case-sensitive file systems, so using Inkscape instead
+
+* check whether entering values through keyboard actually calls the NumberPicker
+  callback correctly
+ * when entering the number via keyboard is cancelled it leaves the value on
+   the number picker but does not call the callback that sets it to the given
+   value. Appears to be an Android bug as it happens on official apps as well
+
+* show 'x days ago' in Session row and always show it in 2 rows
+ * also the days since inbetween Sessions
+ * consider showing the day (as in Mon/Tue/Wed/Thu/Fri/Sat/Sun)
+ * Example layout:
+    Mon 05/06/2016
+    4 days ago, +4d
+
+    Tue 07/06/2016
+    Today, +0d
+
+    Thu 25/06/2016
+    Yesterday, +1d
+ * ends up looking too busy the way it is currently so deciding against it
+ * center the weight and repetitions vertically now that there are two lines
+ * consider not having the +0d for today's Session anymore because it
+   actually says today in the line below
+ * consider having a bigger margin around the text now as the row item is quite
+   packed with text now
+ * consider hardcoding the height of the Date text field rather than always
+   returning two lines and tricking it like that
+
+* show days since after picking a Date in the DatePicker
