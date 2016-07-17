@@ -71,14 +71,19 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
 
         initialiseDateText();
 
-        Intent intent = getIntent();
-        /* We initialise the weight and repetitions with the previously used values, as the new
-         * values are most likely close to those and easier to select this way. For example it is
-         * quite common to have three Sessions with the same weight, and close repetitions. */
-        mWeight = intent.getDoubleExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
+        if (savedInstanceState == null) {
+            /* We initialise the weight and repetitions with the previously used values, as the new
+             * values are most likely close to those and easier to select this way. For example it is
+             * quite common to have three Sessions with the same weight, and close repetitions. */
+            Intent intent = getIntent();
+            mWeight = intent.getDoubleExtra(getString(R.string.EXTRA_LAST_WEIGHT), 0);
+            mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
+        } else {
+            mWeight = savedInstanceState.getDouble(getString(R.string.EXTRA_LAST_WEIGHT));
+            mRepetitions = savedInstanceState.getInt(getString(R.string.EXTRA_LAST_REPETITIONS));
+        }
         mFraction = fraction(mWeight);
         mWhole = whole(mWeight);
-        mRepetitions = intent.getIntExtra(getString(R.string.EXTRA_LAST_REPETITIONS), 0);
 
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.new_session_weight_picker);
         weightPicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_weight));
@@ -144,5 +149,15 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
         Intent returnIntent = createIntentWithSession(session);
         setResult(RESULT_OK, returnIntent);
         finish();
+    }
+
+    @Override
+    /** Store the state of the current Activity before a configuration change such as for example a
+     *  screen rotation. */
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(getString(R.string.EXTRA_LAST_REPETITIONS), mRepetitions);
+        outState.putDouble(getString(R.string.EXTRA_LAST_WEIGHT), mWeight);
     }
 }

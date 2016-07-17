@@ -1,3 +1,7 @@
+v1.1
+* correctly store and restore selected values when adding new exercise sets
+and the screen is rotated
+
 v1.0 13/07/2016
 * initial release
 * functionality to add and remove weight-based exercises
