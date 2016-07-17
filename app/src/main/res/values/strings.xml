@@ -22,6 +22,7 @@
     <string name="EXTRA_SESSION">com.baertiger_baer.gymcoachbob.extra.session</string>
     <string name="EXTRA_LAST_WEIGHT">com.baertiger_baer.gymcoachbob.extra.last_weight</string>
     <string name="EXTRA_LAST_REPETITIONS">com.baertiger_baer.gymcoachbob.extra.last_repetitions</string>
+    <string name="EXTRA_LAST_DATE">com.baertiger_baer.gymcoachbob.extra.last_date</string>
 
     <string name="json_version_code">versionCode</string>
     <string name="json_exercise_name">name</string>

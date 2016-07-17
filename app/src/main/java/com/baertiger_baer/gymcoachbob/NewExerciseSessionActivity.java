@@ -56,13 +56,23 @@ public class NewExerciseSessionActivity extends ActionBarActivity implements Dat
         }
     }
 
-    /** Initialise the date for the new Session with the current date. */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            mDate = new Date();
+        } else {
+            mDate = new Date(savedInstanceState.getLong(getString(R.string.EXTRA_LAST_DATE)));
+        }
+    }
+
+    /** Initialise the date for the new Session. */
     public void initialiseDateText() {
-        mDate = new Date();
+        TextView dateTextView = (TextView) findViewById(R.id.new_session_date_text);
         String dateString = Util.dateString(mDate);
-        TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        String today = getString(R.string.time_today);
-        dateText.setText(getString(R.string.activity_new_session_picked_date, today, dateString));
+        String dateDescription = Util.timeSince(getApplicationContext(), mDate);
+        dateTextView.setText(getString(R.string.activity_new_session_picked_date, dateDescription, dateString));
     }
 
     public void showDatePickerDialog(View v) {
@@ -87,5 +97,14 @@ public class NewExerciseSessionActivity extends ActionBarActivity implements Dat
         Intent intent = new Intent();
         intent.putExtra(getString(R.string.EXTRA_SESSION), session);
         return intent;
+    }
+
+    @Override
+    /** Store the state of the current Activity before a configuration change such as for example a
+     *  screen rotation. */
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putLong(getString(R.string.EXTRA_LAST_DATE), mDate.getTime());
     }
 }
