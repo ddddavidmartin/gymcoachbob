@@ -39,7 +39,6 @@ Backlog of tasks left to do:
 * create release branch with apk in it
 * build apk with obfuscation
 * show last 10 commits on webpage
-* use the date string format set on the current device (EU vs. AU vs. US)
 * consider loading and saving the exercises in the background (json utils in a separate thread or service?)
  * more info on AsyncTask https://youtu.be/jtlRNNhane0
  * for a start consider just the write process as separate thread
@@ -204,15 +203,16 @@ Backlog of tasks left to do:
 * test the app on different screen sizes
  * https://developer.android.com/guide/practices/screens_support.html#screen-independence
 
-* tasks to be considered for completion of 1.0 release:
- * check whether proguard obfuscates the code (done)
- * per item spacing (optional)
- * time based exercises (optional)
- * welcome screens (done)
- * updated logo (done)
- * decimal point between weight pickers (done)
- * update package name (done)
- * (lock screen widget)
+* use the date string format set on the current device (EU vs. AU vs. US)
+ * might be worth putting this in and then allowing the app world-wide
+
+* make layout scrollable when screen is turned as new sessions can not be added
+  currently
+ * alternatively just move the add button the side
+* set up gitlab page that simply redirects to the app store
+* find out why on rotated view the keyboard does not enter any numbers
+ * maybe because we are looking for a keyboard and not finding it in our
+   helper method?
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -392,3 +392,17 @@ through the code base
    returning two lines and tricking it like that
 
 * show days since after picking a Date in the DatePicker
+* retain state when changing configuration whilst adding new sessions
+* add changelog for information on what changed between the releases
+
+* tasks to be considered for completion of 1.0 release:
+ * check whether proguard obfuscates the code (done)
+ * per item spacing (optional)
+ * time based exercises (optional)
+ * welcome screens (done)
+ * updated logo (done)
+ * decimal point between weight pickers (done)
+ * update package name (done)
+ * (lock screen widget)
+
+* bump version number in mainline
