@@ -85,7 +85,7 @@ public class ExerciseWrapper {
      *  Updates the persistent Exercises on file. */
     public static void notifyExercisesChanged() {
         if (mMainExercises == null || mContext == null) {
-            Log.d(Util.TAG, "Skipping the writing of Exercises to file as they are not initialised yet.");
+            Log.d("Skipping the writing of Exercises to file as they are not initialised yet.");
             return;
         }
         JsonUtils.toFile(mContext, mMainExercises);

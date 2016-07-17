@@ -126,7 +126,7 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
         if (input != null) {
             input.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         } else {
-            Log.e(Util.TAG, "Failed to find EditText for decimal NumberPicker.");
+            Log.e("Failed to find EditText for decimal NumberPicker.");
         }
 
         NumberPicker repetitionsPicker = (NumberPicker) findViewById(R.id.new_session_repetitions_picker);
@@ -144,7 +144,7 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
 
     public void addSession(View view) {
         ExerciseSession session = new WeightBasedExerciseSession(mDate, mWeight, mRepetitions);
-        Log.d(Util.TAG, "Created new session: " + session);
+        Log.d("Created new session: " + session);
 
         Intent returnIntent = createIntentWithSession(session);
         setResult(RESULT_OK, returnIntent);

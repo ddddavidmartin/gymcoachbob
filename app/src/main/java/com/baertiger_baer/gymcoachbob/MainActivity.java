@@ -79,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
         /* If the date has changed we need to update all Exercise entries to update their
            'days since last Exercise' info. */
         if (Exercise.datesHaveChangedSinceLastCheck()) {
-            Log.d(Util.TAG, "Updating Exercises as dates have changed since last check.");
+            Log.d("Updating Exercises as dates have changed since last check.");
             /* We call notifyItemRangeChanged rather than notifyDataSetChanged as the former
              * implies changes on only the data of the items, and not the position. This should
              * be more efficient. */
@@ -113,7 +113,7 @@ public class MainActivity extends ActionBarActivity {
         if (requestCode == NEW_EXERCISE_REQUEST && resultCode == RESULT_OK) {
             setUpNonEmptyLayout();
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
-            Log.d(Util.TAG, "Received Exercise: " + exercise);
+            Log.d("Received Exercise: " + exercise);
             int position = mExercises.add(exercise);
             mAdapter.notifyItemInserted(position);
             /* Scroll the view to the newly added Exercise so that it is visible. */

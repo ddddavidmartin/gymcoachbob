@@ -9,30 +9,30 @@ package com.baertiger_baer.gymcoachbob;
 public class Log {
     private static final boolean LOG = BuildConfig.DEBUG;
 
-    public static void i(String tag, String string) {
+    public static void i(String string) {
         if (LOG) {
-            android.util.Log.i(tag, string);
+            android.util.Log.i(Util.TAG, string);
         }
     }
 
-    public static void e(String tag, String string) {
+    public static void e(String string) {
         /* We always log errors as they do not happen often and give insight into things going
          * fatally wrong. */
-        android.util.Log.e(tag, string);
+        android.util.Log.e(Util.TAG, string);
     }
-    public static void d(String tag, String string) {
+    public static void d(String string) {
         if (LOG) {
-            android.util.Log.d(tag, string);
+            android.util.Log.d(Util.TAG, string);
         }
     }
-    public static void v(String tag, String string) {
+    public static void v(String string) {
         if (LOG) {
-            android.util.Log.v(tag, string);
+            android.util.Log.v(Util.TAG, string);
         }
     }
-    public static void w(String tag, String string) {
+    public static void w(String string) {
         if (LOG) {
-            android.util.Log.w(tag, string);
+            android.util.Log.w(Util.TAG, string);
         }
     }
 }

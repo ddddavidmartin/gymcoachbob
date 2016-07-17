@@ -89,7 +89,7 @@ public class NewExerciseSessionActivity extends ActionBarActivity implements Dat
         String dateString = Util.dateString(mDate);
         String timeSince = Util.timeSince(getApplicationContext(), mDate);
         dateText.setText(getString(R.string.activity_new_session_picked_date, timeSince, dateString));
-        Log.d(Util.TAG, "Picked date: " + dateString);
+        Log.d("Picked date: " + dateString);
     }
 
     /** Return a new Intent that contains the given ExerciseSession. */

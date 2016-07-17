@@ -40,10 +40,10 @@ public class NewExerciseActivity extends ActionBarActivity {
         if (checked) {
             switch (view.getId()) {
                 case R.id.radio_button_new_exercise_weight_based:
-                    Log.d(Util.TAG, "Weight-based exercise selected");
+                    Log.d("Weight-based exercise selected");
                     break;
                 case R.id.radio_button_new_exercise_time_based:
-                    Log.d(Util.TAG, "Time-based exercise selected");
+                    Log.d("Time-based exercise selected");
             }
         }
     }
@@ -66,11 +66,11 @@ public class NewExerciseActivity extends ActionBarActivity {
         String exerciseName = editText.getText().toString();
 
         if (exerciseName.isEmpty()) {
-            Log.d(Util.TAG, "Ignoring button press for empty exercise name.");
+            Log.d("Ignoring button press for empty exercise name.");
             return;
         }
 
-        Log.d(Util.TAG, "new exerciseName: " + exerciseName);
+        Log.d("new exerciseName: " + exerciseName);
 
         Exercise exercise;
         int exerciseType = selectedExerciseType();

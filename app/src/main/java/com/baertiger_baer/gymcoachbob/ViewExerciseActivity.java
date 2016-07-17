@@ -32,7 +32,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
          * ViewExerciseActivity instance, and the Exercise position is not provided. We avoid it by
          * setting the launchMode of this Activity to 'singleTop'. */
         if (position == -1) {
-            Log.e(Util.TAG, "Not starting activity as exercise position is missing.");
+            Log.e("Not starting activity as exercise position is missing.");
             finish();
             return;
         }
@@ -116,7 +116,7 @@ public class ViewExerciseActivity extends ActionBarActivity {
                 setUpNonEmptyExercise();
             }
             ExerciseSession session = (ExerciseSession) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
-            Log.d(Util.TAG, "Received Session: " + session);
+            Log.d("Received Session: " + session);
             int position = mExercise.add(session, /* update change on file */ true);
             mAdapter.notifyItemInserted(position);
             if (mExercise.nextSessionNeedsUpdate(position)) {

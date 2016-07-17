@@ -35,7 +35,7 @@ public class JsonUtils {
             PackageInfo pInfo = pm.getPackageInfo(context.getPackageName(), 0);
             versionCode = pInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(Util.TAG, "Failed to find package info: " + e);
+            Log.e("Failed to find package info: " + e);
             /* Not being able to access the versionCode should never happen. If it does we set
              * it to 0 which is never going to be valid as the first release is versionCode 1. */
             versionCode = 0;
@@ -87,7 +87,7 @@ public class JsonUtils {
         if (state.equals(Environment.MEDIA_MOUNTED)) {
             return storage;
         } else {
-            Log.e(Util.TAG, "External media '" + path + "' not available: '" + state + "'");
+            Log.e("External media '" + path + "' not available: '" + state + "'");
             return null;
         }
     }
@@ -109,7 +109,7 @@ public class JsonUtils {
     public static void toFile(Context context, List<Exercise> exercises) {
         File outputFile = getExerciseFile(context);
         if (outputFile == null) {
-            Log.d(Util.TAG, "Not writing Exercises as media is not available.");
+            Log.d("Not writing Exercises as media is not available.");
         }
         FileOutputStream outputStream = null;
         try {
@@ -131,7 +131,7 @@ public class JsonUtils {
                 try {
                     outputStream.close();
                 } catch (IOException e) {
-                    Log.d(Util.TAG, "Failed to close stream: " + e);
+                    Log.d("Failed to close stream: " + e);
                 }
             }
         }
@@ -167,7 +167,7 @@ public class JsonUtils {
 
         File inputFile = getExerciseFile(context);
         if (inputFile == null) {
-            Log.e(Util.TAG, "Not reading Exercises as media is not available.");
+            Log.e("Not reading Exercises as media is not available.");
             return result;
         }
         byte[] buffer = new byte[BUFSIZE];
@@ -178,17 +178,17 @@ public class JsonUtils {
                 fileContent.append(new String(buffer));
             }
         } catch (FileNotFoundException e) {
-            Log.e(Util.TAG, "Exercises file not found: " + e);
+            Log.e("Exercises file not found: " + e);
             return result;
         } catch (IOException e) {
-            Log.e(Util.TAG, "IOException during reading: " + e);
+            Log.e("IOException during reading: " + e);
             return result;
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException e) {
-                    Log.d(Util.TAG, "Failed to close stream: " + e);
+                    Log.d("Failed to close stream: " + e);
                 }
             }
         }
@@ -197,7 +197,7 @@ public class JsonUtils {
             JSONObject jsonObj = new JSONObject(fileContent.toString());
 
             int versionCode = jsonObj.getInt(context.getString(R.string.json_version_code));
-            Log.d(Util.TAG, "Loading data with versionCode " + versionCode + ".");
+            Log.d("Loading data with versionCode " + versionCode + ".");
 
             JSONArray exerciseList = jsonObj.getJSONArray(context.getString(R.string.json_exercise_list));
             /* Avoid reallocations of the array by setting the size once in advance. */
@@ -220,7 +220,7 @@ public class JsonUtils {
                 result.add(exercise);
             }
         } catch (JSONException e) {
-            Log.e(Util.TAG, "JSONException during parsing: " + e);
+            Log.e("JSONException during parsing: " + e);
             return result;
         }
 
