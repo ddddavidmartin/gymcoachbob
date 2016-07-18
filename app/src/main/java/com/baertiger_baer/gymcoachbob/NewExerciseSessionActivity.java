@@ -20,7 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /** Generic class to create a new ExerciseSession. */
-public class NewExerciseSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
+public abstract class NewExerciseSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
     protected Date mDate;
 
     public static class DatePickerFragment extends DialogFragment {
