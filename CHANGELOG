@@ -1,6 +1,7 @@
 v1.1 (unreleased)
 * correctly store and restore selected values when adding new exercise sets
 and the screen is rotated
+* show dates based on the locale setting of the current device
 
 v1.0 13/07/2016
 * initial release

@@ -67,9 +67,9 @@ public class ViewExerciseActivity extends ActionBarActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
-            mAdapter = new WeightBasedSessionViewAdapter(mExercise);
+            mAdapter = new WeightBasedSessionViewAdapter(getApplicationContext(), mExercise);
         } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
-            mAdapter = new TimeBasedSessionViewAdapter(mExercise);
+            mAdapter = new TimeBasedSessionViewAdapter(getApplicationContext(), mExercise);
         }
         mRecyclerView.setAdapter(mAdapter);
     }

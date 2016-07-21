@@ -203,8 +203,7 @@ Backlog of tasks left to do:
 * test the app on different screen sizes
  * https://developer.android.com/guide/practices/screens_support.html#screen-independence
 
-* use the date string format set on the current device (EU vs. AU vs. US)
- * might be worth putting this in and then allowing the app world-wide
+* allowing the app world-wide
 
 * make layout scrollable when screen is turned as new sessions can not be added
   currently
@@ -406,3 +405,4 @@ through the code base
  * (lock screen widget)
 
 * bump version number in mainline
+* use the date string format set on the current device (EU vs. AU vs. US)

@@ -6,7 +6,6 @@
 package com.baertiger_baer.gymcoachbob;
 
 import android.content.Context;
-import android.text.format.DateFormat;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -114,9 +113,9 @@ public abstract class Exercise implements Serializable {
      *  If the previous Session was on the same day, an empty String is returned.
      *  If the previous Session took place at an earlier day, the number of days since then will be
      *  included in the returned String. */
-    public String timeOfSession(int position) {
+    public String timeOfSession(Context context, int position) {
         ExerciseSession session = mSessions.get(position);
-        String dateString = DateFormat.format("dd/MM/yyyy", session.date()).toString();
+        String dateString = Util.dateString(context, session.date());
 
         int days;
         /* The topmost Session always shows the date it was done. */

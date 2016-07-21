@@ -70,7 +70,7 @@ public abstract class NewExerciseSessionActivity extends ActionBarActivity imple
     /** Initialise the date for the new Session. */
     public void initialiseDateText() {
         TextView dateTextView = (TextView) findViewById(R.id.new_session_date_text);
-        String dateString = Util.dateString(mDate);
+        String dateString = Util.dateString(getApplicationContext(), mDate);
         String dateDescription = Util.timeSince(getApplicationContext(), mDate);
         dateTextView.setText(getString(R.string.activity_new_session_picked_date, dateDescription, dateString));
     }
@@ -86,7 +86,7 @@ public abstract class NewExerciseSessionActivity extends ActionBarActivity imple
         c.set(year, month, day);
         mDate = c.getTime();
         TextView dateText = (TextView) findViewById(R.id.new_session_date_text);
-        String dateString = Util.dateString(mDate);
+        String dateString = Util.dateString(getApplicationContext(), mDate);
         String timeSince = Util.timeSince(getApplicationContext(), mDate);
         dateText.setText(getString(R.string.activity_new_session_picked_date, timeSince, dateString));
         Log.d("Picked date: " + dateString);

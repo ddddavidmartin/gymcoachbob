@@ -5,6 +5,7 @@
 
 package com.baertiger_baer.gymcoachbob;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.util.List;
 public class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedSessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
     private static List<ExerciseSession> mDataSet;
+    private static Context mContext;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mDateTextView;
@@ -30,7 +32,8 @@ public class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedS
         }
     }
 
-    public TimeBasedSessionViewAdapter(Exercise exercise) {
+    public TimeBasedSessionViewAdapter(Context context, Exercise exercise) {
+        mContext = context;
         mExercise = exercise;
         mDataSet = exercise.sessions();
     }
@@ -47,7 +50,7 @@ public class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedS
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TimeBasedExerciseSession session = (TimeBasedExerciseSession) mDataSet.get(position);
-        holder.mDateTextView.setText(mExercise.timeOfSession(position));
+        holder.mDateTextView.setText(mExercise.timeOfSession(mContext, position));
         holder.mDistanceTextView.setText(String.valueOf(session.distance()));
         holder.mDurationTextView.setText(String.valueOf(session.duration()));
     }

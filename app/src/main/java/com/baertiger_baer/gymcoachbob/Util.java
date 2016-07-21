@@ -6,7 +6,6 @@
 package com.baertiger_baer.gymcoachbob;
 
 import android.content.Context;
-import android.text.format.DateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -84,7 +83,10 @@ public class Util {
     }
 
     /** Return a String representation of the given Date. */
-    public static String dateString(Date date) {
-        return DateFormat.format("dd/MM/yyyy", date).toString();
+    public static String dateString(Context context, Date date) {
+        /* This call for getDateFormat respects the currently set locale on the device and
+         * returns an appropriately formatted date. */
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
+        return dateFormat.format(date);
     }
 }
