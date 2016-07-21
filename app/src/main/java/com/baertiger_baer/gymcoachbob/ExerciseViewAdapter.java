@@ -204,7 +204,5 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
             }
             mActionMode = null;
         }
-
-
     };
 }
