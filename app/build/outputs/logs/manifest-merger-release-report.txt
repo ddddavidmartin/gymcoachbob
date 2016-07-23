@@ -1,0 +1,113 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-61:12
+	xmlns:android
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:11-69
+	package
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:7:5-45
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:9:5-30
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	android:versionCode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:8:5-28
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:11:5-57:19
+MERGED from [com.android.support:recyclerview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/AndroidManifest.xml:17:5-19:19
+MERGED from [com.android.support:support-v4:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/AndroidManifest.xml:16:5-19
+MERGED from [com.android.support:cardview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/AndroidManifest.xml:16:5-19
+MERGED from [com.android.support:appcompat-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/AndroidManifest.xml:16:5-19
+MERGED from [com.android.support:support-v4:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/AndroidManifest.xml:16:5-19
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:14:9-41
+	android:allowBackup
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:13:9-43
+	android:theme
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:15:9-40
+activity#com.baertiger_baer.gymcoachbob.MainActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:16:9-25:20
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:18:13-45
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:17:13-41
+	android:launchMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:19:13-43
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:20:13-24:29
+action#android.intent.action.MAIN
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:23:27-74
+activity#com.baertiger_baer.gymcoachbob.NewExerciseActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:26:9-34:20
+	android:windowSoftInputMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:29:13-55
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:28:13-64
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:30:13-55
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:27:13-48
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:31:13-33:79
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:32:17-63
+	android:value
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:33:17-76
+activity#com.baertiger_baer.gymcoachbob.ViewExerciseActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:35:9-42:20
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:37:13-55
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:36:13-49
+	android:launchMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:38:13-43
+activity#com.baertiger_baer.gymcoachbob.NewWeightBasedSessionActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:43:9-49:20
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:44:13-63
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:45:13-63
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:43:19-64
+activity#com.baertiger_baer.gymcoachbob.NewTimeBasedSessionActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:50:9-56:20
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:51:13-63
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:52:13-63
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:50:19-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:59:5-81
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:59:22-78
+uses-sdk
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:recyclerview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/AndroidManifest.xml:15:5-42
+MERGED from [com.android.support:support-v4:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/AndroidManifest.xml:15:5-42
+MERGED from [com.android.support:cardview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/AndroidManifest.xml:15:5-42
+MERGED from [com.android.support:appcompat-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/AndroidManifest.xml:15:5-42
+MERGED from [com.android.support:support-v4:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/AndroidManifest.xml:15:5-42
+	android:targetSdkVersion
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+activity#android.support.v7.widget.TestActivity
+ADDED from [com.android.support:recyclerview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/AndroidManifest.xml:18:9-115
+	android:label
+		ADDED from [com.android.support:recyclerview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/AndroidManifest.xml:18:19-59
+	android:name
+		ADDED from [com.android.support:recyclerview-v7:21.0.3] /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/AndroidManifest.xml:18:60-113
