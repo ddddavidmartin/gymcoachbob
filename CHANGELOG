@@ -1,4 +1,5 @@
-v1.2 (unreleased)
+v1.2 23/07/2016
+* resolve crash issue when no exercises have been added yet
 
 v1.1 23/07/2016
 * show dates based on the locale setting of the current device

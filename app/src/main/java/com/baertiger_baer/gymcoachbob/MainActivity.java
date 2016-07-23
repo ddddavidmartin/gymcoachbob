@@ -132,6 +132,8 @@ public class MainActivity extends ActionBarActivity {
         /* For now until we implement correct retaining of the ActionMode after long pressing Exercises
          * we reset the full state, so that the app is at least in a clean state after a configuration
          * change. */
-        mAdapter.resetActionMode();
+        if (mAdapter != null) {
+            mAdapter.resetActionMode();
+        }
     }
 }
