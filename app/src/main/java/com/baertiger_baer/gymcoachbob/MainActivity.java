@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
     /** All Exercises the app knows about. */
     private static ExerciseWrapper mExercises;
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ExerciseViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -125,5 +125,13 @@ public class MainActivity extends ActionBarActivity {
     public void newExercise(View view) {
         Intent intent = new Intent(this, NewExerciseActivity.class);
         startActivityForResult(intent, NEW_EXERCISE_REQUEST);
+    }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        /* For now until we implement correct retaining of the ActionMode after long pressing Exercises
+         * we reset the full state, so that the app is at least in a clean state after a configuration
+         * change. */
+        mAdapter.resetActionMode();
     }
 }

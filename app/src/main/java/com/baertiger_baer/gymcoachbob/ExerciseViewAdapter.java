@@ -136,6 +136,12 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         return mDataSet.size();
     }
 
+    /** Reset the currently active ActionMode, for example after a screen rotation. */
+    protected void resetActionMode() {
+        unmarkSelectedExercise(true);
+        mActionMode = null;
+    }
+
     private static ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
         /* Called when the action mode is created; startActionMode() was called */
         @Override
