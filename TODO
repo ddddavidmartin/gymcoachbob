@@ -212,6 +212,12 @@ Backlog of tasks left to do:
 * find out why on rotated view the keyboard does not enter any numbers
  * maybe because we are looking for a keyboard and not finding it in our
    helper method?
+* use DialogFragment for the exercise removal dialog as it is robust against
+  configuration changes
+ * see DatePickerFragment for an example on where we did the same already
+ * http://stackoverflow.com/questions/7557265/prevent-dialog-dismissal-on-screen-rotation-in-android/15729764#15729764
+
+* mark selected exercise again when screen is rotated
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
