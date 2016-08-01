@@ -21,6 +21,10 @@ public class NewExerciseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_exercise);
+
+        /* Show the Activity on the lock screen so that the user can easily add Exercises without
+         * having to unlock the screen each time. */
+        Util.showActivityOnLockScreen(getWindow());
     }
 
     @Override

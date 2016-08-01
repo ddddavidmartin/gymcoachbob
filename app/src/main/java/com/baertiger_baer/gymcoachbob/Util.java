@@ -6,6 +6,8 @@
 package com.baertiger_baer.gymcoachbob;
 
 import android.content.Context;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -88,5 +90,12 @@ public class Util {
          * returns an appropriately formatted date. */
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
         return dateFormat.format(date);
+    }
+
+    /** Set up the given Window so that its Activity is shown above the lock screen. */
+    public static void showActivityOnLockScreen(Window window) {
+        /* Show the Exercise even when the screen is locked so that we do not have to unlock to add
+         * Sessions. */
+        window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
     }
 }

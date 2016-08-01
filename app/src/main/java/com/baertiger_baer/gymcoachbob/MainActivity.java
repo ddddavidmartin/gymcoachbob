@@ -35,6 +35,10 @@ public class MainActivity extends ActionBarActivity {
         } else {
             setUpEmptyLayout();
         }
+
+        /* Show the Activity on the lock screen so that the user can easily add Exercises without
+         * having to unlock the screen each time. */
+        Util.showActivityOnLockScreen(getWindow());
     }
 
     /** Set up the layout for when there are existing Exercises to be shown. */
