@@ -203,12 +203,6 @@ Backlog of tasks left to do:
 * test the app on different screen sizes
  * https://developer.android.com/guide/practices/screens_support.html#screen-independence
 
-* allowing the app world-wide
-
-* make layout scrollable when screen is turned as new sessions can not be added
-  currently
- * alternatively just move the add button the side
-* set up gitlab page that simply redirects to the app store
 * find out why on rotated view the keyboard does not enter any numbers
  * maybe because we are looking for a keyboard and not finding it in our
    helper method?
@@ -218,6 +212,13 @@ Backlog of tasks left to do:
  * http://stackoverflow.com/questions/7557265/prevent-dialog-dismissal-on-screen-rotation-in-android/15729764#15729764
 
 * mark selected exercise again when screen is rotated
+
+* alternatively, implement a notification that is always visible and brings
+  the app into the foreground when it it is selected (lock screen widgets are
+  not supported anymore in later Androids and hence a waste of time to implement
+  in the current app as a new feature)
+* a permanent notification may be the most Androidy way of doing it (Google Maps
+  for example works that way)
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -412,3 +413,12 @@ through the code base
 
 * bump version number in mainline
 * use the date string format set on the current device (EU vs. AU vs. US)
+* allowing the app world-wide
+
+* make layout scrollable when screen is turned as new sessions can not be added
+  currently
+ * alternatively just move the add button the side
+* set up gitlab page that simply redirects to the app store
+
+* show ViewExerciseActivity and NewSessionActivity above the lock screen,
+  so that it can be easily resumed to when the phone is locked

@@ -1,4 +1,6 @@
 v1.3 (unreleased)
+* show gymcoachbob above the lock screen so that exercises and sets can be
+added easily without having to unlock the screen every time
 
 v1.2 23/07/2016
 * resolve crash issue when no exercises have been added yet
