@@ -217,6 +217,7 @@ Backlog of tasks left to do:
   the app into the foreground when it it is selected (lock screen widgets are
   not supported anymore in later Androids and hence a waste of time to implement
   in the current app as a new feature)
+ * https://developer.android.com/guide/topics/ui/notifiers/notifications.html
 * a permanent notification may be the most Androidy way of doing it (Google Maps
   for example works that way)
 
