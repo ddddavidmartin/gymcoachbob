@@ -47,10 +47,6 @@ public class ViewExerciseActivity extends ActionBarActivity {
         } else {
             setUpEmptyExercise();
         }
-
-        /* Show the Activity on the lock screen so that the user can easily add Sessions without
-         * having to unlock the screen each time. */
-        Util.showActivityOnLockScreen(getWindow());
     }
 
     /** Set up the Exercise layout for when no Sessions have been added yet. */

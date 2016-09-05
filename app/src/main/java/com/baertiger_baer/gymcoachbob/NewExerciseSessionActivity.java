@@ -65,10 +65,6 @@ public abstract class NewExerciseSessionActivity extends ActionBarActivity imple
         } else {
             mDate = new Date(savedInstanceState.getLong(getString(R.string.EXTRA_LAST_DATE)));
         }
-
-        /* Show the Activity on the lock screen so that the user can easily add Sessions without
-         * having to unlock the screen each time. */
-        Util.showActivityOnLockScreen(getWindow());
     }
 
     /** Initialise the date for the new Session. */
