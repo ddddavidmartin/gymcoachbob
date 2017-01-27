@@ -116,6 +116,10 @@ Backlog of tasks left to do:
 
 * bold entries where the weight has changed for weight-based Sessions
 * add search functionality to search for exercises (see tripview for an example)
+ * https://developer.android.com/guide/topics/search/search-dialog.html
+ * https://developer.android.com/training/search/index.html
+ * https://developer.android.com/training/search/setup.html
+ * https://developer.android.com/training/search/search.html
 
 * implement widget for off-screen to add Sessions
 
@@ -220,6 +224,15 @@ Backlog of tasks left to do:
  * https://developer.android.com/guide/topics/ui/notifiers/notifications.html
 * a permanent notification may be the most Androidy way of doing it (Google Maps
   for example works that way)
+
+* store and restore current position for individual exercises (so that going
+  out of an exercise and back to it restores the currently visible session)
+
+* add more exercise types
+ - weight: just date and weight
+  - show weight difference since last entry
+  - will allow to graph it as well
+ - running: time, pace, distance, average heartrate, min/max heartrate
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
