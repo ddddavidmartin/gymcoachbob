@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE', which is part of this source code package.
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_view_exercise_padding_top"
+    tools:context="com.baertiger_baer.gymcoachbob.ViewExerciseActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_exercise_textview_date"
+        android:text="@string/activity_view_exercise_textview_date"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_huge"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_exercise_textview_time"
+        android:text="@string/activity_view_exercise_textview_time"
+        android:layout_toRightOf="@id/view_exercise_textview_date"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/view_exercise_recyclerview"
+        android:scrollbars="vertical"
+        android:layout_marginTop="@dimen/activity_view_exercise_recyclerview_padding_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view_exercise_textview_date"/>
+
+</RelativeLayout>

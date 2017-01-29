@@ -58,7 +58,11 @@ public class ViewExerciseActivity extends ActionBarActivity {
 
     /** Set up the Exercise layout for when there are Sessions for this Exercise. */
     protected void setUpNonEmptyExercise() {
-        setContentView(R.layout.activity_view_weightbased_exercise);
+        if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
+            setContentView(R.layout.activity_view_weightbased_exercise);
+        } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
+            setContentView(R.layout.activity_view_timebased_exercise);
+        }
         mRecyclerView = (RecyclerView) findViewById(R.id.view_exercise_recyclerview);
         /* Improves performance. Only set to true if changes in content do not change the
          * layout size of the RecyclerView. */
