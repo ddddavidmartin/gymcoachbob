@@ -23,28 +23,11 @@
         android:layout_marginTop="@dimen/margin_medium"
         android:layout_below="@+id/new_session_date_picker_button" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/new_session_distance_text"
-        android:text="@string/text_new_session_distance"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:layout_marginLeft="@dimen/margin_massive"
-        android:layout_toRightOf="@id/new_session_time_text"
-        android:layout_below="@id/new_session_date_picker_button" />
-
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/new_session_time_picker"
         android:layout_below="@id/new_session_time_text" />
-
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/new_session_distance_picker"
-        android:layout_alignLeft="@id/new_session_distance_text"
-        android:layout_below="@id/new_session_distance_text" />
 
     <Button
         android:layout_width="wrap_content"

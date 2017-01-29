@@ -8,19 +8,12 @@ package com.baertiger_baer.gymcoachbob;
 import java.util.Date;
 
 public class TimeBasedExerciseSession extends ExerciseSession {
-    /** The distance of the respective Session. */
-    private double mDistance;
     /** The time in seconds of the respective Session. */
     private int mDuration;
 
-    TimeBasedExerciseSession(Date date, double distance, int time) {
+    TimeBasedExerciseSession(Date date, int time) {
         super(date);
-        mDistance = distance;
         mDuration = time;
-    }
-
-    public double distance() {
-        return mDistance;
     }
 
     public int duration() {

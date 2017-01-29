@@ -22,13 +22,11 @@ public class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedS
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mDateTextView;
         public TextView mDurationTextView;
-        public TextView mDistanceTextView;
 
         public ViewHolder(View v) {
             super(v);
             mDateTextView = (TextView) v.findViewById(R.id.session_date_textview);
             mDurationTextView = (TextView) v.findViewById(R.id.session_duration_textview);
-            mDistanceTextView = (TextView) v.findViewById(R.id.session_distance_textview);
         }
     }
 
@@ -51,7 +49,6 @@ public class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedS
     public void onBindViewHolder(ViewHolder holder, int position) {
         TimeBasedExerciseSession session = (TimeBasedExerciseSession) mDataSet.get(position);
         holder.mDateTextView.setText(mExercise.timeOfSession(mContext, position));
-        holder.mDistanceTextView.setText(String.valueOf(session.distance()));
         holder.mDurationTextView.setText(String.valueOf(session.duration()));
     }
 

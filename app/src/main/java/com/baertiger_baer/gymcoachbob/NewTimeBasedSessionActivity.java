@@ -33,23 +33,10 @@ public class NewTimeBasedSessionActivity extends NewExerciseSessionActivity {
                 mTime = newValue;
             }
         });
-
-        NumberPicker distancePicker = (NumberPicker) findViewById(R.id.new_session_distance_picker);
-        distancePicker.setMaxValue(getResources().getInteger(R.integer.new_session_max_distance));
-        distancePicker.setMinValue(getResources().getInteger(R.integer.new_session_min_distance));
-        distancePicker.setValue(getResources().getInteger(R.integer.new_session_min_distance));
-        /* Allow the picker to wrap around as there is quite a large number of possible values. */
-        distancePicker.setWrapSelectorWheel(true);
-        distancePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
-                mDistance = newValue;
-            }
-        });
     }
 
     public void addSession(View view) {
-        ExerciseSession session = new TimeBasedExerciseSession(mDate, mDistance, mTime);
+        ExerciseSession session = new TimeBasedExerciseSession(mDate, mTime);
 
         Intent returnIntent = createIntentWithSession(session);
         setResult(RESULT_OK, returnIntent);
