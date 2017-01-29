@@ -41,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_button_new_exercise_time_based"
-            android:visibility="gone"
             android:onClick="onRadioButtonClicked" />
     </RadioGroup>
 
