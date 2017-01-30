@@ -32,6 +32,7 @@
     <string name="json_session_date">date</string>
     <string name="json_session_repetitions">repetitions</string>
     <string name="json_session_weight">weight</string>
+    <string name="json_session_time">time</string>
 
     <string name="text_new_session_weight">Weight</string>
     <string name="text_new_session_repetitions">Repetitions</string>

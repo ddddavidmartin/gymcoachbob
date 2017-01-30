@@ -55,20 +55,21 @@ public class JsonUtils {
             tmp.put(context.getString(R.string.json_exercise_type), e.type());
 
             JSONArray sessions = new JSONArray();
-            if (e.type() == Exercise.TYPE_WEIGHT_BASED) {
-                for (ExerciseSession s : e.sessions()) {
-                    JSONObject tmpSession = new JSONObject();
-                    /* We store the date as a long as it is the easiest to parse again.
-                     * We may consider using an actual String date as that would make the Json
-                     * file itself more humanly readable. */
-                    tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
-                    if (e.type() == Exercise.TYPE_WEIGHT_BASED) {
-                        WeightBasedExerciseSession currentSession = (WeightBasedExerciseSession) s;
-                        tmpSession.put(context.getString(R.string.json_session_weight), currentSession.weight());
-                        tmpSession.put(context.getString(R.string.json_session_repetitions), currentSession.repetitions());
-                    }
-                    sessions.put(tmpSession);
+            for (ExerciseSession s : e.sessions()) {
+                JSONObject tmpSession = new JSONObject();
+                /* We store the date as a long as it is the easiest to parse again.
+                 * We may consider using an actual String date as that would make the Json
+                 * file itself more humanly readable. */
+                tmpSession.put(context.getString(R.string.json_session_date), s.date().getTime());
+                if (e.type() == Exercise.TYPE_WEIGHT_BASED) {
+                    WeightBasedExerciseSession currentSession = (WeightBasedExerciseSession) s;
+                    tmpSession.put(context.getString(R.string.json_session_weight), currentSession.weight());
+                    tmpSession.put(context.getString(R.string.json_session_repetitions), currentSession.repetitions());
+                } else if (e.type() == Exercise.TYPE_TIME_BASED) {
+                    TimeBasedExerciseSession currentSession = (TimeBasedExerciseSession) s;
+                    tmpSession.put(context.getString(R.string.json_session_time), currentSession.duration());
                 }
+                sessions.put(tmpSession);
             }
             tmp.put(context.getString(R.string.json_exercise_session_list), sessions);
 
@@ -159,6 +160,23 @@ public class JsonUtils {
         return exercise;
     }
 
+    private static Exercise readTimeBasedExercise(Context context, String name, JSONArray sessionList)
+    throws JSONException {
+        Exercise exercise = new TimeBasedExercise(name);
+
+        for (int j = 0; j < sessionList.length(); j++) {
+            JSONObject tmpSession = sessionList.getJSONObject(j);
+            String dateString = tmpSession.getString(context.getString(R.string.json_session_date));
+            Date date = new Date(Long.parseLong(dateString));
+            int time = tmpSession.getInt(context.getString(R.string.json_session_time));
+
+            ExerciseSession s = new TimeBasedExerciseSession(date, time);
+            exercise.add(s, /* do not sync changes */ false);
+        }
+
+        return exercise;
+    }
+
     /* Return exercises read from the given file. */
     public static List<Exercise> readExercisesFromFile(Context context) {
         StringBuffer fileContent = new StringBuffer("");
@@ -213,7 +231,7 @@ public class JsonUtils {
                 if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
                     exercise = readWeightBasedExercise(context, exerciseName, sessionList);
                 } else if (exerciseType == Exercise.TYPE_TIME_BASED) {
-                    exercise = new TimeBasedExercise(exerciseName);
+                    exercise = readTimeBasedExercise(context, exerciseName, sessionList);
                 } else {
                     throw new RuntimeException("Trying to write Exercise of unhandled type " + exerciseType + ".");
                 }
