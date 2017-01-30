@@ -235,6 +235,9 @@ Backlog of tasks left to do:
  - running: time, pace, distance, average heartrate, min/max heartrate
  - simple time based exercise, planks for example
 
+* restore the previous selected time when adding a time-based Session
+* import and use a proper timepicker for the Session duration
+
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
