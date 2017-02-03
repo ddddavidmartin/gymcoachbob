@@ -45,7 +45,7 @@ public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBa
     @Override
     public WeightBasedSessionViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.weight_based_session_card_layout, parent, false);
+                 .inflate(R.layout.weight_based_session_card_layout, parent, false);
         return new ViewHolder(v);
     }
 
