@@ -24,12 +24,14 @@ public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBa
         public TextView mDateTextView;
         public TextView mWeightTextView;
         public TextView mRepetionsTextView;
+        public TextView mNumberTextView;
 
         public ViewHolder(View v) {
             super(v);
             mDateTextView = (TextView) v.findViewById(R.id.session_date_textview);
             mWeightTextView = (TextView) v.findViewById(R.id.session_weight_textview);
             mRepetionsTextView = (TextView) v.findViewById(R.id.session_repetitions_textview);
+            mNumberTextView = (TextView) v.findViewById(R.id.session_number_textview);
         }
     }
 
@@ -54,6 +56,8 @@ public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBa
         holder.mDateTextView.setText(mExercise.timeOfSession(mContext, position));
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));
+        /* TODO: Populate with actual incrementing number for each session. */
+        holder.mNumberTextView.setText("1");
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */

@@ -20,12 +20,22 @@
         android:layout_marginRight="@dimen/margin_huge"/>
 
     <TextView
+        android:layout_width="@dimen/session_card_number_width"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:id="@+id/view_exercise_textview_number"
+        android:text="@string/activity_view_exercise_textview_number"
+        android:layout_toRightOf="@id/view_exercise_textview_date"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/view_exercise_textview_weight"
         android:text="@string/activity_view_exercise_textview_weight"
-        android:layout_toRightOf="@id/view_exercise_textview_date"
-        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_toRightOf="@id/view_exercise_textview_number"
+        android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginRight="@dimen/margin_medium"/>
 
     <TextView

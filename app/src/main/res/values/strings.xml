@@ -47,6 +47,7 @@
     <string name="activity_view_exercise_textview_weight">Weight</string>
     <string name="activity_view_exercise_textview_repetitions">Repetition(s)</string>
     <string name="activity_view_exercise_textview_time">Time</string>
+    <string name="activity_view_exercise_textview_number">#</string>
 
     <string name="activity_view_empty_exercise_description">This is an empty exercise.\n\nTap plus to add a set.</string>
     <string name="activity_main_empty_description">Welcome to gymcoachbob.\n\n\nTap plus to add a new exercise.\n\nTap an exercise to open it.\n\nTap and hold an exercise to mark it for deletion.</string>

@@ -20,7 +20,8 @@
     <dimen name="exercise_card_elevation">2dp</dimen>
 
     <dimen name="session_card_date_width">115dp</dimen>
-    <dimen name="session_card_weight_width">34dp</dimen>
+    <dimen name="session_card_weight_width">36dp</dimen>
+    <dimen name="session_card_number_width">25dp</dimen>
     <dimen name="session_card_repetitions_width">32dp</dimen>
     <dimen name="session_card_layout_margin">1dp</dimen>
     <dimen name="session_card_corner_radius">0dp</dimen>
