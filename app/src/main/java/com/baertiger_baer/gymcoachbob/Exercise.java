@@ -60,7 +60,7 @@ public abstract class Exercise implements Serializable {
     public int add(ExerciseSession session, boolean syncExercisesOnFile) {
         mSessions.add(0, session);
         Collections.sort(mSessions);
-        int position = mSessions.indexOf(session);
+        final int position = mSessions.indexOf(session);
 
         /* As we are modifying the Sessions directly, we have to notify the Exercise backend
          * about the change. */
