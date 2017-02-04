@@ -239,12 +239,15 @@ Backlog of tasks left to do:
 * import and use a proper timepicker for the Session duration
 * add timeline activity with all sessions logged
 * add extra pickers for time of a session in addition to the date
-* show the number of each logged session, so that it is obvious how many were
-  done already
 * default to the weight and number of repetitions of the first session of the
   previous day rather than of the last session, as these are more likely applicable.
   The next session on the same day simply repeats the values of the previous
   session.
+  - add it as a member in the ExerciseSession class and set it up when the
+    sessions are loaded from file.
+  - Update it when new sessions are added
+* update access modifiers as recommended by Android Studio in Exercise.java and
+  ExerciseSession.java for example
 
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
@@ -448,3 +451,6 @@ through the code base
 
 * show ViewExerciseActivity and NewSessionActivity above the lock screen,
   so that it can be easily resumed to when the phone is locked
+
+* show the number of each logged session, so that it is obvious how many were
+  done already
