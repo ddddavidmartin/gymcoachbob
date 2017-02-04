@@ -23,6 +23,8 @@ public abstract class Exercise implements Serializable {
     /* The last time the dates of the Exercises where checked.
      * See datesHaveChangedSinceLastCheck. */
     private static Date mLastDateCheck = null;
+    /* The number of the first Session in a day. */
+    private static final int FIRST_SESSION_NUMBER = 1;
 
     /* The default number of Sessions to allocate for an Exercise. */
     private static final int DEFAULT_CAPACITY = 0;
@@ -61,6 +63,27 @@ public abstract class Exercise implements Serializable {
         mSessions.add(0, session);
         Collections.sort(mSessions);
         final int position = mSessions.indexOf(session);
+
+        /* We start counting at the first Session on a day. */
+        if ((position == 0) || !Util.onSameDay(session.date(), mSessions.get(position - 1).date())) {
+            session.mNumber = FIRST_SESSION_NUMBER;
+        /* Otherwise we simply continue from the previous one. */
+        } else {
+            session.mNumber = mSessions.get(position - 1).number() + 1;
+        }
+        /* If we add a Session in the middle of a day, we have to update all following Sessions of
+         * on that day to avoid duplicates. */
+        if (position < mSessions.size() - 1) {
+            for (int i = position + 1; i < mSessions.size(); i++) {
+                ExerciseSession nextSession = mSessions.get(i);
+
+                if (Util.onSameDay(nextSession.date(), session.date())) {
+                    nextSession.mNumber = nextSession.mNumber + 1;
+                } else {
+                    break;
+                }
+            }
+        }
 
         /* As we are modifying the Sessions directly, we have to notify the Exercise backend
          * about the change. */

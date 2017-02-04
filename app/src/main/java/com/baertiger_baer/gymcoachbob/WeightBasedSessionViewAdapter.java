@@ -56,8 +56,7 @@ public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBa
         holder.mDateTextView.setText(mExercise.timeOfSession(mContext, position));
         holder.mRepetionsTextView.setText(String.valueOf(session.repetitions()));
         holder.mWeightTextView.setText(String.valueOf(session.weight()));
-        /* TODO: Populate with actual incrementing number for each session. */
-        holder.mNumberTextView.setText("1");
+        holder.mNumberTextView.setText(String.valueOf(session.number()));
     }
 
     /** Return the size of your dataset (invoked by the layout manager) */

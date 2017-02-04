@@ -7,6 +7,8 @@ import java.util.Date;
 public abstract class ExerciseSession implements Serializable, Comparable<ExerciseSession> {
     /** The time when the ExerciseSession was done. */
     protected Date mDate;
+    /** The number of the ExerciseSession. */
+    protected int mNumber;
 
     ExerciseSession(Date date) {
         mDate = date;
@@ -15,6 +17,11 @@ public abstract class ExerciseSession implements Serializable, Comparable<Exerci
     /** Return the time at which the ExerciseSession took place. */
     public Date date() {
         return mDate;
+    }
+
+    /** Return the number of the ExerciseSession. */
+    public int number() {
+        return mNumber;
     }
 
     /** Compare this ExerciseSession to another to determine relative ordering.
