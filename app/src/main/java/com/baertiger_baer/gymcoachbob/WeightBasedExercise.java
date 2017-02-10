@@ -29,14 +29,14 @@ public class WeightBasedExercise extends Exercise {
     }
 
     @Override
-    public int add(ExerciseSession session, boolean syncExercisesOnFile) {
-        int position = super.add(session, syncExercisesOnFile);
+    public PositionWithRange add(ExerciseSession session, boolean syncExercisesOnFile) {
+        final PositionWithRange posRange = super.add(session, syncExercisesOnFile);
 
         boolean setLastWeightAndRepetitions;
         /* We initialise the 'new Session' dialog with the weight and repetitions of the most recently
          * added Session. For this reason we only set these values if the new Session is at the top of
          * the list (i.e. at position 0) or on the same day as the Session at the top of the list. */
-        if (position == 0) {
+        if (posRange.position() == 0) {
             setLastWeightAndRepetitions = true;
         } else {
             Date mostRecentDate = mSessions.get(0).date();
@@ -47,6 +47,6 @@ public class WeightBasedExercise extends Exercise {
             mLastRepetitions = ((WeightBasedExerciseSession) session).repetitions();
         }
 
-        return position;
+        return posRange;
     }
 }

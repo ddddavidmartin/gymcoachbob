@@ -58,11 +58,13 @@ public abstract class Exercise implements Serializable {
 
     /** Add the given Session to the Exercise.
      *  Use syncExercisesOnFile=true to update the Exercises on file after adding the Session.
-     *  Returns the position at which the Session was inserted. */
-    public int add(ExerciseSession session, boolean syncExercisesOnFile) {
+     *  Returns the position at which the Session was inserted, and if required,
+     *  a range of Sessions that need to be updated. */
+    public PositionWithRange add(ExerciseSession session, boolean syncExercisesOnFile) {
         mSessions.add(0, session);
         Collections.sort(mSessions);
         final int position = mSessions.indexOf(session);
+        int itemCount = 0;
 
         /* We start counting at the first Session on a day. */
         if ((position == 0) || !Util.onSameDay(session.date(), mSessions.get(position - 1).date())) {
@@ -71,6 +73,18 @@ public abstract class Exercise implements Serializable {
         } else {
             session.mNumber = mSessions.get(position - 1).number() + 1;
         }
+
+        /* If the next Session under the current one is not on the same day, then we have to update
+         * it as for example number of days passed since the current and the next Session may have
+          * changed. */
+        if (position < mSessions.size() - 1) {
+            ExerciseSession next = mSessions.get(position + 1);
+
+            if (!Util.onSameDay(session.date(), next.date())) {
+                itemCount++;
+            }
+        }
+
         /* If we add a Session in the middle of a day, we have to update all following Sessions of
          * on that day to avoid duplicates. */
         if (position < mSessions.size() - 1) {
@@ -79,6 +93,7 @@ public abstract class Exercise implements Serializable {
 
                 if (Util.onSameDay(nextSession.date(), session.date())) {
                     nextSession.mNumber = nextSession.mNumber + 1;
+                    itemCount++;
                 } else {
                     break;
                 }
@@ -91,7 +106,11 @@ public abstract class Exercise implements Serializable {
             ExerciseWrapper.notifyExercisesChanged();
         }
 
-        return position;
+        /* If additional items have changed, then they will always start at the next Session at
+         * position + 1, as they either are on the same day or the next item on a different day. */
+        final int rangeStart = itemCount > 0 ? position + 1 : PositionWithRange.UNSET;
+
+        return new PositionWithRange(position, rangeStart, itemCount);
     }
 
     @Override
@@ -177,21 +196,6 @@ public abstract class Exercise implements Serializable {
         }
         mLastDateCheck = currentDate;
 
-        return res;
-    }
-
-    /** Return whether the Session below the given position needs to be updated after an update
-     *  of the given Session. */
-    public boolean nextSessionNeedsUpdate(int position) {
-        boolean res = false;
-        if (position < (mSessions.size() - 1)) {
-            ExerciseSession one = mSessions.get(position);
-            ExerciseSession other = mSessions.get(position + 1);
-
-            if (!Util.onSameDay(one.date(), other.date())) {
-                res = true;
-            }
-        }
         return res;
     }
 }

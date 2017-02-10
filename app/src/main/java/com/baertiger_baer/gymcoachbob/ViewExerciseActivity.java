@@ -121,13 +121,14 @@ public class ViewExerciseActivity extends ActionBarActivity {
             }
             ExerciseSession session = (ExerciseSession) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
             Log.d("Received Session: " + session);
-            int position = mExercise.add(session, /* update change on file */ true);
-            mAdapter.notifyItemInserted(position);
-            if (mExercise.nextSessionNeedsUpdate(position)) {
-                mAdapter.notifyItemChanged(position + 1);
+            PositionWithRange posRange = mExercise.add(session, /* update change on file */ true);
+            mAdapter.notifyItemInserted(posRange.position());
+            if (posRange.rangeStart() != PositionWithRange.UNSET) {
+                mAdapter.notifyItemRangeChanged(posRange.rangeStart(), posRange.count());
             }
+
             /* Scroll the view to the newly added Session so that it is visible. */
-            mRecyclerView.scrollToPosition(position);
+            mRecyclerView.scrollToPosition(posRange.position());
         }
     }
 }
