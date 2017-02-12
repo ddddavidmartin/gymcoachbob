@@ -249,9 +249,6 @@ Backlog of tasks left to do:
 * update access modifiers as recommended by Android Studio in Exercise.java and
   ExerciseSession.java for example
 
-* split ViewExerciseActivity into general and more specific subclasses
- - avoids it getting too messy when we add more Exercise types
-
 * use session numbers rather than the date to sort them
  - this will then allow us to change the ordering as well
 
@@ -465,3 +462,6 @@ through the code base
   and the range of sessions that need to be updated (otherwise inserting a Session
   in the middle of a day will not update the view of the remaining ones)
  - see for example ViewExerciseActivity.onResult
+
+* split ViewExerciseActivity into general and more specific subclasses
+ - avoids it getting too messy when we add more Exercise types

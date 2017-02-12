@@ -8,19 +8,20 @@ package com.baertiger_baer.gymcoachbob;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
-public class ViewExerciseActivity extends ActionBarActivity {
-    private static final int NEW_SESSION_REQUEST = 1;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+public abstract class ViewExerciseActivity extends ActionBarActivity {
+    static final int NEW_SESSION_REQUEST = 1;
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
     /** The current Exercise that is visible. */
-    private Exercise mExercise;
+    Exercise mExercise;
+
+    /** Set up the Exercise layout for when there are Sessions for this Exercise. */
+    abstract void setUpNonEmptyExercise();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,60 +57,11 @@ public class ViewExerciseActivity extends ActionBarActivity {
         textView.setText(R.string.activity_view_empty_exercise_description);
     }
 
-    /** Set up the Exercise layout for when there are Sessions for this Exercise. */
-    protected void setUpNonEmptyExercise() {
-        if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
-            setContentView(R.layout.activity_view_weightbased_exercise);
-        } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
-            setContentView(R.layout.activity_view_timebased_exercise);
-        }
-        mRecyclerView = (RecyclerView) findViewById(R.id.view_exercise_recyclerview);
-        /* Improves performance. Only set to true if changes in content do not change the
-         * layout size of the RecyclerView. */
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
-            mAdapter = new WeightBasedSessionViewAdapter(getApplicationContext(), mExercise);
-        } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
-            mAdapter = new TimeBasedSessionViewAdapter(getApplicationContext(), mExercise);
-        }
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.view_exercise_activity_actions, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.action_new_session:
-                if (mExercise.type() == Exercise.TYPE_WEIGHT_BASED) {
-                    Intent intent = new Intent(this, NewWeightBasedSessionActivity.class);
-                    /* Provide the last added Session details so that the Activity can be initialised
-                     * with good default values. */
-                    intent.putExtra(getString(R.string.EXTRA_LAST_WEIGHT),
-                                    ((WeightBasedExercise) mExercise).lastWeight());
-                    intent.putExtra(getString(R.string.EXTRA_LAST_REPETITIONS),
-                                    ((WeightBasedExercise) mExercise).lastRepetitions());
-                    startActivityForResult(intent, NEW_SESSION_REQUEST);
-                } else if (mExercise.type() == Exercise.TYPE_TIME_BASED) {
-                    Intent intent = new Intent(this, NewTimeBasedSessionActivity.class);
-                    startActivityForResult(intent, NEW_SESSION_REQUEST);
-                }
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -48,9 +48,19 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
                         return;
                     }
 
-                    Intent intent = new Intent(mActivity.getApplicationContext(), ViewExerciseActivity.class);
-                    intent.putExtra(mActivity.getString(R.string.EXTRA_EXERCISE_POSITION), pos);
-                    mActivity.startActivity(intent);
+                    final int exerciseType = mDataSet.get(pos).type();
+                    Intent intent = null;
+                    if (exerciseType == Exercise.TYPE_WEIGHT_BASED) {
+                        intent = new Intent(mActivity.getApplicationContext(), ViewWeightBasedExerciseActivity.class);
+                    } else if (exerciseType == Exercise.TYPE_TIME_BASED) {
+                        intent = new Intent(mActivity.getApplicationContext(), ViewTimeBasedExerciseActivity.class);
+                    }
+                    if (intent != null) {
+                        intent.putExtra(mActivity.getString(R.string.EXTRA_EXERCISE_POSITION), pos);
+                        mActivity.startActivity(intent);
+                    } else {
+                        Log.e("Unhandled Exercise type " + exerciseType + ".");
+                    }
                 }
             });
 

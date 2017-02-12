@@ -33,7 +33,15 @@
                 android:value="com.baertiger_baer.gymcoachbob.MainActivity" />
         </activity>
         <activity
-            android:name=".ViewExerciseActivity"
+            android:name=".ViewWeightBasedExerciseActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.baertiger_baer.gymcoachbob.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ViewTimeBasedExerciseActivity"
             android:parentActivityName=".MainActivity"
             android:launchMode="singleTop" >
             <meta-data
@@ -42,17 +50,17 @@
         </activity>
         <activity android:name=".NewWeightBasedSessionActivity"
             android:label="@string/title_activity_new_session"
-            android:parentActivityName=".ViewExerciseActivity" >
+            android:parentActivityName=".ViewWeightBasedExerciseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.baertiger_baer.gymcoachbob.ViewExerciseActivity" />
+                android:value="com.baertiger_baer.gymcoachbob.ViewWeightBasedExerciseActivity" />
         </activity>
         <activity android:name=".NewTimeBasedSessionActivity"
             android:label="@string/title_activity_new_session"
-            android:parentActivityName=".ViewExerciseActivity" >
+            android:parentActivityName=".ViewTimeBasedExerciseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.baertiger_baer.gymcoachbob.ViewExerciseActivity" />
+                android:value="com.baertiger_baer.gymcoachbob.ViewTimeBasedExerciseActivity" />
         </activity>
     </application>
 
