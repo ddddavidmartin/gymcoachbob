@@ -8,8 +8,8 @@ package com.baertiger_baer.gymcoachbob;
 
 /** A simple class that encapsulates a position on which an item was inserted and a separate range
  *  of positions that require to be updated. */
-public class PositionWithRange {
-    public static final int UNSET = -1;
+class PositionWithRange {
+    static final int UNSET = -1;
 
     /* The first position of a range of items that has changed. */
     private int mRangeStart;
@@ -24,15 +24,15 @@ public class PositionWithRange {
         mRangeStart = rangeStart;
     }
 
-    public int position() {
+    int position() {
         return mInsertPosition;
     }
 
-    public int rangeStart() {
+    int rangeStart() {
         return mRangeStart;
     }
 
-    public int count() {
+    int count() {
         return mItemCount;
     }
 }

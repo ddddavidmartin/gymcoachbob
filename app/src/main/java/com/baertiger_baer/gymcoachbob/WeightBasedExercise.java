@@ -2,7 +2,7 @@ package com.baertiger_baer.gymcoachbob;
 
 import java.util.Date;
 
-public class WeightBasedExercise extends Exercise {
+class WeightBasedExercise extends Exercise {
     /* The weight used for the last Session that was added. */
     private double mLastWeight = 0;
     /* The number of repetitions used for the last Session that was added. */
@@ -19,12 +19,12 @@ public class WeightBasedExercise extends Exercise {
     }
 
     /* Return the weight that was used for the last Session. */
-    public double lastWeight() {
+    double lastWeight() {
         return mLastWeight;
     }
 
     /** Return the number of repetitions that were used for the last Session. */
-    public int lastRepetitions() {
+    int lastRepetitions() {
         return mLastRepetitions;
     }
 

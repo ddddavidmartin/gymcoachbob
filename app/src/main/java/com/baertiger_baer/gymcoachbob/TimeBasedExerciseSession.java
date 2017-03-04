@@ -7,7 +7,7 @@ package com.baertiger_baer.gymcoachbob;
 
 import java.util.Date;
 
-public class TimeBasedExerciseSession extends ExerciseSession {
+class TimeBasedExerciseSession extends ExerciseSession {
     /** The time in seconds of the respective Session. */
     private int mDuration;
 
@@ -16,7 +16,7 @@ public class TimeBasedExerciseSession extends ExerciseSession {
         mDuration = time;
     }
 
-    public int duration() {
+    int duration() {
         return mDuration;
     }
 }

@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
+class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
     private static ActionMode mActionMode;
     private static ActionBarActivity mActivity;
     private static ExerciseWrapper mDataSet;
@@ -34,10 +34,10 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
      *  the selection will not automatically be unmarked when the ActionBar is closed. */
     private static boolean mActionItemClicked = false;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mNameTextView;
-        public TextView mTimeSinceTextView;
-        public ViewHolder(View v) {
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView mNameTextView;
+        TextView mTimeSinceTextView;
+        ViewHolder(View v) {
             super(v);
             /* Short clicking one of the listed Exercises opens the respective Exercise in detail. */
             v.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +90,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
         }
     }
 
-    public ExerciseViewAdapter(ActionBarActivity activity, ExerciseWrapper exercises) {
+    ExerciseViewAdapter(ActionBarActivity activity, ExerciseWrapper exercises) {
         mDataSet = exercises;
         mActivity = activity;
         mAdapter = this;
@@ -147,7 +147,7 @@ public class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapte
     }
 
     /** Reset the currently active ActionMode, for example after a screen rotation. */
-    protected void resetActionMode() {
+    void resetActionMode() {
         unmarkSelectedExercise(true);
         mActionMode = null;
     }

@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class JsonUtils {
-    public static final int BUFSIZE = 1024;
+class JsonUtils {
+    private static final int BUFSIZE = 1024;
 
     /** Place the versionCode of the app in the given Context in the given JSONObject.
      *  The caller is responsible to handle any JSONExceptions thrown. */
@@ -107,7 +107,7 @@ public class JsonUtils {
     }
 
     /** Write a list of Exercises to file. */
-    public static void toFile(Context context, List<Exercise> exercises) {
+    static void toFile(Context context, List<Exercise> exercises) {
         File outputFile = getExerciseFile(context);
         if (outputFile == null) {
             Log.d("Not writing Exercises as media is not available.");
@@ -178,7 +178,7 @@ public class JsonUtils {
     }
 
     /* Return exercises read from the given file. */
-    public static List<Exercise> readExercisesFromFile(Context context) {
+    static List<Exercise> readExercisesFromFile(Context context) {
         StringBuffer fileContent = new StringBuffer("");
         FileInputStream inputStream = null;
         ArrayList<Exercise> result = new ArrayList<Exercise>();

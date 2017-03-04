@@ -3,7 +3,7 @@ package com.baertiger_baer.gymcoachbob;
 import java.io.Serializable;
 import java.util.Date;
 
-public class WeightBasedExerciseSession extends ExerciseSession implements Serializable {
+class WeightBasedExerciseSession extends ExerciseSession implements Serializable {
     /** Number of repetitions of the set. */
     private int mRepetitions;
     /** Weight used for the set. */
@@ -16,12 +16,12 @@ public class WeightBasedExerciseSession extends ExerciseSession implements Seria
     }
 
     /** Return the weight used for this ExerciseSession. */
-    public double weight() {
+    double weight() {
         return mWeight;
     }
 
     /** Return the number of repetitions of this ExerciseSession. */
-    public int repetitions() {
+    int repetitions() {
         return mRepetitions;
     }
 }

@@ -15,7 +15,7 @@ public class Log {
         }
     }
 
-    public static void e(String string) {
+    static void e(String string) {
         /* We always log errors as they do not happen often and give insight into things going
          * fatally wrong. */
         android.util.Log.e(Util.TAG, string);

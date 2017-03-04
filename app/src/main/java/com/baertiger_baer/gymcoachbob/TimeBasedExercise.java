@@ -6,7 +6,7 @@
 package com.baertiger_baer.gymcoachbob;
 
 /* Exercises that are measured in time and distance. */
-public class TimeBasedExercise extends Exercise {
+class TimeBasedExercise extends Exercise {
     TimeBasedExercise(String name) {
         super(name);
 

@@ -11,12 +11,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 /** Utility functions that do not quite fit anywhere else. */
-public class Util {
+class Util {
     /** Tag for log prints. */
-    public static final String TAG = "GCB";
+    static final String TAG = "GCB";
 
     /** Determine whether the two given Dates are on the same day. */
-    public static boolean onSameDay(Date d1, Date d2) {
+    static boolean onSameDay(Date d1, Date d2) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(d1);
         int year1 = cal.get(Calendar.YEAR);
@@ -48,13 +48,13 @@ public class Util {
     }
 
     /** Return the number of days since the given Date. */
-    public static int daysSinceDate(Date date) {
+    static int daysSinceDate(Date date) {
         return daysBetweenDates(date, new Date());
     }
 
     /** Return the number of days between the two Dates.
      *  d1 should be before d2 for a positive value of days to be returned. */
-    public static int daysBetweenDates(Date d1, Date d2) {
+    static int daysBetweenDates(Date d1, Date d2) {
         d1 = normaliseDate(d1);
         d2 = normaliseDate(d2);
         /* Convert time in 'milliseconds since Jan 1 1970 Midnight GMT' to number of days */
@@ -67,7 +67,7 @@ public class Util {
     /* Return the time since the given date.
      * Example return values:
      *  in the future, today, yesterday, x days ago, ... */
-    public static String timeSince(Context context, Date date) {
+    static String timeSince(Context context, Date date) {
         String result;
         int daysSinceLastExercise = daysSinceDate(date);
         if (daysSinceLastExercise < 0) {
@@ -83,7 +83,7 @@ public class Util {
     }
 
     /** Return a String representation of the given Date. */
-    public static String dateString(Context context, Date date) {
+    static String dateString(Context context, Date date) {
         /* This call for getDateFormat respects the currently set locale on the device and
          * returns an appropriately formatted date. */
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);

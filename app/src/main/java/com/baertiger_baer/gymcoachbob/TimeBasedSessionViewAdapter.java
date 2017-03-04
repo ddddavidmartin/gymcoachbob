@@ -14,23 +14,23 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedSessionViewAdapter.ViewHolder> {
+class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedSessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
     private static List<ExerciseSession> mDataSet;
     private static Context mContext;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mDateTextView;
-        public TextView mDurationTextView;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView mDateTextView;
+        TextView mDurationTextView;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             mDateTextView = (TextView) v.findViewById(R.id.session_date_textview);
             mDurationTextView = (TextView) v.findViewById(R.id.session_duration_textview);
         }
     }
 
-    public TimeBasedSessionViewAdapter(Context context, Exercise exercise) {
+    TimeBasedSessionViewAdapter(Context context, Exercise exercise) {
         mContext = context;
         mExercise = exercise;
         mDataSet = exercise.sessions();

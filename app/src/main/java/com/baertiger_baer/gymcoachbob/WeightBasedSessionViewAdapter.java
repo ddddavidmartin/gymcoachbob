@@ -15,18 +15,18 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBasedSessionViewAdapter.ViewHolder> {
+class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBasedSessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
     private static List<ExerciseSession> mDataSet;
     private static Context mContext;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mDateTextView;
-        public TextView mWeightTextView;
-        public TextView mRepetionsTextView;
-        public TextView mNumberTextView;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView mDateTextView;
+        TextView mWeightTextView;
+        TextView mRepetionsTextView;
+        TextView mNumberTextView;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             mDateTextView = (TextView) v.findViewById(R.id.session_date_textview);
             mWeightTextView = (TextView) v.findViewById(R.id.session_weight_textview);
@@ -35,7 +35,7 @@ public class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBa
         }
     }
 
-    public WeightBasedSessionViewAdapter(Context context, Exercise exercise) {
+    WeightBasedSessionViewAdapter(Context context, Exercise exercise) {
         mContext = context;
         mExercise = exercise;
         mDataSet = exercise.sessions();

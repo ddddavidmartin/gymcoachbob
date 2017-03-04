@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Wrapper to handle the state of all Exercises.
  */
-public class ExerciseWrapper {
+class ExerciseWrapper {
     /** Value to show that no Exercise was last accessed. */
-    public static final int NO_LAST_EXERCISE = -1;
+    static final int NO_LAST_EXERCISE = -1;
     private static List<Exercise> mMainExercises;
     private static Context mContext;
     private static ExerciseWrapper mExerciseWrapper = null;
@@ -33,7 +33,7 @@ public class ExerciseWrapper {
     }
 
     /** Return the existing instance of ExerciseWrapper or, if it does not exist, a new one. */
-    public static ExerciseWrapper getInstance(Context context) {
+    static ExerciseWrapper getInstance(Context context) {
         if (mExerciseWrapper == null) {
             mExerciseWrapper = new ExerciseWrapper(context);
         }
@@ -50,7 +50,7 @@ public class ExerciseWrapper {
     }
 
     /** Return the Exercise at the given position. */
-    public Exercise get(int position) {
+    Exercise get(int position) {
         mLastSelected = position;
         return mMainExercises.get(position);
     }
@@ -62,7 +62,7 @@ public class ExerciseWrapper {
 
     /** Remove the Exercise at the given position.
      *  Updates the persistent Exercises on file. */
-    public void remove(int position) {
+    void remove(int position) {
         /* If we remove the item that was last selected, then it should not be accessed anymore. */
         if (mLastSelected == position)
         {
@@ -74,7 +74,7 @@ public class ExerciseWrapper {
 
     /** Return the position of the last selected Exercise.
      *  Returns ExerciseWrapper.NO_LAST_EXERCISE if no Exercise was selected yet. */
-    public int last() {
+    int last() {
         return mLastSelected;
     }
 
@@ -83,7 +83,7 @@ public class ExerciseWrapper {
      *  were applied without using the ExerciseWrapper methods (eg. without using ExerciseWrapper's
      *  add or remove).
      *  Updates the persistent Exercises on file. */
-    public static void notifyExercisesChanged() {
+    static void notifyExercisesChanged() {
         if (mMainExercises == null || mContext == null) {
             Log.d("Skipping the writing of Exercises to file as they are not initialised yet.");
             return;

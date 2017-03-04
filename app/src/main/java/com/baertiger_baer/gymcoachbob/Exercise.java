@@ -14,12 +14,12 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class Exercise implements Serializable {
-    protected static final int TYPE_WEIGHT_BASED = 0;
-    protected static final int TYPE_TIME_BASED = 1;
+    static final int TYPE_WEIGHT_BASED = 0;
+    static final int TYPE_TIME_BASED = 1;
     /* Name of the exercise */
-    protected String mName;
-    protected List<ExerciseSession> mSessions;
-    protected int mExerciseType;
+    private String mName;
+    List<ExerciseSession> mSessions;
+    int mExerciseType;
     /* The last time the dates of the Exercises where checked.
      * See datesHaveChangedSinceLastCheck. */
     private static Date mLastDateCheck = null;
@@ -48,11 +48,11 @@ public abstract class Exercise implements Serializable {
         return mName;
     }
 
-    public int type() {
+    int type() {
         return mExerciseType;
     }
 
-    public List<ExerciseSession> sessions() {
+    List<ExerciseSession> sessions() {
         return mSessions;
     }
 
@@ -140,7 +140,7 @@ public abstract class Exercise implements Serializable {
     }
 
     /** Return a String describing the time since the most recent Session. */
-    public String timeSinceMostRecentSession(Context context) {
+    String timeSinceMostRecentSession(Context context) {
         ExerciseSession lastSession = mostRecentSession();
         String timeSinceLast;
         if (lastSession == null) {
@@ -155,7 +155,7 @@ public abstract class Exercise implements Serializable {
      *  If the previous Session was on the same day, an empty String is returned.
      *  If the previous Session took place at an earlier day, the number of days since then will be
      *  included in the returned String. */
-    public String timeOfSession(Context context, int position) {
+    String timeOfSession(Context context, int position) {
         ExerciseSession session = mSessions.get(position);
         String dateString = Util.dateString(context, session.date());
 
@@ -184,7 +184,7 @@ public abstract class Exercise implements Serializable {
 
     /** Return whether the Exercise dates have changed since the last time this method was called.
      *  This allows the caller to check whether it should update any Exercises it is showing. */
-    public static boolean datesHaveChangedSinceLastCheck() {
+    static boolean datesHaveChangedSinceLastCheck() {
         boolean res = false;
         Date currentDate = new Date();
 
