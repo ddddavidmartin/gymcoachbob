@@ -28,10 +28,7 @@ class Util {
         int month2 = cal.get(Calendar.MONTH);
         int day2 = cal.get(Calendar.DAY_OF_MONTH);
 
-        if ((year1 == year2) && (month1 == month2) && (day1 == day2)) {
-            return true;
-        }
-        return false;
+        return (year1 == year2) && (month1 == month2) && (day1 == day2);
     }
 
     /** Return a normalised version of the given Date.
