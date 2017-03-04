@@ -122,11 +122,7 @@ class JsonUtils {
             outputStream = new FileOutputStream(outputFile);
             int spaces = context.getResources().getInteger(R.integer.exercise_file_spaces);
             outputStream.write(result.toString(spaces).getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         } finally {
             if (outputStream != null) {
