@@ -27,9 +27,7 @@ class ExerciseWrapper {
         }
 
         mContext = context;
-
-        List<Exercise> exercises = JsonUtils.readExercisesFromFile(mContext);
-        mMainExercises = exercises;
+        mMainExercises = JsonUtils.readExercisesFromFile(mContext);;
     }
 
     /** Return the existing instance of ExerciseWrapper or, if it does not exist, a new one. */
