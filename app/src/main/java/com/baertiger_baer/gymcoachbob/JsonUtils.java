@@ -111,6 +111,7 @@ class JsonUtils {
         File outputFile = getExerciseFile(context);
         if (outputFile == null) {
             Log.d("Not writing Exercises as media is not available.");
+            return;
         }
         FileOutputStream outputStream = null;
         try {
