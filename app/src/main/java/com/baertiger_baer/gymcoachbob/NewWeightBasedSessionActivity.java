@@ -151,9 +151,9 @@ public class NewWeightBasedSessionActivity extends NewExerciseSessionActivity {
         finish();
     }
 
-    @Override
     /** Store the state of the current Activity before a configuration change such as for example a
      *  screen rotation. */
+    @Override
     protected void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
 
