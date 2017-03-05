@@ -246,8 +246,6 @@ Backlog of tasks left to do:
   - add it as a member in the ExerciseSession class and set it up when the
     sessions are loaded from file.
   - Update it when new sessions are added
-* update access modifiers as recommended by Android Studio in Exercise.java and
-  ExerciseSession.java for example
 
 * use session numbers rather than the date to sort them
  - this will then allow us to change the ordering as well
@@ -465,3 +463,6 @@ through the code base
 
 * split ViewExerciseActivity into general and more specific subclasses
  - avoids it getting too messy when we add more Exercise types
+
+* update access modifiers as recommended by Android Studio in Exercise.java and
+  ExerciseSession.java for example
