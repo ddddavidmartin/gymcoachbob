@@ -22,9 +22,9 @@ import android.widget.TextView;
 
 class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
     private static ActionMode mActionMode;
-    private static ActionBarActivity mActivity;
+    private ActionBarActivity mActivity;
     private static ExerciseWrapper mDataSet;
-    private static ExerciseViewAdapter mAdapter;
+    private ExerciseViewAdapter mAdapter;
     /** Value to mark that no position is currently selected. */
     private static final int NO_POSITION_SELECTED = -1;
     /** The currently selected position / Exercise. */
@@ -34,7 +34,7 @@ class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewH
      *  the selection will not automatically be unmarked when the ActionBar is closed. */
     private static boolean mActionItemClicked = false;
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView mNameTextView;
         TextView mTimeSinceTextView;
         ViewHolder(View v) {
@@ -98,7 +98,7 @@ class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewH
 
     /** Mark the given position as being selected.
      *  This means mSelectedPosition will be updated and the ViewAdapter notified. */
-    private static void markExerciseAsSelected(int position) {
+    private void markExerciseAsSelected(int position) {
         mSelectedPosition = position;
         mAdapter.notifyItemChanged(mSelectedPosition);
     }
@@ -107,7 +107,7 @@ class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewH
      *  mSelectedPosition will be reset.
      *  If notifyAdapter is true, the ViewAdapter will be notified about the change.
      *  Returns the position that was unmarked. */
-    private static int unmarkSelectedExercise(boolean notifyAdapter) {
+    private int unmarkSelectedExercise(boolean notifyAdapter) {
         int previousSelection = mSelectedPosition;
         mSelectedPosition = NO_POSITION_SELECTED;
         if (notifyAdapter) {
@@ -152,7 +152,7 @@ class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewH
         mActionMode = null;
     }
 
-    private static ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
         /* Called when the action mode is created; startActionMode() was called */
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
