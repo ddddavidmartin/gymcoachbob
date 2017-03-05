@@ -23,7 +23,6 @@ public class MainActivity extends ActionBarActivity {
     private static ExerciseWrapper mExercises;
     private RecyclerView mRecyclerView;
     private ExerciseViewAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +45,8 @@ public class MainActivity extends ActionBarActivity {
          * layout size of the RecyclerView. */
         mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        mRecyclerView.setLayoutManager(layoutManager);
 
         mAdapter = new ExerciseViewAdapter(this, mExercises);
         mRecyclerView.setAdapter(mAdapter);
