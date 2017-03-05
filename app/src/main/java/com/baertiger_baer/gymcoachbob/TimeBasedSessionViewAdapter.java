@@ -17,7 +17,7 @@ import java.util.List;
 class TimeBasedSessionViewAdapter extends RecyclerView.Adapter<TimeBasedSessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
     private static List<ExerciseSession> mDataSet;
-    private static Context mContext;
+    private Context mContext;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView mDateTextView;

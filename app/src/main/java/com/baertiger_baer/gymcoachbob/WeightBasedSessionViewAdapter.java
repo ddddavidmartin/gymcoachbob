@@ -18,7 +18,7 @@ import java.util.List;
 class WeightBasedSessionViewAdapter extends RecyclerView.Adapter<WeightBasedSessionViewAdapter.ViewHolder> {
     private static Exercise mExercise;
     private static List<ExerciseSession> mDataSet;
-    private static Context mContext;
+    private Context mContext;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView mDateTextView;
