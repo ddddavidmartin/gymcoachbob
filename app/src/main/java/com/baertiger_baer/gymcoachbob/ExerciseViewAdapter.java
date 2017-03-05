@@ -189,7 +189,7 @@ class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewH
                         public void onClick(DialogInterface dialog, int id) {
                             Log.d("Selected to delete the exercise on slot " + mSelectedPosition + ".");
                             int selection = unmarkSelectedExercise(/* do not notify adapter */ false);
-                            mDataSet.remove(selection);
+                            mDataSet.remove(mActivity.getApplicationContext(), selection);
                             mAdapter.notifyItemRemoved(selection);
                         }
                     });

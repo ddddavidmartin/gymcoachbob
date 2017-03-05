@@ -151,7 +151,7 @@ class JsonUtils {
             ExerciseSession s = new WeightBasedExerciseSession(date, weight, repetitions);
             /* Add the read Session to the Exercise but do not sync the change back to file
              * again. */
-            exercise.add(s, /* do not sync changes */ false);
+            exercise.add(context, s, /* do not sync changes */ false);
         }
 
         return exercise;
@@ -168,7 +168,7 @@ class JsonUtils {
             int time = tmpSession.getInt(context.getString(R.string.json_session_time));
 
             ExerciseSession s = new TimeBasedExerciseSession(date, time);
-            exercise.add(s, /* do not sync changes */ false);
+            exercise.add(context, s, /* do not sync changes */ false);
         }
 
         return exercise;

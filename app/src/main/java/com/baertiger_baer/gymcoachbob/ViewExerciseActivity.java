@@ -73,7 +73,7 @@ public abstract class ViewExerciseActivity extends ActionBarActivity {
             }
             ExerciseSession session = (ExerciseSession) data.getSerializableExtra(getString(R.string.EXTRA_SESSION));
             Log.d("Received Session: " + session);
-            PositionWithRange posRange = mExercise.add(session, /* update change on file */ true);
+            PositionWithRange posRange = mExercise.add(getApplicationContext(), session, /* update change on file */ true);
             mAdapter.notifyItemInserted(posRange.position());
             if (posRange.rangeStart() != PositionWithRange.UNSET) {
                 mAdapter.notifyItemRangeChanged(posRange.rangeStart(), posRange.count());

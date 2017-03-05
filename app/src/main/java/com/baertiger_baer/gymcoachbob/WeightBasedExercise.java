@@ -1,5 +1,7 @@
 package com.baertiger_baer.gymcoachbob;
 
+import android.content.Context;
+
 import java.util.Date;
 
 class WeightBasedExercise extends Exercise {
@@ -29,8 +31,8 @@ class WeightBasedExercise extends Exercise {
     }
 
     @Override
-    public PositionWithRange add(ExerciseSession session, boolean syncExercisesOnFile) {
-        final PositionWithRange posRange = super.add(session, syncExercisesOnFile);
+    public PositionWithRange add(Context context, ExerciseSession session, boolean syncExercisesOnFile) {
+        final PositionWithRange posRange = super.add(context, session, syncExercisesOnFile);
 
         boolean setLastWeightAndRepetitions;
         /* We initialise the 'new Session' dialog with the weight and repetitions of the most recently

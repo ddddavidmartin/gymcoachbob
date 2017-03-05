@@ -16,7 +16,6 @@ class ExerciseWrapper {
     /** Value to show that no Exercise was last accessed. */
     static final int NO_LAST_EXERCISE = -1;
     private static List<Exercise> mMainExercises;
-    private static Context mContext;
     private static ExerciseWrapper mExerciseWrapper = null;
     /** The position of the Exercise that was last accessed. */
     private static int mLastSelected = NO_LAST_EXERCISE;
@@ -26,8 +25,7 @@ class ExerciseWrapper {
             return;
         }
 
-        mContext = context;
-        mMainExercises = JsonUtils.readExercisesFromFile(mContext);;
+        mMainExercises = JsonUtils.readExercisesFromFile(context);;
     }
 
     /** Return the existing instance of ExerciseWrapper or, if it does not exist, a new one. */
@@ -41,9 +39,9 @@ class ExerciseWrapper {
     /** Add an Exercise to the list of existing ones.
      *  Updates the persistent Exercises on file.
      *  Returns the position at which the Exercise was inserted. */
-    public int add(Exercise exercise) {
+    public int add(Context context, Exercise exercise) {
         mMainExercises.add(exercise);
-        JsonUtils.toFile(mContext, mMainExercises);
+        JsonUtils.toFile(context, mMainExercises);
         return mMainExercises.size() - 1;
     }
 
@@ -60,14 +58,14 @@ class ExerciseWrapper {
 
     /** Remove the Exercise at the given position.
      *  Updates the persistent Exercises on file. */
-    void remove(int position) {
+    void remove(Context context, int position) {
         /* If we remove the item that was last selected, then it should not be accessed anymore. */
         if (mLastSelected == position)
         {
             mLastSelected = NO_LAST_EXERCISE;
         }
         mMainExercises.remove(position);
-        JsonUtils.toFile(mContext, mMainExercises);
+        JsonUtils.toFile(context, mMainExercises);
     }
 
     /** Return the position of the last selected Exercise.
@@ -81,11 +79,11 @@ class ExerciseWrapper {
      *  were applied without using the ExerciseWrapper methods (eg. without using ExerciseWrapper's
      *  add or remove).
      *  Updates the persistent Exercises on file. */
-    static void notifyExercisesChanged() {
-        if (mMainExercises == null || mContext == null) {
+    static void notifyExercisesChanged(Context context) {
+        if (mMainExercises == null) {
             Log.d("Skipping the writing of Exercises to file as they are not initialised yet.");
             return;
         }
-        JsonUtils.toFile(mContext, mMainExercises);
+        JsonUtils.toFile(context, mMainExercises);
     }
 }

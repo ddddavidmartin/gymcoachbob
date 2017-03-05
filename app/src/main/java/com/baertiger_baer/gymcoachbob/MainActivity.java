@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
             setUpNonEmptyLayout();
             Exercise exercise = (Exercise) data.getSerializableExtra(getString(R.string.EXTRA_EXERCISE));
             Log.d("Received Exercise: " + exercise);
-            int position = mExercises.add(exercise);
+            int position = mExercises.add(getApplicationContext(), exercise);
             mAdapter.notifyItemInserted(position);
             /* Scroll the view to the newly added Exercise so that it is visible. */
             mRecyclerView.scrollToPosition(position);

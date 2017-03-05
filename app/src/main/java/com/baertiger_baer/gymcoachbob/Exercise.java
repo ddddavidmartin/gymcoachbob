@@ -60,7 +60,7 @@ public abstract class Exercise implements Serializable {
      *  Use syncExercisesOnFile=true to update the Exercises on file after adding the Session.
      *  Returns the position at which the Session was inserted, and if required,
      *  a range of Sessions that need to be updated. */
-    public PositionWithRange add(ExerciseSession session, boolean syncExercisesOnFile) {
+    public PositionWithRange add(Context context, ExerciseSession session, boolean syncExercisesOnFile) {
         mSessions.add(0, session);
         Collections.sort(mSessions);
         final int position = mSessions.indexOf(session);
@@ -103,7 +103,7 @@ public abstract class Exercise implements Serializable {
         /* As we are modifying the Sessions directly, we have to notify the Exercise backend
          * about the change. */
         if (syncExercisesOnFile) {
-            ExerciseWrapper.notifyExercisesChanged();
+            ExerciseWrapper.notifyExercisesChanged(context);
         }
 
         /* If additional items have changed, then they will always start at the next Session at
