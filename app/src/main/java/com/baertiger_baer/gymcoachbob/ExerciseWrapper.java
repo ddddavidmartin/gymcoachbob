@@ -41,7 +41,7 @@ class ExerciseWrapper {
      *  Returns the position at which the Exercise was inserted. */
     public int add(Context context, Exercise exercise) {
         mMainExercises.add(exercise);
-        JsonUtils.toFile(context, mMainExercises);
+        JsonUtils.storeExercises(context, mMainExercises);
         return mMainExercises.size() - 1;
     }
 
@@ -65,7 +65,7 @@ class ExerciseWrapper {
             mLastSelected = NO_LAST_EXERCISE;
         }
         mMainExercises.remove(position);
-        JsonUtils.toFile(context, mMainExercises);
+        JsonUtils.storeExercises(context, mMainExercises);
     }
 
     /** Return the position of the last selected Exercise.
@@ -84,6 +84,6 @@ class ExerciseWrapper {
             Log.d("Skipping the writing of Exercises to file as they are not initialised yet.");
             return;
         }
-        JsonUtils.toFile(context, mMainExercises);
+        JsonUtils.storeExercises(context, mMainExercises);
     }
 }

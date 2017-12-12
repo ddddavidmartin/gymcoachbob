@@ -106,20 +106,25 @@ class JsonUtils {
         return new File(dir, context.getString(R.string.file_exercises));
     }
 
-    /** Write a list of Exercises to file. */
-    static void toFile(Context context, List<Exercise> exercises) {
-        File outputFile = getExerciseFile(context);
-        if (outputFile == null) {
+    /* Store the given Exercises to file. */
+    static void storeExercises(Context context, List<Exercise> exercises) {
+        File destination = getExerciseFile(context);
+        if (destination == null) {
             Log.d("Not writing Exercises as media is not available.");
-            return;
+        } else {
+            toFile(context, exercises, destination);
         }
+    }
+
+    /** Write the given list of Exercises to the given file. */
+    private static void toFile(Context context, List<Exercise> exercises, File file) {
         FileOutputStream outputStream = null;
         try {
             JSONObject result = new JSONObject();
             writeVersionCode(context, result);
             writeExercises(context, exercises, result);
 
-            outputStream = new FileOutputStream(outputFile);
+            outputStream = new FileOutputStream(file);
             int spaces = context.getResources().getInteger(R.integer.exercise_file_spaces);
             outputStream.write(result.toString(spaces).getBytes());
         } catch (JSONException | IOException e) {
