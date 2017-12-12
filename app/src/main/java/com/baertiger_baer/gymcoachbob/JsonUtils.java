@@ -94,7 +94,14 @@ class JsonUtils {
         }
     }
 
-    /** Return a File descriptor for the Exercise file.
+    /** Return a File descriptor for the Exercise file on internal storage. */
+    private static File getExerciseFilesFromInternalStorage(Context context) {
+        File storage = context.getFilesDir();
+
+        return new File(storage, context.getString(R.string.file_exercises));
+    }
+
+    /** Return a File descriptor for the Exercise file on external storage.
      *  Returns null if access is not possible. */
     private static File getExerciseFileFromExternalStorage(Context context) {
         File storage = getExternalStorage();
@@ -121,7 +128,7 @@ class JsonUtils {
 
     /* Store the given Exercises to file. */
     static void storeExercises(Context context, List<Exercise> exercises) {
-        File destination = getExerciseFileFromExternalStorage(context);
+        File destination = getExerciseFilesFromInternalStorage(context);
         if (destination == null) {
             Log.d("Not writing Exercises as media is not available.");
         } else {
@@ -198,7 +205,7 @@ class JsonUtils {
         FileInputStream inputStream = null;
         ArrayList<Exercise> result = new ArrayList<Exercise>();
 
-        File inputFile = getExerciseFileFromExternalStorage(context);
+        File inputFile = getExerciseFilesFromInternalStorage(context);
         if (inputFile == null) {
             Log.e("Not reading Exercises as media is not available.");
             return result;
