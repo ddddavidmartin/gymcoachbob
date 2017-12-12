@@ -122,7 +122,7 @@ class JsonUtils {
             Log.d("Not exporting Exercises as media is not available.");
         } else {
             toFile(context, exercises, destination);
-            Toast toast = Toast.makeText(context, "Exported sets to file " + destination + ".", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(context, "Exported exercises to '" + destination + "'.", Toast.LENGTH_LONG);
             toast.show();
         }
     }
