@@ -123,6 +123,7 @@ class JsonUtils {
         } else {
             toFile(context, exercises, destination);
             Toast toast = Toast.makeText(context, "Exported sets to file " + destination + ".", Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 
