@@ -7,12 +7,12 @@ package com.baertiger_baer.gymcoachbob;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.widget.TextView;
 
-public abstract class ViewExerciseActivity extends ActionBarActivity {
+public abstract class ViewExerciseActivity extends AppCompatActivity {
     static final int NEW_SESSION_REQUEST = 1;
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mAdapter;

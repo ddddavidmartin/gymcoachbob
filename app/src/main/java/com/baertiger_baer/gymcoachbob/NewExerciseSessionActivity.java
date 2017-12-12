@@ -11,7 +11,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -20,7 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /** Generic class to create a new ExerciseSession. */
-public abstract class NewExerciseSessionActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener {
+public abstract class NewExerciseSessionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     protected Date mDate;
 
     public static class DatePickerFragment extends DialogFragment {

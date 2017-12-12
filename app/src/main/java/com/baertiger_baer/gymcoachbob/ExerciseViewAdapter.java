@@ -8,9 +8,9 @@ package com.baertiger_baer.gymcoachbob;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewHolder> {
     private static ActionMode mActionMode;
-    private ActionBarActivity mActivity;
+    private AppCompatActivity mActivity;
     private static ExerciseWrapper mDataSet;
     private ExerciseViewAdapter mAdapter;
     /** Value to mark that no position is currently selected. */
@@ -90,7 +90,7 @@ class ExerciseViewAdapter extends RecyclerView.Adapter<ExerciseViewAdapter.ViewH
         }
     }
 
-    ExerciseViewAdapter(ActionBarActivity activity, ExerciseWrapper exercises) {
+    ExerciseViewAdapter(AppCompatActivity activity, ExerciseWrapper exercises) {
         mDataSet = exercises;
         mActivity = activity;
         mAdapter = this;
