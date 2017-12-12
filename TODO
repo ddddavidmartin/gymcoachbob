@@ -250,6 +250,11 @@ Backlog of tasks left to do:
 * use session numbers rather than the date to sort them
  - this will then allow us to change the ordering as well
 
+* implement Play auto-backup support
+ - see https://developer.android.com/guide/topics/data/autobackup.html
+ - https://developer.android.com/training/sharing/shareaction.html
+   alternatively just store it where it is now and import it from there as well
+
  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 DONE:
 
