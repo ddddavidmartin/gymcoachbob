@@ -25,7 +25,7 @@ class ExerciseWrapper {
             return;
         }
 
-        mMainExercises = JsonUtils.readExercisesFromFile(context);
+        mMainExercises = JsonUtils.readExercisesFromInternalMemory(context);
     }
 
     /** Return the existing instance of ExerciseWrapper or, if it does not exist, a new one. */

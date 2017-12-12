@@ -199,21 +199,25 @@ class JsonUtils {
         return exercise;
     }
 
+    static List<Exercise> readExercisesFromInternalMemory(Context context) {
+        File file = getExerciseFilesFromInternalStorage(context);
+        return readExercisesFromFile(context, file);
+    }
+
     /* Return exercises read from the given file. */
-    static List<Exercise> readExercisesFromFile(Context context) {
+    private static List<Exercise> readExercisesFromFile(Context context, File file) {
         StringBuffer fileContent = new StringBuffer("");
         FileInputStream inputStream = null;
         ArrayList<Exercise> result = new ArrayList<Exercise>();
 
-        File inputFile = getExerciseFilesFromInternalStorage(context);
-        if (inputFile == null) {
+        if (file == null) {
             Log.e("Not reading Exercises as media is not available.");
             return result;
         }
         byte[] buffer = new byte[BUFSIZE];
 
         try {
-            inputStream = new FileInputStream(inputFile);
+            inputStream = new FileInputStream(file);
             while (inputStream.read(buffer) != -1) {
                 fileContent.append(new String(buffer));
             }
