@@ -10,6 +10,7 @@
     <string name="action_new_exercise">New exercise</string>
     <string name="action_new_session">New set</string>
     <string name="action_export_exercises">Export exercises</string>
+    <string name="action_import_exercises">Import exercises</string>
 
     <string name="button_add_exercise">Add exercise</string>
     <string name="button_pick_date">Pick date</string>
@@ -59,6 +60,10 @@
     <string name="alert_delete_exercise_message">This exercise and all associated sets will be removed and can not be recovered.</string>
     <string name="alert_delete_exercise_okay">Delete</string>
     <string name="alert_delete_exercise_cancel">Cancel</string>
+    <string name="alert_import_exercise_title">Exercise import</string>
+    <string name="alert_import_exercise_message">Import exercises from external storage? This will replace all existing exercises and all associated sets and can not be undone.</string>
+    <string name="alert_import_exercise_okay">Import</string>
+    <string name="alert_import_exercise_cancel">Cancel</string>
 
     <string name="time_today">Today</string>
     <string name="time_yesterday">Yesterday</string>

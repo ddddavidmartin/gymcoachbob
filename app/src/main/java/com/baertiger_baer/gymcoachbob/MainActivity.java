@@ -5,6 +5,8 @@
 
 package com.baertiger_baer.gymcoachbob;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -103,6 +105,29 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_new_exercise:
                 newExercise(getCurrentFocus());
+            case R.id.action_import_exercises:
+                /* Confirm importing of Exercises as this can not be recovered. */
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                String title = getResources().getString(R.string.alert_import_exercise_title);
+                builder.setMessage(R.string.alert_import_exercise_message)
+                        .setTitle(title);
+                builder.setPositiveButton(R.string.alert_import_exercise_okay,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+                builder.setNegativeButton(R.string.alert_import_exercise_cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                /* NOOP */
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                return true;
             case R.id.action_export_exercises:
                 Log.d("Exporting exercises.");
                 ExerciseWrapper.exportExercises(getApplicationContext());
