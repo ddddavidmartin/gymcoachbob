@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_new_exercise:
                 newExercise(getCurrentFocus());
+                return true;
             case R.id.action_import_exercises:
                 /* Confirm importing of Exercises as this can not be recovered. */
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
