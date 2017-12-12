@@ -205,6 +205,11 @@ class JsonUtils {
         return readExercisesFromFile(context, file);
     }
 
+    static List<Exercise> importExercises(Context context) {
+        File file = getExerciseFileFromExternalStorage(context);
+        return readExercisesFromFile(context, file);
+    }
+
     /* Return exercises read from the given file. */
     private static List<Exercise> readExercisesFromFile(Context context, File file) {
         StringBuffer fileContent = new StringBuffer("");

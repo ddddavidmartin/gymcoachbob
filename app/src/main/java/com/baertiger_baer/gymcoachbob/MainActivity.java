@@ -116,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
+                                ExerciseWrapper.importExercises(getApplicationContext());
+                                mAdapter.notifyDataSetChanged();
                             }
                         });
                 builder.setNegativeButton(R.string.alert_import_exercise_cancel,

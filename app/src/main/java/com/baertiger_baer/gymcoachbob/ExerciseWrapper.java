@@ -6,6 +6,7 @@
 package com.baertiger_baer.gymcoachbob;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -85,6 +86,16 @@ class ExerciseWrapper {
             return;
         }
         JsonUtils.storeExercises(context, mMainExercises);
+    }
+
+    static void importExercises(Context context) {
+        List<Exercise> exercises = JsonUtils.importExercises(context);
+        if (exercises.size() > 0) {
+            mMainExercises = exercises;
+            JsonUtils.storeExercises(context, mMainExercises);
+            Toast toast = Toast.makeText(context, "Imported " + mMainExercises.size() + " exercise(s).", Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 
     /* Export the current Exercises to external storage. */
