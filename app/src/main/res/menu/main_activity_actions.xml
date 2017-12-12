@@ -5,4 +5,7 @@
           android:icon="@mipmap/ic_action_new_workout"
           android:title="@string/action_new_exercise"
           app:showAsAction="always" />
+    <item android:id="@+id/action_export_exercises"
+          android:title="@string/action_export_exercises"
+          app:showAsAction="never" />
 </menu>

@@ -103,6 +103,9 @@ public class MainActivity extends ActionBarActivity {
         switch (id) {
             case R.id.action_new_exercise:
                 newExercise(getCurrentFocus());
+            case R.id.action_export_exercises:
+                Log.d("Exporting exercises.");
+                ExerciseWrapper.exportExercises(getApplicationContext());
         }
         return super.onOptionsItemSelected(item);
     }

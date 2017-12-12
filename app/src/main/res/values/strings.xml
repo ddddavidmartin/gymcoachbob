@@ -9,6 +9,7 @@
 
     <string name="action_new_exercise">New exercise</string>
     <string name="action_new_session">New set</string>
+    <string name="action_export_exercises">Export exercises</string>
 
     <string name="button_add_exercise">Add exercise</string>
     <string name="button_pick_date">Pick date</string>

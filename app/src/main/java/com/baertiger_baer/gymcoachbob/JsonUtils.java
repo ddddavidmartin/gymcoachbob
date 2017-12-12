@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -104,6 +105,18 @@ class JsonUtils {
         File dir = new File(storage.getAbsolutePath() + "/" + context.getString(R.string.app_directory_name));
         dir.mkdir();
         return new File(dir, context.getString(R.string.file_exercises));
+    }
+
+    /* Export the given Exercises to external storage so that they can be backed up by hand for
+     * example with adb. */
+    static void exportExercises(Context context, List<Exercise> exercises) {
+        File destination = getExerciseFileFromExternalStorage(context);
+        if (destination == null) {
+            Log.d("Not exporting Exercises as media is not available.");
+        } else {
+            toFile(context, exercises, destination);
+            Toast toast = Toast.makeText(context, "Exported sets to file " + destination + ".", Toast.LENGTH_LONG);
+        }
     }
 
     /* Store the given Exercises to file. */

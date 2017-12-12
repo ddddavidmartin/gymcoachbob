@@ -86,4 +86,13 @@ class ExerciseWrapper {
         }
         JsonUtils.storeExercises(context, mMainExercises);
     }
+
+    /* Export the current Exercises to external storage. */
+    static void exportExercises(Context context) {
+        if (mMainExercises == null) {
+            Log.d("Skipping export of exercises as there are none.");
+        } else {
+            JsonUtils.exportExercises(context, mMainExercises);
+        }
+    }
 }
