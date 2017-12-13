@@ -1,0 +1,172 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+MERGED from [com.android.support:recyclerview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.2.0.aar/32a2ea43f0424b98b791259ce82d85a7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/cardview-v7-25.2.0.aar/fb6014ed9347641ea3ffc4fef9cad2f7/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/8fade0ac7fc944ffe502cb06cbf90a91/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-v4:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-v4-25.2.0.aar/dabddff50b7d641abf6de45a6c9a18ec/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-fragment-25.2.0.aar/01c2221797cea9757320d0d574b645d6/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.2.0.aar/6fb8075d56d2165d591e4d6ccd548dad/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/a0fe299888ce01451ab0fa1e3a32197a/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.2.0.aar/84ab46b8813effa5435ffcd082783950/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.2.0.aar/8e0a7b2f575c24b9b71eb2650f6ce0d1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.2.0.aar/8ac82c7c0f148f7b0253251722b63d91/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-compat-25.2.0.aar/2864fc9624248e34963f33221eabe3d1/AndroidManifest.xml:17:1-27:12
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:1-68:12
+	package
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:7:5-45
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:9:5-30
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:6:11-69
+	android:versionCode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:8:5-28
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:11:22-78
+application
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:13:5-67:19
+MERGED from [com.android.support:cardview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/cardview-v7-25.2.0.aar/fb6014ed9347641ea3ffc4fef9cad2f7/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/cardview-v7-25.2.0.aar/fb6014ed9347641ea3ffc4fef9cad2f7/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/8fade0ac7fc944ffe502cb06cbf90a91/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/8fade0ac7fc944ffe502cb06cbf90a91/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-v4-25.2.0.aar/dabddff50b7d641abf6de45a6c9a18ec/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-v4-25.2.0.aar/dabddff50b7d641abf6de45a6c9a18ec/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-fragment-25.2.0.aar/01c2221797cea9757320d0d574b645d6/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-fragment-25.2.0.aar/01c2221797cea9757320d0d574b645d6/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.2.0.aar/6fb8075d56d2165d591e4d6ccd548dad/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.2.0.aar/6fb8075d56d2165d591e4d6ccd548dad/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/a0fe299888ce01451ab0fa1e3a32197a/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/a0fe299888ce01451ab0fa1e3a32197a/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.2.0.aar/84ab46b8813effa5435ffcd082783950/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.2.0.aar/84ab46b8813effa5435ffcd082783950/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.2.0.aar/8e0a7b2f575c24b9b71eb2650f6ce0d1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.2.0.aar/8e0a7b2f575c24b9b71eb2650f6ce0d1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.2.0.aar/8ac82c7c0f148f7b0253251722b63d91/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.2.0.aar/8ac82c7c0f148f7b0253251722b63d91/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-compat-25.2.0.aar/2864fc9624248e34963f33221eabe3d1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-compat-25.2.0.aar/2864fc9624248e34963f33221eabe3d1/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:16:9-41
+	android:icon
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:15:9-43
+	android:allowBackup
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:14:9-35
+	android:theme
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:17:9-40
+activity#com.baertiger_baer.gymcoachbob.MainActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:18:9-27:20
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:20:13-45
+	android:launchMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:21:13-43
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:19:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:22:13-26:29
+action#android.intent.action.MAIN
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:23:17-69
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:23:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:25:27-74
+activity#com.baertiger_baer.gymcoachbob.NewExerciseActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:28:9-36:20
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:32:13-55
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:30:13-64
+	android:windowSoftInputMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:31:13-55
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:29:13-48
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:33:13-35:79
+	android:value
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:35:17-76
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:34:17-63
+activity#com.baertiger_baer.gymcoachbob.ViewWeightBasedExerciseActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:37:9-44:20
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:39:13-55
+	android:launchMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:40:13-43
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:38:13-60
+activity#com.baertiger_baer.gymcoachbob.ViewTimeBasedExerciseActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:45:9-52:20
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:47:13-55
+	android:launchMode
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:48:13-43
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:46:13-58
+activity#com.baertiger_baer.gymcoachbob.NewWeightBasedSessionActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:53:9-59:20
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:55:13-74
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:54:13-63
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:53:19-64
+activity#com.baertiger_baer.gymcoachbob.NewTimeBasedSessionActivity
+ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:60:9-66:20
+	android:parentActivityName
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:62:13-72
+	android:label
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:61:13-63
+	android:name
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml:60:19-62
+uses-sdk
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:recyclerview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.2.0.aar/32a2ea43f0424b98b791259ce82d85a7/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.2.0.aar/32a2ea43f0424b98b791259ce82d85a7/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/cardview-v7-25.2.0.aar/fb6014ed9347641ea3ffc4fef9cad2f7/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/cardview-v7-25.2.0.aar/fb6014ed9347641ea3ffc4fef9cad2f7/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/8fade0ac7fc944ffe502cb06cbf90a91/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/8fade0ac7fc944ffe502cb06cbf90a91/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-v4-25.2.0.aar/dabddff50b7d641abf6de45a6c9a18ec/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-v4-25.2.0.aar/dabddff50b7d641abf6de45a6c9a18ec/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-fragment-25.2.0.aar/01c2221797cea9757320d0d574b645d6/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-fragment-25.2.0.aar/01c2221797cea9757320d0d574b645d6/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.2.0.aar/6fb8075d56d2165d591e4d6ccd548dad/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.2.0.aar/6fb8075d56d2165d591e4d6ccd548dad/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/a0fe299888ce01451ab0fa1e3a32197a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.2.0.aar/a0fe299888ce01451ab0fa1e3a32197a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.2.0.aar/84ab46b8813effa5435ffcd082783950/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.2.0.aar/84ab46b8813effa5435ffcd082783950/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.2.0.aar/8e0a7b2f575c24b9b71eb2650f6ce0d1/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.2.0.aar/8e0a7b2f575c24b9b71eb2650f6ce0d1/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.2.0.aar/8ac82c7c0f148f7b0253251722b63d91/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.2.0.aar/8ac82c7c0f148f7b0253251722b63d91/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-compat-25.2.0.aar/2864fc9624248e34963f33221eabe3d1/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/support-compat-25.2.0.aar/2864fc9624248e34963f33221eabe3d1/AndroidManifest.xml:21:5-23:58
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.2.0] /Users/davidm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/8fade0ac7fc944ffe502cb06cbf90a91/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		ADDED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davidm/Dev/AndroidStudioProjects/GymCoachBob/app/src/main/AndroidManifest.xml
