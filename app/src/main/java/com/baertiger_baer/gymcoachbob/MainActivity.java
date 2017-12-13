@@ -117,7 +117,15 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 ExerciseWrapper.importExercises(getApplicationContext());
-                                mAdapter.notifyDataSetChanged();
+                                if (mExercises.size() > 0) {
+                                    /* When the app is started without any Exercises then mAdapter
+                                     * is not yet initialised. */
+                                    if (mAdapter == null) {
+                                        setUpNonEmptyLayout();
+                                    } else {
+                                        mAdapter.notifyDataSetChanged();
+                                    }
+                                }
                             }
                         });
                 builder.setNegativeButton(R.string.alert_import_exercise_cancel,
