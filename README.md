@@ -1,3 +1,5 @@
+<img src="graphics/logo.svg" width="150">
+
 **gymcoachbob** helps you to keep track of all your exercises, and lets you log weight and repetitions for all the sets you do.
 
 * ad-free, no unwanted popups or questionable tracking
@@ -11,7 +13,7 @@ Required permissions:
 
 ## Screenshots
 
-See [graphics/listing](graphics/listing).
+[<img src="graphics/listing/screenshot_startscreen.png" width="150px;"/>](graphics/listing/screenshot_startscreen.png) [<img src="graphics/listing/screenshot_exercises.png" width="150px;"/>](graphics/listing/screenshot_exercises.png) [<img src="graphics/listing/screenshot_exercise.png" width="150px;"/>](graphics/listing/screenshot_exercise.png) [<img src="graphics/listing/screenshot_add_set.png" width="150px;"/>](graphics/listing/screenshot_add_set.png)
 
 
 ## Installing
