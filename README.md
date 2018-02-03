@@ -18,7 +18,7 @@ Required permissions:
 
 ## Installing
 
-Install from Google Play via [gymcoachbob.com](http://gymcoachbob.com/).
+Install from [Google Play](https://play.google.com/store/apps/details?id=com.baertiger_baer.gymcoachbob).
 
 
 ## Building
