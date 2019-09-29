@@ -109,8 +109,11 @@ class JsonUtils {
             return null;
         }
 
-        File dir = new File(storage.getAbsolutePath() + "/" + context.getString(R.string.app_directory_name));
-        dir.mkdir();
+        File dir = new File(storage.getAbsolutePath(), context.getString(R.string.app_directory_name));
+        if (!dir.mkdirs()) {
+            return null;
+        }
+
         return new File(dir, context.getString(R.string.file_exercises));
     }
 
@@ -120,6 +123,8 @@ class JsonUtils {
         File destination = getExerciseFileFromExternalStorage(context);
         if (destination == null) {
             Log.d("Not exporting Exercises as media is not available.");
+            Toast toast = Toast.makeText(context, "Failed to access external directory.", Toast.LENGTH_LONG);
+            toast.show();
         } else {
             toFile(context, exercises, destination);
             Toast toast = Toast.makeText(context, "Exported exercises to '" + destination + "'.", Toast.LENGTH_LONG);
